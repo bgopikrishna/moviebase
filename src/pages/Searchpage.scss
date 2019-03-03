@@ -1,0 +1,53 @@
+@import "../variables";
+
+.searchpage {
+  width: 80%;
+  margin: 10px auto;
+
+  .searchbar {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .searchbar {
+    color: inherit;
+    input,
+    button {
+      padding: 10px 20px;
+      font-family: inherit;
+      outline: none;
+      border: none;
+    }
+
+    input {
+      flex: 1;
+      border-top-left-radius: 15px;
+      border-bottom-left-radius: 15px;
+      background: $white;
+      color: $black;
+      opacity: 0.9;
+
+      &:hover,
+      &:focus {
+        opacity: 1;
+      }
+    }
+    button {
+      border-top-right-radius: 15px;
+      border-bottom-right-radius: 15px;
+      background: $orangered;
+      cursor: pointer;
+      color: inherit;
+      transition: all 0.3s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+
+      &:hover,
+      &:focus {
+        background: $white;
+        color: $black;
+        border-left: 0.5px solid $black;
+      }
+    }
+  }
+}
