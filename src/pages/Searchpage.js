@@ -4,6 +4,7 @@ import "./Searchpage.scss";
 import { doFetchData } from "../actions/fetchDataAction";
 import { connect } from "react-redux";
 import { getSearchResults } from "../selectors";
+import MovieCard from "../components/MovieCard";
 
 class SearchPage extends Component {
   constructor(props) {
@@ -15,7 +16,7 @@ class SearchPage extends Component {
   }
   handleChange = e => {
     this.setState({
-      searchFieldValue: e.target.value
+      searchFieldValue: e.target.value.toLowerCase()
     });
   };
 
@@ -34,8 +35,12 @@ class SearchPage extends Component {
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}
         />
-        {searchResults &&
-          searchResults.map(item => <li key={item.id}>{item.title}</li>)}
+        <div className="search__results">
+          {searchResults &&
+            searchResults.map(movie => (
+              <MovieCard key={movie.id} movie={movie} />
+            ))}
+        </div>
       </div>
     );
   }
