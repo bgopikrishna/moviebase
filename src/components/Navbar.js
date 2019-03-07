@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
 import "./Navbar.scss";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
   return (
@@ -12,36 +12,24 @@ const Navbar = () => {
       <nav>
         <ul className="__navlinks">
           <li>
-            <Link to="/" className="__navitem">
-              <span role="img" aria-label="search">
-                🏠
-              </span>{" "}
-              home
-            </Link>
+            <NavLink to="/" className="__navitem">
+              <i className="fas fa-home" /> home
+            </NavLink>
           </li>
           <li>
-            <Link to="/" className="__navitem">
-              <span role="img" aria-label="search">
-                🔍
-              </span>{" "}
-              search
-            </Link>
+            <NavLink to="/" className="__navitem">
+              <i className="fas fa-search" /> search
+            </NavLink>
           </li>
           <li>
-            <Link to="/404" className="__navitem">
-              <span role="img" aria-label="search">
-                🍿
-              </span>{" "}
-              mylist
-            </Link>
+            <NavLink to="/404" className="__navitem">
+              <i className="fas fa-film" /> mylist
+            </NavLink>
           </li>
           <li>
-            <Link to="/404" className="__navitem">
-              <span role="img" aria-label="search">
-                🤓
-              </span>{" "}
-              account
-            </Link>
+            <NavLink to="/404" className="__navitem">
+              <i className="fas fa-user-astronaut" /> account
+            </NavLink>
           </li>
         </ul>
       </nav>

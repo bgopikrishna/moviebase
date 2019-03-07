@@ -9,7 +9,6 @@
 
   h1 {
     margin: 0;
-    font-family: "Roboto Mono", monospace;
   }
 
   .__navlinks {
@@ -25,10 +24,18 @@
   .__navitem {
     flex-basis: 20%;
     margin: auto 20px;
+    opacity: 0.5;
+    transition: all 0.2s ease-in;
 
     &:hover,
     &:focus {
-      text-decoration: underline;
+      opacity: 1;
+      color: $junglegreen;
+    }
+
+    & .active {
+      opacity: 1;
+      color: $junglegreen;
     }
   }
 }
@@ -47,7 +54,7 @@
       bottom: 0;
       left: 0;
       width: 100%;
-      padding: 5px 0;
+      padding: 20px 5px;
       background: $orangered;
       text-align: center;
     }

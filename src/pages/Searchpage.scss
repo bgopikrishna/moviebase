@@ -52,11 +52,20 @@
   }
 }
 
-
 .search__results {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 10px;
   justify-items: center;
-  padding: 1em;
+  padding: 1em 10px;
+}
+
+
+@media (max-width: 900px) {
+  .searchpage {
+    width: 100%;
+  }
+  .search__results {
+    grid-template-columns: 1fr;
+  }
 }
