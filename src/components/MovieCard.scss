@@ -12,11 +12,17 @@
 .card {
   display: flex;
   flex-direction: row;
-  min-width: 400px;
   background: $white;
-  width: auto;
+  width: 100%;
   color: $black;
   border-radius: 15px;
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    color: $orangered;
+  }
 }
 
 .card__image {
@@ -32,7 +38,7 @@
 .card__stacked {
   display: flex;
   flex-direction: column;
-  padding: 10px;
+  padding: 0px 10px;
   width: 100%;
   justify-content: space-between;
 }
@@ -40,7 +46,6 @@
 .card__content {
   font-size: 14px;
   font-family: inherit;
-  border-bottom: 1px solid #111;
   padding-bottom: 10px;
 }
 
@@ -49,7 +54,9 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: center;
+  border-top: 1px solid $black;
+
   a {
     font-size: 10px;
     font-family: inherit;
@@ -69,6 +76,14 @@
 
 .card__rating {
   float: right;
+  &::before {
+    font-family: "Font Awesome 5 Free";
+    padding-right: 10px;
+    content: " \f005";
+    color: gold;
+    font-weight: 900;
+    margin: auto 0px;
+  }
 }
 
 @media (max-width: 900px) {

@@ -2,8 +2,10 @@ import React from "react";
 import "./MovieCard.scss";
 import { ifNotExists } from "../helperfunctions/helpers";
 import { Link } from "react-router-dom";
+import { doMarkFavourite } from "../actions/favouriteAction";
+import { connect } from "react-redux";
 
-const MovieCard = ({ movie }) => {
+const MovieCard = ({ movie, onClick }) => {
   let {
     id,
     vote_average,
@@ -41,7 +43,7 @@ const MovieCard = ({ movie }) => {
         </div>
         <div className="card__action">
           <Link to={`/movie/${id}`}>More Info</Link>
-          <button>
+          <button onClick={() => onClick(id)}>
             <i className="fas fa-heart" />
           </button>
         </div>
@@ -50,4 +52,13 @@ const MovieCard = ({ movie }) => {
   );
 };
 
-export default MovieCard;
+const mapDisptachToProps = dispatch => {
+  return {
+    onClick: (movie, id) => dispatch(doMarkFavourite(movie, id))
+  };
+};
+
+export default connect(
+  null,
+  mapDisptachToProps
+)(MovieCard);

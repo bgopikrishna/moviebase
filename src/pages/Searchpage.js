@@ -5,6 +5,7 @@ import { doFetchData } from "../actions/fetchDataAction";
 import { connect } from "react-redux";
 import { getSearchResults } from "../selectors";
 import MovieCard from "../components/MovieCard";
+import { doMarkFavourite } from "../actions/favouriteAction";
 
 class SearchPage extends Component {
   constructor(props) {
@@ -54,7 +55,8 @@ const mapStateToProps = (state, props) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    doSearch: searchTerm => dispatch(doFetchData(searchTerm))
+    doSearch: searchTerm => dispatch(doFetchData(searchTerm)),
+    doMarkFav: (movie, id) => dispatch(doMarkFavourite(movie, id))
   };
 };
 

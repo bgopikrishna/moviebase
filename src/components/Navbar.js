@@ -7,17 +7,19 @@ const Navbar = () => {
   return (
     <div className="navbar">
       <header className="__logo">
-        <h1>moviebase</h1>
+        <h1>
+          <a href="/">moviebase</a>
+        </h1>
       </header>
       <nav>
         <ul className="__navlinks">
           <li>
-            <NavLink to="/" className="__navitem">
+            <NavLink exact to="/" className="__navitem">
               <i className="fas fa-home" /> home
             </NavLink>
           </li>
           <li>
-            <NavLink to="/" className="__navitem">
+            <NavLink to="/search" className="__navitem">
               <i className="fas fa-search" /> search
             </NavLink>
           </li>
@@ -27,7 +29,7 @@ const Navbar = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/404" className="__navitem">
+            <NavLink to="/account" className="__navitem">
               <i className="fas fa-user-astronaut" /> account
             </NavLink>
           </li>
