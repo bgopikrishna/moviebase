@@ -17,13 +17,16 @@ class SearchPage extends Component {
   }
   handleChange = e => {
     this.setState({
-      searchFieldValue: e.target.value.toLowerCase()
+      searchFieldValue: e.target.value
     });
   };
 
   handleSubmit = e => {
     e.preventDefault();
-    this.props.doSearch(this.state.searchFieldValue);
+    const { searchFieldValue } = this.state;
+    const { doSearch } = this.props;
+    doSearch(searchFieldValue.toLowerCase());
+    e.target.reset();
   };
 
   render() {

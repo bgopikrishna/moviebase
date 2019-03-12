@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { doMarkFavourite } from "../actions/favouriteAction";
 import { connect } from "react-redux";
 
-const MovieCard = ({ movie, onClick }) => {
+const MovieCard = ({ movie, onClick, favItemsIds }) => {
   let {
     id,
     vote_average,
@@ -29,6 +29,13 @@ const MovieCard = ({ movie, onClick }) => {
   );
   release_date = ifNotExists(release_date, release_date, "-");
 
+  const isFav =
+    favItemsIds.length !== 0 && favItemsIds.some(item => item === id)
+      ? true
+      : false;
+  const likeBtnStyle = isFav ? { color: "red" } : { color: "inherit" };
+  console.log(likeBtnStyle);
+
   return (
     <div className="card">
       <div className="card__image">
@@ -43,13 +50,18 @@ const MovieCard = ({ movie, onClick }) => {
         </div>
         <div className="card__action">
           <Link to={`/movie/${id}`}>More Info</Link>
-          <button onClick={() => onClick(id)}>
+          <button onClick={() => onClick(movie, id)} style={likeBtnStyle}>
             <i className="fas fa-heart" />
           </button>
         </div>
       </div>
     </div>
   );
+};
+const mapStateToProps = state => {
+  return {
+    favItemsIds: state.favItems.ids
+  };
 };
 
 const mapDisptachToProps = dispatch => {
@@ -59,6 +71,6 @@ const mapDisptachToProps = dispatch => {
 };
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDisptachToProps
 )(MovieCard);

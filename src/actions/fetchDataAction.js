@@ -20,6 +20,5 @@ export const doStoreFetchedData = data => ({ type: DATA_FETCHED, data });
 // };
 
 export const applyStoreFetchedData = (state, action) => {
-  console.log(action.data);
   return action.data;
 };
