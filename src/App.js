@@ -5,7 +5,6 @@ import { Switch, Route } from "react-router-dom";
 import SearchPage from "./pages/Searchpage";
 import NoPage404 from "./pages/NoPage404";
 import MovieInfoPage from "./pages/MovieInfoPage";
-import Footer from "./components/Footer";
 
 class App extends Component {
   render() {
@@ -21,7 +20,6 @@ class App extends Component {
           <Route path="/account" component={NoPage404} />
           <Route path="/movie/:movie_Id" component={MovieInfoPage} />
         </Switch>
-        <Footer />
       </div>
     );
   }
