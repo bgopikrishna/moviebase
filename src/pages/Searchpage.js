@@ -23,12 +23,15 @@ class SearchPage extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
+    this.setState(() => ({ isLoading: true }));
     this.props.doSearch(this.state.searchFieldValue);
+    this.setState({ isLoading: false });
   };
 
   render() {
     const { searchFieldValue } = this.state;
     const { searchResults } = this.props;
+
     return (
       <div className="searchpage">
         <Searchbar
@@ -49,7 +52,8 @@ class SearchPage extends Component {
 
 const mapStateToProps = (state, props) => {
   return {
-    searchResults: getSearchResults(state)
+    searchResults: getSearchResults(state),
+    ...props
   };
 };
 

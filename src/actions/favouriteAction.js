@@ -7,11 +7,16 @@ export const doMarkFavourite = id => {
 export const doAddFavToList = id => ({ type: ADD_FAV_TO_LIST, id });
 
 export const applyMarkFavourite = (state, action) => {
-  const { ids } = state;
-  console.log(state, action);
-  const newId = action.id;
-  const newIds = [...ids, newId];
-  console.log(newIds);
+  const { ids, list } = state;
+  const isItFav = ids.includes(action.id);
+  let newIds;
+
+  if (isItFav) {
+    newIds = ids.filter(id => id !== action.id);
+  } else {
+    newIds = [...ids, action.id];
+  }
+
   return {
     ids: newIds
   };

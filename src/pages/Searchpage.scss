@@ -60,10 +60,9 @@
   padding: 1em 10px;
 }
 
-
 @media (max-width: 900px) {
   .searchpage {
-    width: 100%;
+    width: 95%;
   }
   .search__results {
     grid-template-columns: 1fr;
