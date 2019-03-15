@@ -61,11 +61,14 @@
     font-size: 10px;
     font-family: inherit;
   }
+}
+
+.action_btns {
   button {
     border: none;
     background: transparent !important;
     color: $black;
-    padding: 5px;
+    font-size: 24px;
     outline: none;
     &:focus,
     &:hover {

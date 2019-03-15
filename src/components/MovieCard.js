@@ -46,9 +46,18 @@ const MovieCard = ({ movie, onClick, favIds }) => {
         </div>
         <div className="card__action">
           <Link to={`/movie/${id}`}>More Info</Link>
-          <button onClick={() => onClick(id)} style={likebtnStyle} title="Like">
-            <i className="fas fa-heart" />
-          </button>
+          <div className="action_btns">
+            <button
+              onClick={() => onClick(id)}
+              style={likebtnStyle}
+              title="Like"
+            >
+              <i className="fas fa-heart" />
+            </button>
+            {/* <button>
+              <i className="fas fa-heart" />
+            </button> */}
+          </div>
         </div>
       </div>
     </div>

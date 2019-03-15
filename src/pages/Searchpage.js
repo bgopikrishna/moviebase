@@ -3,9 +3,11 @@ import Searchbar from "../components/Searchbar";
 import "./Searchpage.scss";
 import { doFetchData } from "../actions/fetchDataAction";
 import { connect } from "react-redux";
-import { getSearchResults } from "../selectors";
+import { getSearchResults, getIndicators } from "../selectors";
 import MovieCard from "../components/MovieCard";
 import { doMarkFavourite } from "../actions/favouriteAction";
+import Loader from "../components/Loader";
+import ErrorDisplay from "../components/ErrorDisplay";
 
 class SearchPage extends Component {
   constructor(props) {
@@ -17,21 +19,32 @@ class SearchPage extends Component {
   }
   handleChange = e => {
     this.setState({
-      searchFieldValue: e.target.value.toLowerCase()
+      searchFieldValue: e.target.value
     });
   };
 
   handleSubmit = e => {
     e.preventDefault();
-    this.setState(() => ({ isLoading: true }));
-    this.props.doSearch(this.state.searchFieldValue);
-    this.setState({ isLoading: false });
+    let searchTerm = this.state.searchFieldValue.toLowerCase();
+    this.props.doSearch(searchTerm);
   };
 
   render() {
     const { searchFieldValue } = this.state;
-    const { searchResults } = this.props;
+    const { searchResults, indicators } = this.props;
+    const { isLoading, isError, errorMsg } = indicators;
 
+    let searchResultJSX;
+
+    if (isLoading && !isError) {
+      searchResultJSX = <Loader />;
+    } else if (isError) {
+      searchResultJSX = <ErrorDisplay errorMsg={errorMsg} />;
+    } else {
+      searchResultJSX =
+        searchResults &&
+        searchResults.map(movie => <MovieCard key={movie.id} movie={movie} />);
+    }
     return (
       <div className="searchpage">
         <Searchbar
@@ -39,12 +52,7 @@ class SearchPage extends Component {
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}
         />
-        <div className="search__results">
-          {searchResults &&
-            searchResults.map(movie => (
-              <MovieCard key={movie.id} movie={movie} />
-            ))}
-        </div>
+        <div className="search__results">{searchResultJSX}</div>
       </div>
     );
   }
@@ -53,6 +61,7 @@ class SearchPage extends Component {
 const mapStateToProps = (state, props) => {
   return {
     searchResults: getSearchResults(state),
+    indicators: getIndicators(state),
     ...props
   };
 };
