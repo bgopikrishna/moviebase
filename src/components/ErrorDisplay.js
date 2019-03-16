@@ -1,5 +1,8 @@
 import React from "react";
 import EmojiHolder from "./EmojiHolder";
+import PropTypes from "prop-types";
+
+//A component which is used for displying errors in our app, like when fetching data etc
 
 const divStyle = {
   color: "white",
@@ -14,7 +17,9 @@ const divStyle = {
   textTransform: "capitalize"
 };
 
-const ErrorDisplay = ({ errorMsg = "Failed To Fetch" }) => {
+//The component takes error message as the prop to display the error
+
+const ErrorDisplay = ({ errorMsg }) => {
   return (
     <div style={divStyle}>
       <p>
@@ -23,14 +28,25 @@ const ErrorDisplay = ({ errorMsg = "Failed To Fetch" }) => {
       </p>
       <p>
         <EmojiHolder emoji={" ⚠️"} label={"Warning"} />
+        {/**Erorr Message Display */}
         Error Message: {errorMsg}
       </p>
       <p>
         <EmojiHolder emoji={"🧐"} label={"Face With Monocle"} />
-        Please Check Your Internet Connection & Try Again Later
+        Tip: Please Check Your Internet Connection & Try Again Later
       </p>
     </div>
   );
+};
+
+//Default Props for the comp
+ErrorDisplay.defaultProps = {
+  errorMsg: "Some Thing Went Wrong"
+};
+
+//Type Checking
+ErrorDisplay.propTypes = {
+  errorMsg: PropTypes.string
 };
 
 export default ErrorDisplay;

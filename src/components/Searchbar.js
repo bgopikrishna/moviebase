@@ -1,4 +1,7 @@
 import React from "react";
+import PropTypes from "prop-types";
+
+// A searchbar comp for managing searches
 
 const Searchbar = ({ value, handleChange, handleSubmit }) => {
   return (
@@ -8,6 +11,8 @@ const Searchbar = ({ value, handleChange, handleSubmit }) => {
         placeholder="🔍 search a movie by title"
         value={value}
         onChange={handleChange}
+        aria-label="search"
+        required
       />
       <button type="submit">search</button>
     </form>
@@ -15,3 +20,9 @@ const Searchbar = ({ value, handleChange, handleSubmit }) => {
 };
 
 export default Searchbar;
+
+Searchbar.propTypes = {
+  value: PropTypes.string,
+  handleChange: PropTypes.func,
+  handleSubmit: PropTypes.func
+};

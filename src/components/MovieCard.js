@@ -4,8 +4,15 @@ import { ifNotExists } from "../helperfunctions/helpers";
 import { Link } from "react-router-dom";
 import { doMarkFavourite } from "../actions/favouriteAction";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
-const MovieCard = ({ movie, onClick, favIds }) => {
+/*
+ A moviecard component for diplaying movie details like rating , title etc
+ Also for adding them to favourites and watchlist 
+ */
+
+const MovieCard = ({ movie, addToFavList, favIds }) => {
+  //Destructring data from the movie object
   let {
     id,
     vote_average,
@@ -15,6 +22,9 @@ const MovieCard = ({ movie, onClick, favIds }) => {
     release_date
   } = movie;
 
+  /* ifNotExists is func whick checks if the info is available or not (from movie obj properties), 
+  if not available replaces with respected message  */
+  /**Checking  -starts */
   vote_average = ifNotExists(vote_average, vote_average + "/10", "N/A");
   poster_path = ifNotExists(
     poster_path,
@@ -28,55 +38,85 @@ const MovieCard = ({ movie, onClick, favIds }) => {
     "No data"
   );
   release_date = ifNotExists(release_date, release_date, "-");
-  let isFav = favIds.includes(id);
 
-  let likebtnStyle = isFav ? { color: "red" } : { color: "inherit" };
+  /**Checking  -ends */
+
+  let isFav = favIds.includes(id); //Checking if the item is fav or not by passing id
+
+  const likebtnStyle = isFav ? " active" : ""; //If the item is fav apply this class
 
   return (
+    //Movie card
     <div className="card">
+      {/*Diplaying the Image-start */}
       <div className="card__image">
-        <img src={poster_path} alt="" />
+        <img src={poster_path} alt={original_title} />
       </div>
+      {/*Diplaying the Image-End */}
+
       <div className="card__stacked">
+        {/*Diplaying the Title, overview , date, rating - Start*/}
+
         <div className="card__content">
           <h3 className="card__title">{original_title}</h3>
           <span>{release_date}</span>
           <span className="card__rating">{vote_average}</span>
           <p>{overview}</p>
         </div>
+
+        {/*Diplaying the Title, overview , date, rating - End */}
+
+        {/*Card actions like like and addToList buttons - Start */}
         <div className="card__action">
+          {/*More info Link about Movie details */}
           <Link to={`/movie/${id}`}>More Info</Link>
+
+          {/*Actions buttons */}
           <div className="action_btns">
+            {/*Add to watchlist  with (+ symbol) Button */}
+            <button>&#x2b; </button>
+
+            {/*Like Button with heart symbol */}
             <button
-              onClick={() => onClick(id)}
-              style={likebtnStyle}
+              onClick={() => addToFavList(id)}
+              className={likebtnStyle}
               title="Like"
             >
               <i className="fas fa-heart" />
             </button>
-            {/* <button>
-              <i className="fas fa-heart" />
-            </button> */}
           </div>
         </div>
+        {/*Card actions like like and addToList buttons - End */}
       </div>
     </div>
   );
 };
 
+//Connect the action creators and dispatching  to the component
 const mapDisptachToProps = dispatch => {
   return {
-    onClick: (movie, id) => dispatch(doMarkFavourite(movie, id))
+    addToFavList: (movie, id) => dispatch(doMarkFavourite(movie, id))
   };
 };
+
+//Connecting  the redux central store to the component
 const mapStateToProps = (state, props) => {
+  //Syncing the data of favourites movies with store and dispalying for user if it's already liked
   return {
     ...props,
     favIds: state.favItems.ids
   };
 };
 
+//Connecting the Redux Store to the Component
 export default connect(
   mapStateToProps,
   mapDisptachToProps
 )(MovieCard);
+
+//TypeChecking
+MovieCard.propTypes = {
+  movie: PropTypes.object.isRequired,
+  addToFavList: PropTypes.func,
+  favIds: PropTypes.array
+};

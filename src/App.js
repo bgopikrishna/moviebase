@@ -5,35 +5,35 @@ import { Switch, Route } from "react-router-dom";
 import SearchPage from "./pages/Searchpage";
 import NoPage404 from "./pages/NoPage404";
 import MovieInfoPage from "./pages/MovieInfoPage";
-import Loader from "./components/Loader";
+import { BrowserRouter as Router } from "react-router-dom";
 
 class App extends Component {
-  state = {
-    isLoading: true
-  };
-  componentDidMount() {
-    this.setState({ isLoading: false });
-  }
   render() {
-    const { isLoading } = this.state;
-    if (!isLoading) {
-      return (
+    return (
+      <Router>
         <div className="app">
+          {/* Navigation Bar */}
           <Navbar />
 
           <Switch>
+            {/* Home Component */}
             <Route exact path="/" component={SearchPage} />
+
+            {/*Search Component */}
             <Route exact path="/search" component={SearchPage} />
 
+            {/* 404 Page Component */}
             <Route path="/404" component={NoPage404} />
+
+            {/* account Component */}
             <Route path="/account" component={NoPage404} />
+
+            {/* MovieInfo Page Component */}
             <Route path="/movie/:movie_Id" component={MovieInfoPage} />
           </Switch>
         </div>
-      );
-    } else {
-      return <Loader />;
-    }
+      </Router>
+    );
   }
 }
 
