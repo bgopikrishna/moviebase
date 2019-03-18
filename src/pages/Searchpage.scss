@@ -54,17 +54,14 @@
 
 .search__results {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 20px;
   justify-items: center;
-  padding: 1em 10px;
+  padding: 0.7rem ;
 }
 
 @media (max-width: 900px) {
   .searchpage {
     width: 95%;
-  }
-  .search__results {
-    grid-template-columns: 1fr;
   }
 }

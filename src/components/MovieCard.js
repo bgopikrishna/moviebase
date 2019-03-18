@@ -78,7 +78,7 @@ const MovieCard = ({ movie, addToFavList, favIds }) => {
 
             {/*Like Button with heart symbol */}
             <button
-              onClick={() => addToFavList(id)}
+              onClick={() => addToFavList(movie,id)}
               className={likebtnStyle}
               title="Like"
             >

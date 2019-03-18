@@ -69,7 +69,6 @@ const mapStateToProps = (state, props) => {
 const mapDispatchToProps = dispatch => {
   return {
     doSearch: searchTerm => dispatch(doFetchData(searchTerm)),
-    doMarkFav: (movie, id) => dispatch(doMarkFavourite(movie, id))
   };
 };
 

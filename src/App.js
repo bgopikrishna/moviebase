@@ -6,6 +6,7 @@ import SearchPage from "./pages/Searchpage";
 import NoPage404 from "./pages/NoPage404";
 import MovieInfoPage from "./pages/MovieInfoPage";
 import { BrowserRouter as Router } from "react-router-dom";
+import MovieListPage from "./pages/MovieListPage";
 
 class App extends Component {
   render() {
@@ -23,13 +24,16 @@ class App extends Component {
             <Route exact path="/search" component={SearchPage} />
 
             {/* 404 Page Component */}
-            <Route path="/404" component={NoPage404} />
+            <Route path="/list" component={MovieListPage} />
 
             {/* account Component */}
             <Route path="/account" component={NoPage404} />
 
             {/* MovieInfo Page Component */}
             <Route path="/movie/:movie_Id" component={MovieInfoPage} />
+
+            {/* 404 Page Component */}
+            <Route path="/404" component={NoPage404} />
           </Switch>
         </div>
       </Router>

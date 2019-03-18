@@ -24,7 +24,7 @@ const Navbar = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/404" className="__navitem">
+            <NavLink to="/list" className="__navitem">
               <i className="fas fa-film" /> mylist
             </NavLink>
           </li>

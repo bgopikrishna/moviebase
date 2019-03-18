@@ -2,7 +2,7 @@ import { ADD_FAV_TO_LIST } from "../constants";
 import { applyMarkFavourite } from "../actions/favouriteAction";
 const INITIAL_STATE = {
   ids: [],
-  list: {}
+  list: []
 };
 
 export const favouriteReducer = (state = INITIAL_STATE, action) => {
