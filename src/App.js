@@ -7,6 +7,7 @@ import NoPage404 from "./pages/NoPage404";
 import MovieInfoPage from "./pages/MovieInfoPage";
 import { BrowserRouter as Router } from "react-router-dom";
 import MovieListPage from "./pages/MovieListPage";
+import Footer from "./components/Footer";
 
 class App extends Component {
   render() {
@@ -35,6 +36,7 @@ class App extends Component {
             {/* 404 Page Component */}
             <Route path="/404" component={NoPage404} />
           </Switch>
+          <Footer />
         </div>
       </Router>
     );

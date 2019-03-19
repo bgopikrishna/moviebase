@@ -20,35 +20,36 @@
       outline: none;
       border: none;
     }
+  }
+}
 
-    input {
-      flex: 1;
-      border-top-left-radius: 15px;
-      border-bottom-left-radius: 15px;
-      background: $white;
-      color: $black;
-      opacity: 0.9;
+.searchbar input {
+  flex: 1;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+  background: $white;
+  color: $black;
+  opacity: 0.9;
 
-      &:hover,
-      &:focus {
-        opacity: 1;
-      }
-    }
-    button {
-      border-top-right-radius: 15px;
-      border-bottom-right-radius: 15px;
-      background: $orangered;
-      cursor: pointer;
-      color: inherit;
-      transition: all 0.3s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  &:hover,
+  &:focus {
+    opacity: 1;
+  }
+}
 
-      &:hover,
-      &:focus {
-        background: $white;
-        color: $black;
-        border-left: 0.5px solid $black;
-      }
-    }
+.searchbar button {
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  background: $orangered;
+  cursor: pointer;
+  color: inherit;
+  transition: all 0.3s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+
+  &:hover,
+  &:focus {
+    background: $white;
+    color: $black;
+    border-left: 0.5px solid $black;
   }
 }
 
@@ -57,11 +58,12 @@
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-gap: 20px;
   justify-items: center;
-  padding: 0.7rem ;
+  padding: 0.7rem;
 }
 
 @media (max-width: 900px) {
   .searchpage {
     width: 95%;
+    padding-bottom: 60px;
   }
 }

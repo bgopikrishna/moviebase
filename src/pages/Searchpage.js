@@ -5,7 +5,6 @@ import { doFetchData } from "../actions/fetchDataAction";
 import { connect } from "react-redux";
 import { getSearchResults, getIndicators } from "../selectors";
 import MovieCard from "../components/MovieCard";
-import { doMarkFavourite } from "../actions/favouriteAction";
 import Loader from "../components/Loader";
 import ErrorDisplay from "../components/ErrorDisplay";
 
@@ -26,7 +25,9 @@ class SearchPage extends Component {
   handleSubmit = e => {
     e.preventDefault();
     let searchTerm = this.state.searchFieldValue.toLowerCase();
+   if(searchTerm) {
     this.props.doSearch(searchTerm);
+   }
   };
 
   render() {
