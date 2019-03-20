@@ -71,10 +71,14 @@ export class TrendingPage extends Component {
       <div className="trending">
         <h2 className="trending__heading">Trending movies this week</h2>
         <div className="trending__results">{trendingResultsJSX}</div>
-        <button className="more_button" onClick={() => this.handleMore()}>
-          More
-        </button>
-        {isLoading && <Loader />}
+
+        {isLoading ? (
+          <Loader />
+        ) : (
+          <button className="more_button" onClick={() => this.handleMore()}>
+            More
+          </button>
+        )}
         {isError && <ErrorDisplay errorMsg={errorMsg} />}
       </div>
     );
