@@ -54,6 +54,7 @@ class SearchPage extends Component {
           handleSubmit={this.handleSubmit}
         />
         <div className="search__results">{searchResultJSX}</div>
+       
       </div>
     );
   }

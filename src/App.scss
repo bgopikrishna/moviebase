@@ -4,7 +4,6 @@
 // @supports (font-variation-settings: normal) {
 //   html { font-family: 'Inter var', sans-serif; }
 // }
-@import url('https://fonts.googleapis.com/css?family=Varela+Round');
 
 * > {
   box-sizing: border-box;
@@ -16,9 +15,9 @@ a {
 }
 
 body {
-  font-family:'Varela Round', -system-ui, -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji",
-    "Segoe UI Emoji", "Segoe UI Symbol";
+  font-family: -system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol";
 
   padding: 0;
   margin: 0;

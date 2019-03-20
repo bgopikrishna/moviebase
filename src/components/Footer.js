@@ -3,11 +3,11 @@ import "./Footer.scss";
 
 const Footer = () => {
   return (
-    <footer>
+    <footer className="footer">
       <span>
         Coded By <a href="https://twitter.com/_bgopikrishna">Gopi Krishna</a>
       </span>
-     &nbsp;  | &nbsp;
+      &nbsp; | &nbsp;
       <span>
         Source Code{" "}
         <a
@@ -18,6 +18,8 @@ const Footer = () => {
           Here
         </a>
       </span>
+      &nbsp; | &nbsp;
+      <span>Under Development</span>
     </footer>
   );
 };

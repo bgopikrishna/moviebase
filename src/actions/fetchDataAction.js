@@ -3,15 +3,16 @@ import {
   DATA_FETCHED,
   TOGGLE_LOADING_INDICATOR,
   TOGGLE_ERROR_INDICATOR,
-  API_KEY
+  API_KEY,
+  API_BASE_URL
 } from "../constants";
 import { doToggleIndicator } from "./indicatorAction";
 
-export const doFetchData = searchTerm => {
+export const doFetchData = (searchTerm, page = 1) => {
   return dispatch => {
     dispatch(doToggleIndicator(TOGGLE_LOADING_INDICATOR, true));
     fetch(
-      `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${searchTerm}&page=1`
+      `${API_BASE_URL}/search/movie?api_key=${API_KEY}&query=${searchTerm}&page=${page}`
     )
       .then(data => data.json())
       .then(data => dispatch(doStoreFetchedData(data)))

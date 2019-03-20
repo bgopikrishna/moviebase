@@ -1,6 +1,6 @@
 @import "../variables";
 
-footer {
+.footer {
   display: block;
   text-align: center;
   color: $white;
@@ -19,7 +19,7 @@ footer {
 
 
 @media (max-width: 900px) {
-    footer {
+    .footer {
         position: absolute;
         z-index: -1;
         margin-bottom: 65px; 

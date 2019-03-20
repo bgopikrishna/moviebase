@@ -19,7 +19,7 @@
 
   display: flex;
   flex-direction: row;
-  background: $white;
+  background: $pinkwhite;
   width: 100%;
   color: $black;
   border-radius: 15px;
@@ -28,12 +28,11 @@
   &:hover,
   &:focus {
     transform: scale(1.02);
-    background: white;
+    background: $white;
   }
 }
 
 .card__image {
-  background: inherit;
   img {
     border-top-left-radius: 15px;
     border-bottom-left-radius: 15px;

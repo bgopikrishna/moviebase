@@ -8,6 +8,7 @@ import MovieInfoPage from "./pages/MovieInfoPage";
 import { BrowserRouter as Router } from "react-router-dom";
 import MovieListPage from "./pages/MovieListPage";
 import Footer from "./components/Footer";
+import TrendingPage from "./pages/TrendingPage";
 
 class App extends Component {
   render() {
@@ -19,7 +20,9 @@ class App extends Component {
 
           <Switch>
             {/* Home Component */}
-            <Route exact path="/" component={SearchPage} />
+            <Route exact path="/" component={TrendingPage} />
+            <Route exact path="/home" component={TrendingPage} />
+            <Route exact path="/trending" component={TrendingPage} />
 
             {/*Search Component */}
             <Route exact path="/search" component={SearchPage} />

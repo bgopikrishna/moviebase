@@ -1,0 +1,53 @@
+@import "../variables";
+
+.trending {
+  width: 80%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 1rem 0.5rem;
+
+  &__heading {
+    color: $pinkwhite;
+    text-align: center;
+    width: 100%;
+  }
+
+  .more_button {
+    width: auto;
+    outline: none;
+    border: none;
+    margin: 20px auto;
+    font-size: 14px;
+    padding: 0.7rem 2rem;
+    background: $pinkwhite;
+    color: $orangered;
+    opacity: 0.85;
+    border: 1px solid $orangered;
+
+    &:hover,
+    &:focus {
+      opacity: 1;
+      background: $white;
+      cursor: pointer;
+    }
+  }
+}
+
+.trending__results {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 20px;
+  justify-items: center;
+  padding: 1.5rem 0.7rem;
+}
+
+@media (max-width: 900px) {
+  .trending {
+    width: 100%;
+    align-items: center;
+    margin-bottom: 4rem;
+    padding: 0;
+  }
+}
