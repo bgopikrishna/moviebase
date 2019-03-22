@@ -78,7 +78,7 @@
   align-items: center;
   justify-content: space-evenly;
 
-  button {
+  .action_btn__btn {
     border: none;
     background: transparent !important;
     color: $black;
@@ -91,7 +91,7 @@
     }
   }
 
-  button.active {
+  .action_btn__btn.active {
     font-size: 24px;
     color: $orangered;
   }

@@ -5,13 +5,20 @@ import { Link } from "react-router-dom";
 import { doMarkFavourite } from "../actions/favouriteAction";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
+import { addToWatchList } from "../actions/watchListAction";
 
 /*
  A moviecard component for diplaying movie details like rating , title etc
  Also for adding them to favourites and watchlist 
  */
 
-const MovieCard = ({ movie, addToFavList, favIds }) => {
+const MovieCard = ({
+  movie,
+  addToFavList,
+  addToWatchList,
+  favIds,
+  watchListIds
+}) => {
   //Destructring data from the movie object
   let {
     id,
@@ -42,9 +49,12 @@ const MovieCard = ({ movie, addToFavList, favIds }) => {
   /**Checking  -ends */
 
   let isFav = favIds.includes(id); //Checking if the item is fav or not by passing id
+  let isInWatchList = watchListIds.includes(id);
 
-  const likebtnStyle = isFav ? " active" : ""; //If the item is fav apply this class
-
+  const likebtnStyle = isFav ? "action_btn__btn active" : " action_btn__btn"; //If the item is fav apply this class
+  const watchListbtnStyle = isInWatchList
+    ? "action_btn__btn active"
+    : " action_btn__btn";
   return (
     //Movie card
     <div className="card">
@@ -58,7 +68,9 @@ const MovieCard = ({ movie, addToFavList, favIds }) => {
         {/*Diplaying the Title, overview , date, rating - Start*/}
 
         <div className="card__content">
-          <h3 className="card__title">{original_title}</h3>
+          <h3 className="card__title">
+            <Link to={`/movie/${id}`}>{original_title}</Link>
+          </h3>
           <span>{release_date}</span>
           <span className="card__rating">{vote_average}</span>
           <p>{overview}</p>
@@ -73,12 +85,18 @@ const MovieCard = ({ movie, addToFavList, favIds }) => {
 
           {/*Actions buttons */}
           <div className="action_btns">
-            {/*Add to watchlist  with (+ symbol) Button */}
-            <button>&#x2b; </button>
+            {/*Add to watchlist  with (bookmark symbol) Button */}
+            <button
+              className={watchListbtnStyle}
+              onClick={() => addToWatchList(movie, id)}
+              title="Add to Watch List"
+            >
+              <i className="fas fa-bookmark" />
+            </button>
 
             {/*Like Button with heart symbol */}
             <button
-              onClick={() => addToFavList(movie,id)}
+              onClick={() => addToFavList(movie, id)}
               className={likebtnStyle}
               title="Like"
             >
@@ -95,7 +113,8 @@ const MovieCard = ({ movie, addToFavList, favIds }) => {
 //Connect the action creators and dispatching  to the component
 const mapDisptachToProps = dispatch => {
   return {
-    addToFavList: (movie, id) => dispatch(doMarkFavourite(movie, id))
+    addToFavList: (movie, id) => dispatch(doMarkFavourite(movie, id)),
+    addToWatchList: (movie, id) => dispatch(addToWatchList(movie, id))
   };
 };
 
@@ -104,7 +123,8 @@ const mapStateToProps = (state, props) => {
   //Syncing the data of favourites movies with store and dispalying for user if it's already liked
   return {
     ...props,
-    favIds: state.favItems.ids
+    favIds: state.favItems.ids,
+    watchListIds: state.watchListItems.ids
   };
 };
 

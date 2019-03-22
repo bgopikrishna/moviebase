@@ -16,7 +16,8 @@ export class TrendingPage extends Component {
       isError: false,
       errorMsg: "Some Thing Went Wrong",
       currentPage: 1,
-      isLoading: true
+      isLoading: true,
+      _isMounted: false,
     };
   }
 
@@ -54,9 +55,14 @@ export class TrendingPage extends Component {
     //Fetching the trending movies on page 1 on component mounts
 
     const { currentPage } = this.state;
+    this.setState({_isMounted: true})
 
     //Fetching and setting data
     this.doFetchData(currentPage);
+  }
+
+  componentWillUnmount(){
+    this.setState()
   }
 
   render() {
