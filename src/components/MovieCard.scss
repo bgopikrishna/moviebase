@@ -6,6 +6,21 @@
   &:hover,
   &:focus {
     text-decoration: underline;
+  background: -webkit-gradient(linear,left top,right top,from(#ff8a00),to(#da1b60));
+
+background: linear-gradient(to right,#ff8a00,#da1b60);
+
+    background-clip: border-box;
+
+-webkit-background-clip: text;
+
+-webkit-text-fill-color: transparent;
+
+-webkit-box-decoration-break: clone;
+
+box-decoration-break: clone;
+
+text-shadow: none;
   }
 }
 
@@ -14,7 +29,7 @@
   h2,
   h3,
   h4 {
-    color: $orangered;
+    color: $black;
   }
 
   display: flex;
@@ -27,7 +42,6 @@
 
   &:hover,
   &:focus {
-    transform: scale(1.02);
     background: $white;
   }
 }
@@ -72,11 +86,11 @@
 
 .action_btns {
   height: 32px;
-  width: 60px;
+  min-width: 80px;
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-around;
 
   .action_btn__btn {
     border: none;
@@ -92,8 +106,8 @@
   }
 
   .action_btn__btn.active {
-    font-size: 24px;
     color: $orangered;
+    transform: scale(1.2);
   }
 }
 
