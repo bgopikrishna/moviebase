@@ -7,6 +7,7 @@ import {
   storeDataInLocalStorage
 } from "../helperfunctions/helpers";
 import Modal from "../components/Modal";
+import "./MovieInfoPage.scss";
 
 export class MovieInfoPage extends Component {
   constructor(props) {
@@ -59,9 +60,11 @@ export class MovieInfoPage extends Component {
     console.log(movieTrailer);
 
     const JSXwithTrailer = movieTrailer ? (
-      <div>
+      <div className="movie-info">
         <MovieCard movie={movie} />
-        <button onClick={this.toggleModal}>Play Trailer</button>
+        <button onClick={this.toggleModal} className="play-trailer">
+          <i className="fas fa-play-circle" /> Play Trailer
+        </button>
         {/* <iframe
           width="auto"
           height="300px"
@@ -79,7 +82,7 @@ export class MovieInfoPage extends Component {
           {" "}
           <iframe
             width="100%"
-            minheight="400px"
+            height="400px"
             title={movie.original_title}
             src={
               modalState
@@ -95,7 +98,9 @@ export class MovieInfoPage extends Component {
     ) : (
       <div>
         <MovieCard movie={movie} />
-        <button onClick={this.toggleModal}>Play Trailer</button>
+        <button className="play-trailer" onClick={this.toggleModal}>
+          <i className="fas fa-play-circle" /> Play Trailer
+        </button>
       </div>
     );
 

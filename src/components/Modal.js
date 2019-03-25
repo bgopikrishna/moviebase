@@ -9,10 +9,10 @@ const Modal = ({ title, children, toggleModal, modalState }) => {
       style={modalState ? { display: "block" } : { display: "none" }}
     >
       <div className="modal-header">
+        <h2>{title}</h2>
         <button className="close" onClick={toggleModal}>
           &times;
         </button>
-        <h2>{title}</h2>
       </div>
       <div className="modal-body">{children}</div>
     </div>
