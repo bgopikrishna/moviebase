@@ -58,7 +58,7 @@ export class MovieInfoPage extends Component {
 
     console.log(movieTrailer);
 
-    const JSXwithTrailer = movieTrailer && (
+    const JSXwithTrailer = movieTrailer ? (
       <div>
         <MovieCard movie={movie} />
         <button onClick={this.toggleModal}>Play Trailer</button>
@@ -82,13 +82,20 @@ export class MovieInfoPage extends Component {
             minheight="400px"
             title={movie.original_title}
             src={
-              modalState ? `https://www.youtube.com/embed/${movieTrailer.key}` : ""
+              modalState
+                ? `https://www.youtube.com/embed/${movieTrailer.key}`
+                : ""
             }
             frameBorder="0"
             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           />
         </Modal>
+      </div>
+    ) : (
+      <div>
+        <MovieCard movie={movie} />
+        <button onClick={this.toggleModal}>Play Trailer</button>
       </div>
     );
 

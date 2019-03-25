@@ -30,15 +30,14 @@ h1 {
 }
 .__navitem {
   flex-basis: 20%;
-  opacity: 0.5;
+  opacity: 0.7;
   transition: all 0.2s ease-in;
   margin: auto 15px;
-
   &.active,
   &:hover,
   &:focus {
     opacity: 1;
-    color: $pinkwhite;
+    color: #ffffff;
   }
 }
 
@@ -54,16 +53,28 @@ h1 {
 
   .__navlinks {
     position: fixed;
+    box-shadow: 0 -1px 2px 0 rgba(255, 255, 255, 0.295);
     bottom: 0;
     left: 0;
     width: 100%;
-    padding: 20px 5px;
-    background: $orangered;
+    padding: 5px;
+    padding-top: 10px !important;
+    background: $black;
     text-align: center;
+    transform: translateZ(2px);
+    z-index: 10000;
   }
 
   .__navitem {
     margin: 0;
+    display: flex;
+    transform: scale(0.9);
+    flex-direction: column;
+    transition: all 0.3s ease;
+
+    &.active {
+      transform: scale(1);
+    }
 
     span {
       display: block;

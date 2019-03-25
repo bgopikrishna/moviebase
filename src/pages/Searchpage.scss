@@ -10,7 +10,6 @@
     flex-direction: row;
     justify-content: space-between;
     color: inherit;
-
   }
 
   .searchbar {
@@ -31,17 +30,20 @@
   background: $white;
   color: $black;
   opacity: 0.9;
+  transition: all 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045);
 
   &:hover,
-  &:focus {
+  &:focus,
+  &:active {
     opacity: 1;
+    border-radius: 4px solid $blue;
   }
 }
 
 .searchbar button {
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
-  background: $orangered;
+  background: $blue-gradient;
   cursor: pointer;
   color: inherit;
   transition: all 0.3s cubic-bezier(0.445, 0.05, 0.55, 0.95);
