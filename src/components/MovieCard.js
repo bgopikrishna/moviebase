@@ -17,7 +17,8 @@ const MovieCard = ({
   addToFavList,
   addToWatchList,
   favIds,
-  watchListIds
+  watchListIds,
+  truncateText
 }) => {
   //Destructring data from the movie object
   let {
@@ -38,7 +39,9 @@ const MovieCard = ({
     `https://image.tmdb.org/t/p/w185/${poster_path}`,
     "https://via.placeholder.com/200x120/000000/FFFFFF/?text=No Image"
   );
-  overview = ifNotExists(overview, overview.slice(0, 100) + "...", "No Data");
+  overview = ifNotExists(overview, overview, "No Data");
+  overview = truncateText ? overview.slice(0, 100) + "..." : overview;
+
   original_title = ifNotExists(
     original_title,
     original_title.slice(0, 40),
@@ -139,4 +142,8 @@ MovieCard.propTypes = {
   movie: PropTypes.object.isRequired,
   addToFavList: PropTypes.func,
   favIds: PropTypes.array
+};
+
+MovieCard.defaultProps = {
+  truncateText: true
 };

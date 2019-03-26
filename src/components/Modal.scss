@@ -18,33 +18,28 @@
 /* Modal Content */
 .modal-content {
   position: absolute;
-  background-color: $black;
-  margin: auto;
+  background: $black;
+  // margin: auto;
   padding: 0;
-  border: 1px solid $blue;
+  border: 1px solid rgba(255, 255, 255, 0.2);
   width: 80%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   -webkit-animation-name: animatetop;
   -webkit-animation-duration: 0.4s;
   animation-name: animatetop;
-  animation-duration: 0.4s;
+  animation-duration: 0.3s;
+  animation-timing-function: ease-in;
   display: flex;
   justify-content: center;
-  align-items: center;
-  margin-top: 100px;
+  flex-direction: column;
+  align-items: stretch;
+  margin-top: 70px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  min-height: 400px;
 }
 
 /* Add Animation */
-@-webkit-keyframes animatetop {
-  from {
-    top: -300px;
-    opacity: 0;
-  }
-  to {
-    top: 0;
-    opacity: 1;
-  }
-}
 
 @keyframes animatetop {
   from {
@@ -77,7 +72,6 @@
 
 .modal-header {
   padding: 2px 16px;
-  background-color: $black;
   color: $white;
   display: flex;
   justify-content: space-between;
@@ -89,12 +83,19 @@
 }
 
 .modal-body {
-  padding: 2px 16px;
-  background: $black;
+  padding: 2px 2px;
+  background: #111111;
 }
 
 .modal-footer {
   padding: 2px 16px;
-  background-color: $black;
   color: $white;
+}
+
+@media (max-width: 900px) {
+  .modal-content {
+    width: 98%;
+    margin-top: 80px;
+    height: auto;
+  }
 }

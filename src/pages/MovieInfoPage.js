@@ -61,7 +61,7 @@ export class MovieInfoPage extends Component {
 
     const JSXwithTrailer = movieTrailer ? (
       <div className="movie-info">
-        <MovieCard movie={movie} />
+        <MovieCard movie={movie} truncateText={false} />
         <button onClick={this.toggleModal} className="play-trailer">
           <i className="fas fa-play-circle" /> Play Trailer
         </button>
@@ -77,12 +77,11 @@ export class MovieInfoPage extends Component {
         <Modal
           toggleModal={this.toggleModal}
           modalState={modalState}
-          title={movie.original_title}
+          title={movie.original_title + " Trailer"}
         >
           {" "}
           <iframe
-            width="100%"
-            height="400px"
+          className="iframe-yt"
             title={movie.original_title}
             src={
               modalState
@@ -97,7 +96,7 @@ export class MovieInfoPage extends Component {
       </div>
     ) : (
       <div>
-        <MovieCard movie={movie} />
+        <MovieCard movie={movie} truncateText={false} />
         <button className="play-trailer" onClick={this.toggleModal}>
           <i className="fas fa-play-circle" /> Play Trailer
         </button>

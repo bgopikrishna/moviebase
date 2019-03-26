@@ -1,25 +1,11 @@
 @import "../variables";
-
+@import "../mixins";
 .card a {
   text-decoration: none;
   color: inherit;
   &:hover,
   &:focus {
-    text-decoration: underline;
-
-    background: $blue-gradient;
-
-    background-clip: border-box;
-
-    -webkit-background-clip: text;
-
-    -webkit-text-fill-color: transparent;
-
-    -webkit-box-decoration-break: clone;
-
-    box-decoration-break: clone;
-
-    text-shadow: none;
+    @include gradient-color($blue-gradient);
   }
 }
 

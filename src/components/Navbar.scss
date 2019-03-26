@@ -1,4 +1,5 @@
 @import "../variables";
+@import "../mixins";
 
 ul,
 li {
@@ -68,12 +69,13 @@ h1 {
   .__navitem {
     margin: 0;
     display: flex;
-    transform: scale(0.9);
+    transform: scale(0.8);
     flex-direction: column;
     transition: all 0.3s ease;
 
     &.active {
       transform: scale(1);
+      @include gradient-color($blue-gradient);
     }
 
     span {

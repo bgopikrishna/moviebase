@@ -9,40 +9,63 @@ import { BrowserRouter as Router } from "react-router-dom";
 import MovieListPage from "./pages/MovieListPage";
 import Footer from "./components/Footer";
 import TrendingPage from "./pages/TrendingPage";
+import ErrorDisplay from "./components/ErrorDisplay";
 
 class App extends Component {
-  render() {
-    return (
-      <Router>
-        <div className="app">
-          {/* Navigation Bar */}
-          <Navbar />
+  constructor(props) {
+    super(props);
 
-          <Switch>
-            {/* Home Component */}
-            <Route exact path="/" component={TrendingPage} />
-            <Route exact path="/home" component={TrendingPage} />
-            <Route exact path="/trending" component={TrendingPage} />
+    this.state = {
+      isOnline: true
+    };
+  }
 
-            {/*Search Component */}
-            <Route exact path="/search" component={SearchPage} />
-
-            {/* 404 Page Component */}
-            <Route path="/list" component={MovieListPage} />
-
-            {/* account Component */}
-            <Route path="/account" component={NoPage404} />
-
-            {/* MovieInfo Page Component */}
-            <Route path="/movie/:movie_Id" component={MovieInfoPage} />
-
-            {/* 404 Page Component */}
-            <Route path="/404" component={NoPage404} />
-          </Switch>
-          <Footer />
-        </div>
-      </Router>
+  componentDidMount() {
+    //Checking internet connection for the user
+    fetch("https://jsonplaceholder.typicode.com/posts").catch(() =>
+      this.setState(() => ({ isOnline: false }))
     );
+  }
+
+  render() {
+    const { isOnline } = this.state;
+    if (isOnline) {
+      return (
+        <Router>
+          <div className="app">
+            {/* Navigation Bar */}
+            <Navbar />
+
+            <Switch>
+              {/* Home Component */}
+              <Route exact path="/" component={TrendingPage} />
+              <Route exact path="/home" component={TrendingPage} />
+              <Route exact path="/trending" component={TrendingPage} />
+
+              {/*Search Component */}
+              <Route exact path="/search" component={SearchPage} />
+
+              {/* 404 Page Component */}
+              <Route path="/list" component={MovieListPage} />
+
+              {/* account Component */}
+              <Route path="/account" component={NoPage404} />
+
+              {/* MovieInfo Page Component */}
+              <Route path="/movie/:movie_Id" component={MovieInfoPage} />
+
+              {/* 404 Page Component */}
+              <Route path="/404" component={NoPage404} />
+            </Switch>
+            <Footer />
+          </div>
+        </Router>
+      );
+    } else {
+      return (
+        <ErrorDisplay errorMsg="This app requires Internet, Please connect to wifi/turn on mobile data" />
+      );
+    }
   }
 }
 

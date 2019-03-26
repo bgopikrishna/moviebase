@@ -15,7 +15,7 @@ const Navbar = () => {
         <ul className="__navlinks">
           <li>
             <NavLink exact to="/" className="__navitem">
-              <i className="fas fa-fire" /> Trending
+              <i className="fas fa-fire" /> trending
             </NavLink>
           </li>
           <li>
