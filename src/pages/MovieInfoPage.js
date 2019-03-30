@@ -8,6 +8,8 @@ import {
 } from "../helperfunctions/helpers";
 import Modal from "../components/Modal";
 import "./MovieInfoPage.scss";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlay } from "@fortawesome/free-solid-svg-icons";
 
 export class MovieInfoPage extends Component {
   constructor(props) {
@@ -81,7 +83,7 @@ export class MovieInfoPage extends Component {
         >
           {" "}
           <iframe
-          className="iframe-yt"
+            className="iframe-yt"
             title={movie.original_title}
             src={
               modalState
@@ -98,7 +100,8 @@ export class MovieInfoPage extends Component {
       <div>
         <MovieCard movie={movie} truncateText={false} />
         <button className="play-trailer" onClick={this.toggleModal}>
-          <i className="fas fa-play-circle" /> Play Trailer
+          <FontAwesomeIcon icon={faPlay} />
+          &nbsp;Play Trailer
         </button>
       </div>
     );

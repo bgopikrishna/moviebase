@@ -94,22 +94,6 @@ const MovieCard = ({
           {/*Actions buttons */}
           <div className="action_btns">
             {/*Add to watchlist  with (bookmark symbol) Button */}
-            {/* <button
-              className={watchListbtnStyle}
-              onClick={() => addToWatchList(movie, id)}
-              title="Add to Watch List"
-            >
-              <i className="fas fa-bookmark" />
-            </button> */}
-
-            {/*Like Button with heart symbol */}
-            <button
-              onClick={() => addToFavList(movie, id)}
-              className={likebtnStyle}
-              title="Like"
-            >
-              <FontAwesomeIcon icon={faHeart} />{" "}
-            </button>
             <button
               className={watchListbtnStyle}
               onClick={() => addToWatchList(movie, id)}
@@ -118,6 +102,15 @@ const MovieCard = ({
                 added={isInWatchList}
                 className={watchListbtnStyle}
               />
+            </button>
+
+            {/*Like Button with heart symbol */}
+            <button
+              onClick={() => addToFavList(movie, id)}
+              className={likebtnStyle}
+              title="Like"
+            >
+              <FontAwesomeIcon icon={faHeart} />
             </button>
           </div>
         </div>
