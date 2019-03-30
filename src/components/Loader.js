@@ -1,4 +1,6 @@
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCloudscale } from "@fortawesome/free-brands-svg-icons";
 
 //A loader component for showing loading screen
 
@@ -17,7 +19,7 @@ const loaderStyle = {
 const Loader = () => {
   return (
     <div style={loaderStyle}>
-      <i className="fab fa-cloudscale fa-spin" />
+      <FontAwesomeIcon icon={faCloudscale} spin />
       <span style={{ fontSize: "18px", marginTop: "20px" }}>Loading ...</span>
     </div>
   );

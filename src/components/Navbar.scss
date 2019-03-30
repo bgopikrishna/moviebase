@@ -72,6 +72,7 @@ h1 {
     transform: scale(0.8);
     flex-direction: column;
     transition: all 0.3s ease;
+    align-items: center;
 
     &.active {
       transform: scale(1);

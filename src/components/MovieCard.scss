@@ -81,9 +81,11 @@
     border: none;
     background: transparent !important;
     color: inherit;
-    font-size: 20px;
+    font-size: 18px;
     outline: none;
     transition: all 0.12s ease-in;
+    display: flex;
+    align-items: center;
     &:focus,
     &:hover {
       cursor: pointer;
@@ -93,6 +95,14 @@
   .action_btn__btn.active {
     color: $orangered;
     transform: scale(1.2);
+    transition: 0.3ms all ease-in;
+  }
+  .action_btn__btn.active svg {
+    fill: $blue;
+  }
+
+  .action_btn__btn.active.liked svg {
+    color: $orangered;
   }
 }
 

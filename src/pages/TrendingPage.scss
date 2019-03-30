@@ -21,16 +21,19 @@
     margin: 20px auto;
     font-size: 14px;
     padding: 0.7rem 2rem;
-    background: $pinkwhite;
-    color: $orangered;
-    opacity: 0.85;
-    border: 1px solid $orangered;
+    background: $white;
+    color: $black;
+    opacity: 0.7;
+    border: 1px solid $blue;
+    border-radius: 15px;
+    transition: 0.2s all ease-in;
 
     &:hover,
-    &:focus {
+    &:active {
       opacity: 1;
-      background: $white;
       cursor: pointer;
+      color: $white;
+      background: $black;
     }
   }
 }

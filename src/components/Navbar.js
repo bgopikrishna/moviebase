@@ -2,6 +2,13 @@
 import React from "react";
 import "./Navbar.scss";
 import { NavLink } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faFire,
+  faSearch,
+  faFilm,
+  faUserAstronaut
+} from "@fortawesome/free-solid-svg-icons";
 
 const Navbar = () => {
   return (
@@ -15,22 +22,26 @@ const Navbar = () => {
         <ul className="__navlinks">
           <li>
             <NavLink exact to="/" className="__navitem">
-              <i className="fas fa-fire" /> trending
+              <FontAwesomeIcon icon={faFire} />
+              &nbsp;trending
             </NavLink>
           </li>
           <li>
             <NavLink to="/search" className="__navitem">
-              <i className="fas fa-search" /> search
+              <FontAwesomeIcon icon={faSearch} />
+              &nbsp;search
             </NavLink>
           </li>
           <li>
             <NavLink to="/list" className="__navitem">
-              <i className="fas fa-film" /> mylist
+              <FontAwesomeIcon icon={faFilm} />
+              &nbsp;mylist
             </NavLink>
           </li>
           <li>
             <NavLink to="/account" className="__navitem">
-              <i className="fas fa-user-astronaut" /> account
+              <FontAwesomeIcon icon={faUserAstronaut} />
+              &nbsp;account
             </NavLink>
           </li>
         </ul>

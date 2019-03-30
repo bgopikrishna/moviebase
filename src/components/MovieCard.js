@@ -6,6 +6,9 @@ import { doMarkFavourite } from "../actions/favouriteAction";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { addToWatchList } from "../actions/watchListAction";
+import { WatchListAdd } from "./MaterialIcons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHeart } from "@fortawesome/free-solid-svg-icons";
 
 /*
  A moviecard component for diplaying movie details like rating , title etc
@@ -54,7 +57,9 @@ const MovieCard = ({
   let isFav = favIds.includes(id); //Checking if the item is fav or not by passing id
   let isInWatchList = watchListIds.includes(id);
 
-  const likebtnStyle = isFav ? "action_btn__btn active" : " action_btn__btn"; //If the item is fav apply this class
+  const likebtnStyle = isFav
+    ? "action_btn__btn active"
+    : "action_btn__btn liked"; //If the item is fav apply this class
   const watchListbtnStyle = isInWatchList
     ? "action_btn__btn active"
     : " action_btn__btn";
@@ -89,13 +94,13 @@ const MovieCard = ({
           {/*Actions buttons */}
           <div className="action_btns">
             {/*Add to watchlist  with (bookmark symbol) Button */}
-            <button
+            {/* <button
               className={watchListbtnStyle}
               onClick={() => addToWatchList(movie, id)}
               title="Add to Watch List"
             >
               <i className="fas fa-bookmark" />
-            </button>
+            </button> */}
 
             {/*Like Button with heart symbol */}
             <button
@@ -103,7 +108,16 @@ const MovieCard = ({
               className={likebtnStyle}
               title="Like"
             >
-              <i className="fas fa-heart" />
+              <FontAwesomeIcon icon={faHeart} />{" "}
+            </button>
+            <button
+              className={watchListbtnStyle}
+              onClick={() => addToWatchList(movie, id)}
+            >
+              <WatchListAdd
+                added={isInWatchList}
+                className={watchListbtnStyle}
+              />
             </button>
           </div>
         </div>
