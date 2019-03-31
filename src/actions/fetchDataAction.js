@@ -15,7 +15,7 @@ export const doFetchData = (searchTerm, page = 1) => {
       `${API_BASE_URL}/search/movie?api_key=${API_KEY}&query=${searchTerm}&page=${page}`
     )
       .then(data => data.json())
-      .then(data => dispatch(doStoreFetchedData(data)))
+      .then(data => dispatch(doStoreFetchedData(data.results)))
       .then(() => {
         return setTimeout(
           () => dispatch(doToggleIndicator(TOGGLE_LOADING_INDICATOR, false)),
@@ -41,5 +41,8 @@ export const doStoreFetchedData = data => ({ type: DATA_FETCHED, data });
 // };
 
 export const applyStoreFetchedData = (state, action) => {
-  return action.data;
+  const { dataFetched } = state;
+  return {
+    dataFetched: [...action.data]
+  };
 };

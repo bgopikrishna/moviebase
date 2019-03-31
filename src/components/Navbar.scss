@@ -12,7 +12,7 @@ li {
   background: $blue-gradient;
   justify-content: space-around;
   align-items: center;
-  z-index: 9999;
+  z-index: 2;
 }
 
 h1 {
@@ -63,7 +63,7 @@ h1 {
     background: $black;
     text-align: center;
     transform: translateZ(2px);
-    z-index: 10000;
+    z-index: 2;
   }
 
   .__navitem {

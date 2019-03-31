@@ -5,16 +5,20 @@ import React from "react";
 const Modal = ({ title, children, toggleModal, modalState }) => {
   return (
     <div
-      className="modal-content"
+      className="modal"
       style={modalState ? { display: "flex" } : { display: "none" }}
     >
-      <div className="modal-header">
-        <h2>{title}</h2>
-        <button className="close" onClick={toggleModal}>
-          &times;{" "}
-        </button>
+      <div
+        className="modal-content"
+      >
+        <div className="modal-header">
+          <h2>{title}</h2>
+          <button className="close" onClick={toggleModal}>
+            &times;{" "}
+          </button>
+        </div>
+        <div className="modal-body">{children}</div>
       </div>
-      <div className="modal-body">{children}</div>
     </div>
   );
 };

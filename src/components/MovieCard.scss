@@ -38,6 +38,7 @@
     display: block;
     width: 100%;
     height: 100%;
+    object-fit: cover;
   }
 }
 
@@ -83,7 +84,7 @@
     color: inherit;
     font-size: 18px;
     outline: none;
-    transition: all 0.12s ease-in;
+    transition: 0.3ms all ease-in;
     display: flex;
     align-items: center;
     &:focus,
@@ -94,7 +95,8 @@
 
   .action_btn__btn.active {
     color: $orangered;
-    transform: scale(1.2);
+    // transform: scale(1.2);
+    animation: scaleAndShrink 0.25s ease-in 0.05ms 1 alternate;
     transition: 0.3ms all ease-in;
   }
   .action_btn__btn.active svg {
@@ -115,6 +117,18 @@
     color: gold;
     font-weight: 900;
     margin: auto 0px;
+  }
+}
+
+@keyframes scaleAndShrink {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
   }
 }
 

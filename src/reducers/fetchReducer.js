@@ -3,8 +3,11 @@ import {
   applyFetchData,
   applyStoreFetchedData
 } from "../actions/fetchDataAction";
+const INTIAL_STATE= {
+  dataFetched: []
+}
 
-export const fetchReducer = (state = {}, action) => {
+export const fetchReducer = (state = INTIAL_STATE, action) => {
   switch (action.type) {
     // case FETCH_DATA: {
     //   return applyFetchData(state, action);
