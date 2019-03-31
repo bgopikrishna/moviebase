@@ -97,6 +97,7 @@ const MovieCard = ({
             <button
               className={watchListbtnStyle}
               onClick={() => addToWatchList(movie, id)}
+              title="Add To WatchList"
             >
               <WatchListAddIcon
                 added={isInWatchList}
