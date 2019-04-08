@@ -16,6 +16,7 @@ export const applyLoadingIndicator = (state, action) => {
 export const applyErrorIndicator = (state, action) => {
   const { bol, errorMsg } = action;
   return {
+    ...state,
     isError: bol,
     errorMsg
   };

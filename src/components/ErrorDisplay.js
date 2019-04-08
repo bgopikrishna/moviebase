@@ -27,9 +27,9 @@ const ErrorDisplay = ({ errorMsg }) => {
         Ahhh... Something went wrong
       </p>
       <p>
-        <EmojiHolder emoji={" ⚠️"} label={"Warning"} />
+        <EmojiHolder emoji={"⚠️"} label={"Warning"} />
         {/**Erorr Message Display */}
-        Error Message: {errorMsg}
+        Error Message: {errorMsg} 
       </p>
       <p>
         <EmojiHolder emoji={"🧐"} label={"Face With Monocle"} />

@@ -76,7 +76,8 @@ h1 {
 
     &.active {
       transform: scale(1);
-      @include gradient-color($blue-gradient);
+      // @include gradient-color($blue-gradient);
+     opacity: 1;
     }
 
     span {

@@ -28,6 +28,9 @@
   &:hover {
     cursor: pointer;
   }
+  &:disabled {
+    cursor: not-allowed;
+  }
 }
 
 @media (max-width: 900px) {

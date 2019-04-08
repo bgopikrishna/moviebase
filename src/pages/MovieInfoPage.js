@@ -99,7 +99,7 @@ export class MovieInfoPage extends Component {
     ) : (
       <div>
         <MovieCard movie={movie} truncateText={false} />
-        <button className="play-trailer" onClick={this.toggleModal}>
+        <button className="play-trailer" onClick={this.toggleModal} disabled>
           <FontAwesomeIcon icon={faPlay} />
           &nbsp;Play Trailer
         </button>
