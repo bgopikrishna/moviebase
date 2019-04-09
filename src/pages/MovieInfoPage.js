@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { API_KEY } from "../constants";
 import MovieCard from "../components/MovieCard";
 import Loader from "../components/Loader";
@@ -10,6 +10,8 @@ import Modal from "../components/Modal";
 import "./MovieInfoPage.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlay } from "@fortawesome/free-solid-svg-icons";
+import MoviePoster from "../components/MovieInfoComps/MoviePoster";
+import MovieInfoComp from "../components/MovieInfoComps";
 
 export class MovieInfoPage extends Component {
   constructor(props) {
@@ -59,57 +61,73 @@ export class MovieInfoPage extends Component {
         ? movie.videos.results.filter(video => video.type === "Trailer")[0]
         : {};
 
-    console.log(movieTrailer);
+    const { backdrop_path, poster_path, original_title } = movie;
 
-    const JSXwithTrailer = movieTrailer ? (
+    const MovieInfoJSX = (
       <div className="movie-info">
         <MovieCard movie={movie} truncateText={false} />
-        <button onClick={this.toggleModal} className="play-trailer">
-          <i className="fas fa-play-circle" /> Play Trailer
-        </button>
-        {/* <iframe
-          width="auto"
-          height="300px"
-          title={movie.original_title}
-          src={`https://www.youtube.com/embed/${movieTrailer.key}`}
-          frameBorder="0"
-          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-        /> */}
-        <Modal
-          toggleModal={this.toggleModal}
-          modalState={modalState}
-          title={movie.original_title + " Trailer"}
+        <button
+          className="play-trailer"
+          onClick={this.toggleModal}
+          disabled={movieTrailer ? false : true}
         >
-          {" "}
-          <iframe
-            className="iframe-yt"
-            title={movie.original_title}
-            src={
-              modalState
-                ? `https://www.youtube.com/embed/${movieTrailer.key}`
-                : ""
-            }
-            frameBorder="0"
-            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          />
-        </Modal>
-      </div>
-    ) : (
-      <div>
-        <MovieCard movie={movie} truncateText={false} />
-        <button className="play-trailer" onClick={this.toggleModal} disabled>
           <FontAwesomeIcon icon={faPlay} />
           &nbsp;Play Trailer
         </button>
+        {movieTrailer && (
+          <Modal
+            toggleModal={this.toggleModal}
+            modalState={modalState}
+            title={movie.original_title + " Trailer"}
+          >
+            {" "}
+            <iframe
+              className="iframe-yt"
+              title={movie.original_title}
+              src={
+                modalState
+                  ? `https://www.youtube.com/embed/${movieTrailer.key}`
+                  : ""
+              }
+              frameBorder="0"
+              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+          </Modal>
+        )}
       </div>
     );
 
     if (isLoading) {
       return <Loader />;
     } else if (!isError && Object.entries(movie).length !== 0) {
-      return JSXwithTrailer;
+      return (
+        <Fragment>
+          <MovieInfoComp movie={movie} toggleModal={this.toggleModal} />
+
+          {movieTrailer && (
+            <Modal
+              toggleModal={this.toggleModal}
+              modalState={modalState}
+              title={movie.original_title + " Trailer"}
+            >
+              {" "}
+              <iframe
+                className="iframe-yt"
+                title={movie.original_title}
+                src={
+                  modalState
+                    ? `https://www.youtube.com/embed/${movieTrailer.key}`
+                    : ""
+                }
+                frameBorder="0"
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            </Modal>
+          )}
+        </Fragment>
+      );
     } else {
       return <p>{errorMsg}</p>;
     }

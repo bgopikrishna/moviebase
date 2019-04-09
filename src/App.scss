@@ -15,10 +15,11 @@
   background: $blue-gradient;
   border-radius: 20px;
   opacity: 0.7;
-  
-   &:hover, &:focus {
-     opacity: 1;
-   }
+
+  &:hover,
+  &:focus {
+    opacity: 1;
+  }
 }
 * > {
   box-sizing: border-box;
@@ -30,7 +31,7 @@ a {
 }
 
 body {
-  font-family: "Maven Pro", -system-ui, -apple-system, BlinkMacSystemFont,
+  font-family: -system-ui, -apple-system, BlinkMacSystemFont, "Maven Pro",
     "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji",
     "Segoe UI Emoji", "Segoe UI Symbol";
 

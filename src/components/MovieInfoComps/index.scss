@@ -1,0 +1,263 @@
+@import "../../variables";
+@mixin normalButton($color: #111, $background: #fff, $margin: 5px) {
+  background: $background;
+  color: $color;
+  padding: 5px 10px;
+  border-radius: 0px;
+  outline: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  margin: 0 $margin;
+  justify-content: space-around;
+  &:hover,
+  &:focus {
+    cursor: pointer;
+  }
+}
+
+$backdrop: url(https://image.tmdb.org/t/p/w1400_and_h450_face/w2PMyoyLU22YvrGK3smVM9fW1jj.jpg);
+
+.movie-container {
+  display: flex;
+  min-height: 400px;
+  width: 100%;
+  flex-direction: column;
+}
+
+.movie-cover-images {
+  width: 100%;
+  position: relative;
+  height: 100%;
+  z-index: 0;
+  &::after {
+    content: "";
+    display: block;
+    position: relative;
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0, #111 100%);
+    margin-top: -80px;
+    height: 80px;
+    width: 100%;
+  }
+}
+
+.movie-cover-images img {
+  display: block;
+  object-fit: cover;
+  max-width: 100%;
+  height: 100%;
+}
+
+.movie-backdrop {
+  width: 100%;
+}
+
+.movie-poster {
+  position: absolute;
+  height: 300px;
+  width: auto;
+  z-index: 2;
+  bottom: -10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5);
+}
+
+.row-2 {
+  min-height: 80px;
+  width: 60%;
+  margin: 0px auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0px auto;
+  min-height: 120px;
+  margin-top: -80px;
+  z-index: 1;
+  h2 {
+    margin: 0;
+  }
+}
+
+.other-details {
+  font-size: 10px;
+}
+
+.transparent-pill {
+  border: 1px solid #ddd;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: 400;
+  margin-right: 10px;
+  display: inline-block;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.release-date {
+  align-self: center;
+  display: flex;
+  align-items: center;
+  span {
+    // vertical-align: middle;
+    font-size: 14px;
+    font-weight: 400;
+  }
+}
+
+.movie-details {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-self: flex-start;
+  align-items: center;
+  height: 80px;
+}
+
+.movie-name {
+  width: 50%;
+}
+.movie-actions {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+}
+.user-score {
+  span {
+    display: block;
+    font-size: 0.7rem;
+    text-align: center;
+  }
+  font-size: 2rem;
+
+  svg {
+    color: $orangered;
+  }
+}
+
+.movieinfo-action-btns-grp {
+  display: flex;
+}
+.movieinfo-action-btn {
+  @include normalButton($black, $white);
+  height: 40px;
+  padding: 0px 10px;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5);
+  transition: 0.3s all cubic-bezier(0.215, 0.61, 0.355, 1);
+  font-weight: 700;
+
+  &.like.active,
+  &.like:hover,
+  &.like:focus {
+    color: $white;
+    background: tomato;
+    box-shadow: none;
+  }
+  &.watchlist.active,
+  &.watchlist:hover,
+  &.watchlist:focus {
+    background: $blue;
+    color: $white;
+    fill: $white;
+    box-shadow: none;
+  }
+
+  &.play-trailer {
+    &:hover,
+    &:focus {
+      background: #267caf;
+      color: $white;
+    }
+  }
+}
+.movieinfo-action-btn-content {
+  margin-left: 5px;
+  display: inline-block;
+}
+
+.movie-overview {
+  width: 60%;
+  padding: 20px;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  text-align: justify;
+}
+
+.movie-overview {
+  h4 {
+    margin: 0;
+  }
+}
+
+.cast-crew {
+  display: flex;
+  flex-direction: column;
+}
+.cast-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+}
+.cast-member-card {
+  width: 140px;
+  background: $white;
+  color: $black;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+}
+.cast-names {
+  padding: 10px;
+  text-align: left;
+}
+
+.cast-member-name {
+  color: $blue;
+}
+.cast-member-role {
+  font-size: 0.7rem;
+}
+
+.cast-member-image {
+  height: 175px;
+  width: 100%;
+  padding-bottom: 10px;
+  object-fit: cover;
+}
+
+@media (max-width: 900px) {
+  .movie-poster {
+    display: none;
+  }
+  .row-2 {
+    width: 100%;
+    margin-top: 0px;
+  }
+
+  .movie-details {
+    width: 100%;
+    flex-wrap: wrap;
+    height: 100%;
+    text-align: center;
+    box-sizing: border-box;
+    padding: 10px;
+  }
+  .movie-name {
+    width: 100%;
+
+    h2 {
+      margin: 0;
+    }
+  }
+  .movie-overview {
+    width: 90%;
+    margin: 0 auto;
+    box-sizing: border-box;
+    padding: 0;
+    padding-bottom: 20px;
+  }
+}

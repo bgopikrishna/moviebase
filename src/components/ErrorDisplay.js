@@ -29,7 +29,7 @@ const ErrorDisplay = ({ errorMsg }) => {
       <p>
         <EmojiHolder emoji={"⚠️"} label={"Warning"} />
         {/**Erorr Message Display */}
-        Error Message: {errorMsg} 
+        Error Message: {errorMsg}
       </p>
       <p>
         <EmojiHolder emoji={"🧐"} label={"Face With Monocle"} />

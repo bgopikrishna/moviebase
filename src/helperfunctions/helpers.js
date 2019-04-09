@@ -11,3 +11,11 @@ export const getDataFromLocalStorage = key =>
 
 //parse JSON from fetch
 export const parseJSON = data => data.json();
+
+//create an obj for cast & crew with name, image , id
+
+export const getCastNCrewData = (totalCast) => {
+  return (totalCast.map(castMem => {
+    return null
+  }))
+}

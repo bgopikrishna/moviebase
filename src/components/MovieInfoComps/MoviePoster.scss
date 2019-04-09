@@ -1,0 +1,27 @@
+// .movie-backdrop {
+//     width: 100%;
+//     position: relative;
+//     height: 100%;
+//     z-index: 0;
+//     &::after {
+//       content: "";
+//       display: block;
+//       position: relative;
+//       background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0, #111 100%);
+//       margin-top: -80px;
+//       height: 80px;
+//       width: 100%;
+//     }
+//   }
+  
+//   .movie-poster {
+//     position: absolute;
+//     height: 300px;
+//     width: auto;
+//     z-index: 2;
+//     bottom: -10%;
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: center;
+//     align-items: flex-start;
+//   }
