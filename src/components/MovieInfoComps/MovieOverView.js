@@ -1,8 +1,21 @@
 import React from "react";
+import { placeholderImage } from "../../helperfunctions/helpers.js";
 
 const MovieOverView = ({ overview, credits }) => {
   const { cast, crew } = credits;
   const mainCast = cast.slice(0, 5);
+  const mainCrew = crew.filter(crewMem => {
+    if (
+      (crewMem.job === "Director") |
+      (crewMem.job === "Producer") |
+      (crewMem.job === "Editor") |
+      (crewMem.job === "Writer")
+    ) {
+      return crewMem;
+    }
+    return null;
+  });
+
   return (
     <div className="movie-overview">
       <div className="overview">
@@ -10,7 +23,7 @@ const MovieOverView = ({ overview, credits }) => {
         {overview}
       </div>
       <div className="cast-crew">
-        <h3>Cast</h3>
+        <h3>Featured Cast</h3>
 
         <div className="cast-info">
           {mainCast &&
@@ -18,14 +31,44 @@ const MovieOverView = ({ overview, credits }) => {
               <div className="cast-member-card" key={cast.id}>
                 <img
                   className="cast-member-image"
-                  src={`https://image.tmdb.org/t/p/w138_and_h175_face${
+                  src={
                     cast.profile_path
-                  }`}
-                  alt=""
+                      ? `https://image.tmdb.org/t/p/w138_and_h175_face${
+                          cast.profile_path
+                        }`
+                      : placeholderImage("No Image")
+                  }
+                  alt={cast.name}
                 />
                 <div className="cast-names">
                   <h4 className="cast-member-name">{cast.name}</h4>
                   <span className="cast-member-role">{cast.character}</span>
+                </div>
+              </div>
+            ))}
+        </div>
+      </div>
+      <div className="cast-crew">
+        <h3>Featured Cast</h3>
+
+        <div className="cast-info">
+          {mainCrew &&
+            mainCrew.map(crew => (
+              <div className="cast-member-card" key={crew.id}>
+                <img
+                  className="cast-member-image"
+                  src={
+                    crew.profile_path
+                      ? `https://image.tmdb.org/t/p/w138_and_h175_face${
+                          crew.profile_path
+                        }`
+                      : placeholderImage("No Image")
+                  }
+                  alt={crew.name}
+                />
+                <div className="cast-names">
+                  <h4 className="cast-member-name">{crew.name}</h4>
+                  <span className="cast-member-role">{crew.job}</span>
                 </div>
               </div>
             ))}

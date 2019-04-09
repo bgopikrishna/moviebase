@@ -46,7 +46,9 @@ const MovieActionBtns = ({
           className={"movieinfo-action-btn like " + likebtnStyle}
         >
           <FontAwesomeIcon icon={faHeart} />
-          <span className="movieinfo-action-btn-content">Like</span>
+          <span className="movieinfo-action-btn-content">
+            {isFav ? "Liked" : "Like"}
+          </span>
         </button>
         <button
           onClick={toggleModal}

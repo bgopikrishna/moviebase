@@ -14,8 +14,12 @@ export const parseJSON = data => data.json();
 
 //create an obj for cast & crew with name, image , id
 
-export const getCastNCrewData = (totalCast) => {
-  return (totalCast.map(castMem => {
-    return null
-  }))
-}
+export const getCastNCrewData = totalCast => {
+  return totalCast.map(castMem => {
+    return null;
+  });
+};
+
+export const placeholderImage = text => {
+  return `https://via.placeholder.com/200x120/000000/FFFFFF/?text=${text}`;
+};

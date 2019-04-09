@@ -1,4 +1,6 @@
 @import "../../variables";
+@import "../../mixins";
+
 @mixin normalButton($color: #111, $background: #fff, $margin: 5px) {
   background: $background;
   color: $color;
@@ -148,17 +150,15 @@ $backdrop: url(https://image.tmdb.org/t/p/w1400_and_h450_face/w2PMyoyLU22YvrGK3s
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5);
   transition: 0.3s all cubic-bezier(0.215, 0.61, 0.355, 1);
   font-weight: 700;
-
-  &.like.active,
-  &.like:hover,
-  &.like:focus {
+  &.active {
+    animation: scaleAndShrink 0.25s ease-in 0.05ms 1 alternate;
+  }
+  &.like.active {
     color: $white;
     background: tomato;
     box-shadow: none;
   }
-  &.watchlist.active,
-  &.watchlist:hover,
-  &.watchlist:focus {
+  &.watchlist.active {
     background: $blue;
     color: $white;
     fill: $white;
@@ -200,6 +200,8 @@ $backdrop: url(https://image.tmdb.org/t/p/w1400_and_h450_face/w2PMyoyLU22YvrGK3s
 .cast-info {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  grid-gap: 20px;
+  justify-items: center;
 }
 .cast-member-card {
   width: 140px;
@@ -227,6 +229,8 @@ $backdrop: url(https://image.tmdb.org/t/p/w1400_and_h450_face/w2PMyoyLU22YvrGK3s
   width: 100%;
   padding-bottom: 10px;
   object-fit: cover;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
 }
 
 @media (max-width: 900px) {
