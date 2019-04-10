@@ -52,7 +52,7 @@ class App extends Component {
               <Route path="/account" component={NoPage404} />
 
               {/* MovieInfo Page Component */}
-              <Route path="/movie/:movie_Id" component={MovieInfoPage} />
+              <Route exact path="/movie/:movie_Id" component={MovieInfoPage} />
 
               {/* 404 Page Component */}
               <Route path="/404" component={NoPage404} />

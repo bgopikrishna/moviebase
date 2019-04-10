@@ -1,7 +1,13 @@
 import React from "react";
 import { placeholderImage } from "../../helperfunctions/helpers.js";
+import { Link } from "react-router-dom";
 
-const MovieOverView = ({ overview, credits }) => {
+const MovieOverView = ({
+  overview,
+  credits,
+  similarMovies,
+  isErrorFetchingSimilarMovies
+}) => {
   const { cast, crew } = credits;
   const mainCast = cast.slice(0, 5);
   const mainCrew = crew.filter(crewMem => {
@@ -26,6 +32,7 @@ const MovieOverView = ({ overview, credits }) => {
         <h3>Featured Cast</h3>
 
         <div className="cast-info">
+          {/**Main cast details */}
           {mainCast &&
             mainCast.map(cast => (
               <div className="cast-member-card" key={cast.id}>
@@ -36,7 +43,7 @@ const MovieOverView = ({ overview, credits }) => {
                       ? `https://image.tmdb.org/t/p/w138_and_h175_face${
                           cast.profile_path
                         }`
-                      : placeholderImage("No Image")
+                      : placeholderImage(`No Image found for ${cast.name}`)
                   }
                   alt={cast.name}
                 />
@@ -49,9 +56,11 @@ const MovieOverView = ({ overview, credits }) => {
         </div>
       </div>
       <div className="cast-crew">
-        <h3>Featured Cast</h3>
+        <h3>Featured Crew</h3>
 
         <div className="cast-info">
+          {/**Main cast details */}
+
           {mainCrew &&
             mainCrew.map(crew => (
               <div className="cast-member-card" key={crew.id}>
@@ -73,6 +82,42 @@ const MovieOverView = ({ overview, credits }) => {
               </div>
             ))}
         </div>
+        {/* <div className="cast-crew">
+          <h3>Similar Movies</h3>
+
+          <div className="cast-info">
+
+            {isErrorFetchingSimilarMovies &&
+              similarMovies.map(movie => (
+                <div className="cast-member-card" key={movie.id}>
+                  <Link to={`/movie/${movie.id}`}>
+                    <img
+                      className="cast-member-image"
+                      src={
+                        movie.poster_path
+                          ? `https://image.tmdb.org/t/p/w138_and_h175_face${
+                              movie.poster_path
+                            }`
+                          : placeholderImage("No Image")
+                      }
+                      alt={movie.original_title}
+                    />
+                  </Link>
+                  <div className="cast-names">
+                    <Link to={`/movie/${movie.id}`}>
+                      <h4 className="cast-member-name">
+                        {movie.original_title}
+                      </h4>
+                    </Link>
+                    <span className="cast-member-role">
+                      {movie.release_date} {}
+                    </span>
+                  </div>
+                </div>
+              ))}
+          </div>
+        </div>
+         */}
       </div>
     </div>
   );

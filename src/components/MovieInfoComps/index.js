@@ -7,8 +7,21 @@ import { doMarkFavourite } from "../../actions/favouriteAction";
 import { addToWatchList } from "../../actions/watchListAction";
 import { connect } from "react-redux";
 import MovieOverView from "./MovieOverView";
+import { API_BASE_URL, API_KEY } from "../../constants";
+import { parseJSON } from "../../helperfunctions/helpers";
+import {withRouter} from 'react-router-dom';
 
 export class MovieInfoComp extends Component {
+  constructor(props) {
+    super(props);
+    // eslint-disable-next-line no-unused-vars
+    let _isMounted = false;
+
+    this.state = {
+      similarMovies: [],
+      isErrorFetchingSimilarMovies: false
+    };
+  }
   handleFavBtn = () => {
     const { movie, addToFavList } = this.props;
     addToFavList(movie, movie.id);
@@ -17,6 +30,28 @@ export class MovieInfoComp extends Component {
     const { movie, addToWatchList } = this.props;
     addToWatchList(movie, movie.id);
   };
+
+  componentDidMount() {
+    const { movie } = this.props;
+    const { id } = movie;
+    this._isMounted = true;
+    console.log("fetching starts");
+    fetch(`${API_BASE_URL}/movie/${id}/similar?api_key=${API_KEY}`)
+      .then(parseJSON)
+      .then(data => data.results)
+      .then(data => {
+        if (this._isMounted === true) {
+          console.log("setting datas");
+
+          this.setState({ similarMovies: data });
+        }
+      })
+      .catch(this.setState({ isErrorFetchingSimilarMovies: true }));
+  }
+
+  componentWillUnmount() {
+    this._isMounted = false;
+  }
 
   render() {
     const {
@@ -40,6 +75,7 @@ export class MovieInfoComp extends Component {
       credits,
       id
     } = movie;
+    const { similarMovies, isErrorFetchingSimilarMovies } = this.state;
 
     return (
       <div className="movie-container">
@@ -64,7 +100,12 @@ export class MovieInfoComp extends Component {
             movieId={id}
           />
         </div>
-        <MovieOverView overview={overview} credits={credits} />
+        <MovieOverView
+          overview={overview}
+          credits={credits}
+          similarMovies={similarMovies}
+          isErrorFetchingSimilarMovies={isErrorFetchingSimilarMovies}
+        />
       </div>
     );
   }
@@ -91,4 +132,4 @@ const mapStateToProps = (state, props) => {
 export default connect(
   mapStateToProps,
   mapDisptachToProps
-)(MovieInfoComp);
+)(withRouter(MovieInfoComp));

@@ -96,13 +96,13 @@ $backdrop: url(https://image.tmdb.org/t/p/w1400_and_h450_face/w2PMyoyLU22YvrGK3s
   margin-right: 10px;
   display: inline-block;
   margin-top: 10px;
-  cursor: pointer;
 }
 
 .release-date {
   align-self: center;
   display: flex;
   align-items: center;
+  margin: 10px 10px 0 0;
   span {
     // vertical-align: middle;
     font-size: 14px;
@@ -132,6 +132,7 @@ $backdrop: url(https://image.tmdb.org/t/p/w1400_and_h450_face/w2PMyoyLU22YvrGK3s
     display: block;
     font-size: 0.7rem;
     text-align: center;
+    margin: auto;
   }
   font-size: 2rem;
 
@@ -150,6 +151,7 @@ $backdrop: url(https://image.tmdb.org/t/p/w1400_and_h450_face/w2PMyoyLU22YvrGK3s
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5);
   transition: 0.3s all cubic-bezier(0.215, 0.61, 0.355, 1);
   font-weight: 700;
+  border-radius: 5px;
   &.active {
     animation: scaleAndShrink 0.25s ease-in 0.05ms 1 alternate;
   }
@@ -241,7 +243,15 @@ $backdrop: url(https://image.tmdb.org/t/p/w1400_and_h450_face/w2PMyoyLU22YvrGK3s
     width: 100%;
     margin-top: 0px;
   }
+  .movie-actions {
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
+  }
 
+  .user-score {
+    margin: 10px auto;
+  }
   .movie-details {
     width: 100%;
     flex-wrap: wrap;
