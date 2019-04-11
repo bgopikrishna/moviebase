@@ -9,7 +9,7 @@ import { connect } from "react-redux";
 import MovieOverView from "./MovieOverView";
 import { API_BASE_URL, API_KEY } from "../../constants";
 import { parseJSON } from "../../helperfunctions/helpers";
-import {withRouter} from 'react-router-dom';
+import { withRouter } from "react-router-dom";
 
 export class MovieInfoComp extends Component {
   constructor(props) {
@@ -35,15 +35,19 @@ export class MovieInfoComp extends Component {
     const { movie } = this.props;
     const { id } = movie;
     this._isMounted = true;
-    console.log("fetching starts");
     fetch(`${API_BASE_URL}/movie/${id}/similar?api_key=${API_KEY}`)
       .then(parseJSON)
-      .then(data => data.results)
+
       .then(data => {
         if (this._isMounted === true) {
-          console.log("setting datas");
-
-          this.setState({ similarMovies: data });
+          console.log(data.results);
+          this.setState(
+            () => ({
+              similarMovies: data.results,
+              isErrorFetchingSimilarMovies: false
+            }),
+            () => console.log(this.state)
+          );
         }
       })
       .catch(this.setState({ isErrorFetchingSimilarMovies: true }));
@@ -52,16 +56,17 @@ export class MovieInfoComp extends Component {
   componentWillUnmount() {
     this._isMounted = false;
   }
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   let shouldUpdate =
+  //     this.props.match.params.movie_Id !== nextProps.match.params.movie_Id
+  //       ? true
+  //       : false;
+  //   console.log(`shouldUpadate; ${shouldUpdate}`);
+  //   return true;
+  // }
 
   render() {
-    const {
-      movie,
-      toggleModal,
-      favIds,
-      watchListIds,
-      addToFavList,
-      addToWatchList
-    } = this.props;
+    const { movie, toggleModal } = this.props;
     const {
       backdrop_path,
       poster_path,
@@ -100,10 +105,11 @@ export class MovieInfoComp extends Component {
             movieId={id}
           />
         </div>
+        {console.log("getting props similiar movies", this.state.similarMovies)}
         <MovieOverView
+          similarMovies={similarMovies}
           overview={overview}
           credits={credits}
-          similarMovies={similarMovies}
           isErrorFetchingSimilarMovies={isErrorFetchingSimilarMovies}
         />
       </div>
@@ -120,16 +126,8 @@ const mapDisptachToProps = dispatch => {
 };
 
 //Connecting  the redux central store to the component
-const mapStateToProps = (state, props) => {
-  //Syncing the data of favourites movies with store and dispalying for user if it's already liked
-  return {
-    ...props,
-    favIds: state.favItems.ids,
-    watchListIds: state.watchListItems.ids
-  };
-};
 
 export default connect(
-  mapStateToProps,
+  null,
   mapDisptachToProps
 )(withRouter(MovieInfoComp));

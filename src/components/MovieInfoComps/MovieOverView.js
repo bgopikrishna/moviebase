@@ -35,7 +35,7 @@ const MovieOverView = ({
           {/**Main cast details */}
           {mainCast &&
             mainCast.map(cast => (
-              <div className="cast-member-card" key={cast.id}>
+              <div className="cast-member-card" key={cast.id + cast.name}>
                 <img
                   className="cast-member-image"
                   src={
@@ -63,7 +63,7 @@ const MovieOverView = ({
 
           {mainCrew &&
             mainCrew.map(crew => (
-              <div className="cast-member-card" key={crew.id}>
+              <div className="cast-member-card" key={crew.id + crew.job}>
                 <img
                   className="cast-member-image"
                   src={
@@ -82,15 +82,14 @@ const MovieOverView = ({
               </div>
             ))}
         </div>
-        {/* <div className="cast-crew">
+        <div className="cast-crew">
           <h3>Similar Movies</h3>
 
           <div className="cast-info">
-
-            {isErrorFetchingSimilarMovies &&
+            {true &&
               similarMovies.map(movie => (
                 <div className="cast-member-card" key={movie.id}>
-                  <Link to={`/movie/${movie.id}`}>
+                  <Link to={`/movie/${movie.id}`} target="_blank">
                     <img
                       className="cast-member-image"
                       src={
@@ -104,7 +103,7 @@ const MovieOverView = ({
                     />
                   </Link>
                   <div className="cast-names">
-                    <Link to={`/movie/${movie.id}`}>
+                    <Link to={`/movie/${movie.id}`} target="_blank">
                       <h4 className="cast-member-name">
                         {movie.original_title}
                       </h4>
@@ -117,7 +116,6 @@ const MovieOverView = ({
               ))}
           </div>
         </div>
-         */}
       </div>
     </div>
   );

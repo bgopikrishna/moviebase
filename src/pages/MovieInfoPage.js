@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from "react";
 import { API_KEY } from "../constants";
-import MovieCard from "../components/MovieCard";
 import Loader from "../components/Loader";
 import {
   getDataFromLocalStorage,
@@ -8,14 +7,11 @@ import {
 } from "../helperfunctions/helpers";
 import Modal from "../components/Modal";
 import "./MovieInfoPage.scss";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlay } from "@fortawesome/free-solid-svg-icons";
-import MoviePoster from "../components/MovieInfoComps/MoviePoster";
 import MovieInfoComp from "../components/MovieInfoComps";
 
 export class MovieInfoPage extends Component {
   constructor(props) {
-    super(props);
+    super(props)
 
     this.state = {
       movie: {},
@@ -26,7 +22,7 @@ export class MovieInfoPage extends Component {
     };
   }
 
-  componentDidMount() {
+  fetchMovieData = () => {
     const movieId = this.props.match.params.movie_Id;
     const movie = getDataFromLocalStorage(movieId);
     if (movie) {
@@ -49,7 +45,13 @@ export class MovieInfoPage extends Component {
           })
         );
     }
+  };
+
+  componentDidMount() {
+    this.fetchMovieData();
   }
+
+  
 
   toggleModal = () =>
     this.setState(state => ({ modalState: !state.modalState }));
@@ -60,43 +62,6 @@ export class MovieInfoPage extends Component {
       Object.entries(movie).length !== 0 && movie.hasOwnProperty("videos")
         ? movie.videos.results.filter(video => video.type === "Trailer")[0]
         : {};
-
-    const { backdrop_path, poster_path, original_title } = movie;
-
-    const MovieInfoJSX = (
-      <div className="movie-info">
-        <MovieCard movie={movie} truncateText={false} />
-        <button
-          className="play-trailer"
-          onClick={this.toggleModal}
-          disabled={movieTrailer ? false : true}
-        >
-          <FontAwesomeIcon icon={faPlay} />
-          &nbsp;Play Trailer
-        </button>
-        {movieTrailer && (
-          <Modal
-            toggleModal={this.toggleModal}
-            modalState={modalState}
-            title={movie.original_title + " Trailer"}
-          >
-            {" "}
-            <iframe
-              className="iframe-yt"
-              title={movie.original_title}
-              src={
-                modalState
-                  ? `https://www.youtube.com/embed/${movieTrailer.key}`
-                  : ""
-              }
-              frameBorder="0"
-              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            />
-          </Modal>
-        )}
-      </div>
-    );
 
     if (isLoading) {
       return <Loader />;
