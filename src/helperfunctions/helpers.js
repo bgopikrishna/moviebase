@@ -20,6 +20,6 @@ export const getCastNCrewData = totalCast => {
   });
 };
 
-export const placeholderImage = text => {
-  return `https://via.placeholder.com/200x120/000000/FFFFFF/?text=${text}`;
+export const placeholderImage = (text, width = 200, height = 120) => {
+  return `https://via.placeholder.com/${width}x${height}/000000/FFFFFF/?text=${text}`;
 };

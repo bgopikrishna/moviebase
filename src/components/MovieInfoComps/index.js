@@ -19,51 +19,62 @@ export class MovieInfoComp extends Component {
 
     this.state = {
       similarMovies: [],
-      isErrorFetchingSimilarMovies: false
+      isErrorFetchingSimilarMovies: false,
+      movieId: ""
     };
   }
+
   handleFavBtn = () => {
     const { movie, addToFavList } = this.props;
     addToFavList(movie, movie.id);
   };
+
   handleWatchListBtn = () => {
     const { movie, addToWatchList } = this.props;
     addToWatchList(movie, movie.id);
   };
 
-  componentDidMount() {
+  getAndSetSimiliarMovies = () => {
     const { movie } = this.props;
     const { id } = movie;
-    this._isMounted = true;
     fetch(`${API_BASE_URL}/movie/${id}/similar?api_key=${API_KEY}`)
       .then(parseJSON)
 
       .then(data => {
         if (this._isMounted === true) {
-          console.log(data.results);
-          this.setState(
-            () => ({
-              similarMovies: data.results,
-              isErrorFetchingSimilarMovies: false
-            }),
-            () => console.log(this.state)
-          );
+          this.setState(() => ({
+            similarMovies: data.results,
+            isErrorFetchingSimilarMovies: false
+          }));
         }
       })
       .catch(this.setState({ isErrorFetchingSimilarMovies: true }));
+  };
+
+  componentDidMount() {
+    this._isMounted = true;
+    this.getAndSetSimiliarMovies();
+  }
+
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (nextProps.movie.id !== prevState.movieId) {
+      return {
+        movieId: nextProps.movie.id
+      };
+    }
+
+    return null;
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.movie.id !== this.props.movie.id) {
+      this.getAndSetSimiliarMovies();
+    }
   }
 
   componentWillUnmount() {
     this._isMounted = false;
   }
-  // shouldComponentUpdate(nextProps, nextState) {
-  //   let shouldUpdate =
-  //     this.props.match.params.movie_Id !== nextProps.match.params.movie_Id
-  //       ? true
-  //       : false;
-  //   console.log(`shouldUpadate; ${shouldUpdate}`);
-  //   return true;
-  // }
 
   render() {
     const { movie, toggleModal } = this.props;
@@ -78,12 +89,17 @@ export class MovieInfoComp extends Component {
       release_date,
       overview,
       credits,
-      id
+      id,
+      videos
     } = movie;
     const { similarMovies, isErrorFetchingSimilarMovies } = this.state;
 
+    let isTrailerAvailable =
+      movie.hasOwnProperty("videos") && movie.videos.results.length
+        ? true
+        : false;
     return (
-      <div className="movie-container">
+      <div className="movie-container" id="movie-details">
         <MoviePoster
           backdrop={backdrop_path}
           poster={poster_path}
@@ -103,9 +119,9 @@ export class MovieInfoComp extends Component {
             handleWatchListBtn={this.handleWatchListBtn}
             totalVotes={totalVotes}
             movieId={id}
+            isTrailerAvailable={isTrailerAvailable}
           />
         </div>
-        {console.log("getting props similiar movies", this.state.similarMovies)}
         <MovieOverView
           similarMovies={similarMovies}
           overview={overview}

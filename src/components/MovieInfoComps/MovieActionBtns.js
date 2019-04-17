@@ -16,7 +16,8 @@ const MovieActionBtns = ({
   watchListIds,
   movieId,
   handleFavBtn,
-  handleWatchListBtn
+  handleWatchListBtn,
+  isTrailerAvailable
 }) => {
   let isFav = favIds.includes(movieId); //Checking if the item is fav or not by passing id
   let isInWatchList = watchListIds.includes(movieId);
@@ -50,13 +51,15 @@ const MovieActionBtns = ({
             {isFav ? "Liked" : "Like"}
           </span>
         </button>
-        <button
-          onClick={toggleModal}
-          className="movieinfo-action-btn play-trailer"
-        >
-          <FontAwesomeIcon icon={faPlay} />
-          <span className="movieinfo-action-btn-content">Play Trailer</span>
-        </button>
+        {isTrailerAvailable && (
+          <button
+            onClick={toggleModal}
+            className="movieinfo-action-btn play-trailer"
+          >
+            <FontAwesomeIcon icon={faPlay} />
+            <span className="movieinfo-action-btn-content">Play Trailer</span>
+          </button>
+        )}
       </div>
     </div>
   );
@@ -69,6 +72,5 @@ const mapStateToProps = (state, props) => {
     watchListIds: state.watchListItems.ids
   };
 };
-
 
 export default connect(mapStateToProps)(MovieActionBtns);

@@ -1,6 +1,8 @@
 import React from "react";
 import { placeholderImage } from "../../helperfunctions/helpers.js";
+import StackedImageCard from "../StackedImageCard.js";
 import { Link } from "react-router-dom";
+import { MOVIE_DB_BIO_LINK } from "../../constants/index.js";
 
 const MovieOverView = ({
   overview,
@@ -63,23 +65,14 @@ const MovieOverView = ({
 
           {mainCrew &&
             mainCrew.map(crew => (
-              <div className="cast-member-card" key={crew.id + crew.job}>
-                <img
-                  className="cast-member-image"
-                  src={
-                    crew.profile_path
-                      ? `https://image.tmdb.org/t/p/w138_and_h175_face${
-                          crew.profile_path
-                        }`
-                      : placeholderImage("No Image")
-                  }
-                  alt={crew.name}
-                />
-                <div className="cast-names">
-                  <h4 className="cast-member-name">{crew.name}</h4>
-                  <span className="cast-member-role">{crew.job}</span>
-                </div>
-              </div>
+              <StackedImageCard
+                image={crew.profile_path}
+                altForImage={crew.name}
+                cardHeader={crew.name}
+                cardFooter={crew.job}
+                key={crew.id + crew.job}
+                linkTo={`${MOVIE_DB_BIO_LINK}${crew.id}`}
+              />
             ))}
         </div>
         <div className="cast-crew">
@@ -89,7 +82,7 @@ const MovieOverView = ({
             {true &&
               similarMovies.map(movie => (
                 <div className="cast-member-card" key={movie.id}>
-                  <Link to={`/movie/${movie.id}`} target="_blank">
+                  <Link to={`/movie/${movie.id}`}>
                     <img
                       className="cast-member-image"
                       src={
@@ -103,13 +96,13 @@ const MovieOverView = ({
                     />
                   </Link>
                   <div className="cast-names">
-                    <Link to={`/movie/${movie.id}`} target="_blank">
+                    <Link to={`/movie/${movie.id}`}>
                       <h4 className="cast-member-name">
                         {movie.original_title}
                       </h4>
                     </Link>
                     <span className="cast-member-role">
-                      {movie.release_date} {}
+                      {movie.release_date}
                     </span>
                   </div>
                 </div>
@@ -134,3 +127,21 @@ export default MovieOverView;
 //             <span className="cast-member-role">aqua Man</span>
 //           </div> */
 //
+
+// <div className="cast-member-card" key={crew.id + crew.job}>
+//                 <img
+//                   className="cast-member-image"
+//                   src={
+//                     crew.profile_path
+//                       ? `https://image.tmdb.org/t/p/w138_and_h175_face${
+//                           crew.profile_path
+//                         }`
+//                       : placeholderImage("No Image")
+//                   }
+//                   alt={crew.name}
+//                 />
+//                 <div className="cast-names">
+//                   <h4 className="cast-member-name">{crew.name}</h4>
+//                   <span className="cast-member-role">{crew.job}</span>
+//                 </div>
+// {/* </div> */}
