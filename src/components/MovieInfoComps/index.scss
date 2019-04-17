@@ -220,7 +220,16 @@ $backdrop: url(https://image.tmdb.org/t/p/w1400_and_h450_face/w2PMyoyLU22YvrGK3s
 }
 
 .cast-member-name {
-  color: $blue;
+  color: $black;
+  font-weight: bolder;
+  display: block;
+  text-align: left;
+  transition: all 0.1s ease-out;
+  &:hover,
+  &:focus {
+    // @include gradient-color;
+    color: $blue;
+  }
 }
 .cast-member-role {
   font-size: 0.7rem;

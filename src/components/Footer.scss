@@ -17,12 +17,9 @@
   }
 }
 
-
 @media (max-width: 900px) {
-    .footer {
-        position: absolute;
-        z-index: -1;
-        margin-bottom: 65px; 
-        font-size: 9px;
-    }
+  .footer {
+    margin-bottom: 49px;
+    font-size: 9px;
+  }
 }

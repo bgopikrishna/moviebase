@@ -69,6 +69,9 @@ export class MovieInfoPage extends Component {
     if (this.props.match.params.movie_Id !== prevProps.match.params.movie_Id) {
       this.fetchMovieData();
     }
+    if (this.props.location.pathname !== prevProps.location.pathname) {
+      window.scrollTo(0, 0);
+    }
   }
 
   toggleModal = () =>

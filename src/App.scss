@@ -5,6 +5,10 @@
 //   html { font-family: 'Inter var', sans-serif; }
 // }
 
+html {
+  scroll-behavior: smooth;
+}
+
 ::-webkit-scrollbar {
   width: 4px;
   background: rgba(48, 110, 254, 0.5);

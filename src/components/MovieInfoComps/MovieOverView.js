@@ -96,10 +96,11 @@ const MovieOverView = ({
                     />
                   </Link>
                   <div className="cast-names">
-                    <Link to={`/movie/${movie.id}`}>
-                      <h4 className="cast-member-name">
-                        {movie.original_title}
-                      </h4>
+                    <Link
+                      to={`/movie/${movie.id}`}
+                      className="cast-member-name"
+                    >
+                      {movie.original_title}
                     </Link>
                     <span className="cast-member-role">
                       {movie.release_date}

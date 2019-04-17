@@ -9,10 +9,6 @@
   align-items: center;
 }
 
-.iframe-yt {
-  width: 100%;
-  height: 400px;
-}
 
 .play-trailer {
   background: $blue-gradient;
@@ -34,8 +30,5 @@
 }
 
 @media (max-width: 900px) {
-  .iframe-yt {
-    width: 100%;
-    height: 300px;
-  }
+  
 }

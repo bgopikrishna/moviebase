@@ -89,8 +89,7 @@ export class MovieInfoComp extends Component {
       release_date,
       overview,
       credits,
-      id,
-      videos
+      id
     } = movie;
     const { similarMovies, isErrorFetchingSimilarMovies } = this.state;
 
