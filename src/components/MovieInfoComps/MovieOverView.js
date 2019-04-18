@@ -11,7 +11,7 @@ const MovieOverView = ({
   isErrorFetchingSimilarMovies
 }) => {
   const { cast, crew } = credits;
-  const mainCast = cast.slice(0, 5);
+  const mainCast = cast.slice(0, 12);
   const mainCrew = crew.filter(crewMem => {
     if (
       (crewMem.job === "Director") |
@@ -75,40 +75,35 @@ const MovieOverView = ({
               />
             ))}
         </div>
-        <div className="cast-crew">
-          <h3>Similar Movies</h3>
+      </div>
+      <div className="cast-crew">
+        <h3>Similar Movies</h3>
 
-          <div className="cast-info">
-            {true &&
-              similarMovies.map(movie => (
-                <div className="cast-member-card" key={movie.id}>
-                  <Link to={`/movie/${movie.id}`}>
-                    <img
-                      className="cast-member-image"
-                      src={
-                        movie.poster_path
-                          ? `https://image.tmdb.org/t/p/w138_and_h175_face${
-                              movie.poster_path
-                            }`
-                          : placeholderImage("No Image")
-                      }
-                      alt={movie.original_title}
-                    />
+        <div className="cast-info">
+          {true &&
+            similarMovies.map(movie => (
+              <div className="cast-member-card" key={movie.id}>
+                <Link to={`/movie/${movie.id}`}>
+                  <img
+                    className="cast-member-image"
+                    src={
+                      movie.poster_path
+                        ? `https://image.tmdb.org/t/p/w138_and_h175_face${
+                            movie.poster_path
+                          }`
+                        : placeholderImage("No Image")
+                    }
+                    alt={movie.original_title}
+                  />
+                </Link>
+                <div className="cast-names">
+                  <Link to={`/movie/${movie.id}`} className="cast-member-name">
+                    {movie.original_title}
                   </Link>
-                  <div className="cast-names">
-                    <Link
-                      to={`/movie/${movie.id}`}
-                      className="cast-member-name"
-                    >
-                      {movie.original_title}
-                    </Link>
-                    <span className="cast-member-role">
-                      {movie.release_date}
-                    </span>
-                  </div>
+                  <span className="cast-member-role">{movie.release_date}</span>
                 </div>
-              ))}
-          </div>
+              </div>
+            ))}
         </div>
       </div>
     </div>

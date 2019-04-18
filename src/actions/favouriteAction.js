@@ -1,10 +1,14 @@
 import { ADD_FAV_TO_LIST } from "../constants";
 
-export const doMarkFavourite = (movie,id) => {
-  return diptach => diptach(doAddFavToList(movie,id));
+export const doMarkFavourite = (movie, id) => {
+  return diptach => diptach(doAddFavToList(movie, id));
 };
 
-export const doAddFavToList = (movie,id) => ({ type: ADD_FAV_TO_LIST, movie,id });
+export const doAddFavToList = (movie, id) => ({
+  type: ADD_FAV_TO_LIST,
+  movie,
+  id
+});
 
 export const applyMarkFavourite = (state, action) => {
   const { ids, list } = state;

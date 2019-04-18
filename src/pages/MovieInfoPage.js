@@ -50,6 +50,7 @@ export class MovieInfoPage extends Component {
   };
 
   componentDidMount() {
+    window.scrollTo(0, 0);
     this.fetchMovieData();
   }
 
@@ -97,13 +98,14 @@ export class MovieInfoPage extends Component {
               modalState={modalState}
               title={movie.original_title + " Trailer"}
             >
-              {" "}
               <iframe
                 className="iframe-yt"
                 title={movie.original_title}
                 src={
                   modalState
-                    ? `https://www.youtube.com/embed/${movieTrailer.key}`
+                    ? `https://www.youtube-nocookie.com/embed/${
+                        movieTrailer.key
+                      }`
                     : ""
                 }
                 frameBorder="0"
