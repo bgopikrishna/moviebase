@@ -1,6 +1,6 @@
 import React from "react";
 
-export const WatchListAdd = ({ added }) => {
+export const WatchListAddIcon= ({ added }) => {
   if (added) {
     return (
       <svg

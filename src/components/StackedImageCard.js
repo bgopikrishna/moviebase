@@ -1,5 +1,6 @@
 import React from "react";
 import { placeholderImage } from "../helperfunctions/helpers";
+import PropTypes from "prop-types";
 
 const StackedImageCard = ({ image, altForImage, cardHeader, cardFooter }) => {
   return (
@@ -22,3 +23,10 @@ const StackedImageCard = ({ image, altForImage, cardHeader, cardFooter }) => {
 };
 
 export default StackedImageCard;
+
+StackedImageCard.propTypes = {
+  image: PropTypes.string,
+  altForImage: PropTypes.string,
+  cardHeader: PropTypes.string,
+  cardFooter: PropTypes.string
+};

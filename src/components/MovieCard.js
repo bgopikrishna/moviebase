@@ -6,7 +6,7 @@ import { doMarkFavourite } from "../actions/favouriteAction";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { addToWatchList } from "../actions/watchListAction";
-import { WatchListAdd as WatchListAddIcon } from "./MaterialIcons";
+import {  WatchListAddIcon } from "./MaterialIcons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 

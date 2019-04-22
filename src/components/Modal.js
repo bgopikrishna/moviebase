@@ -1,6 +1,6 @@
-import "./Modal.scss";
-
 import React from "react";
+import "./Modal.scss";
+import { PropTypes } from "prop-types";
 
 const Modal = ({ title, children, toggleModal, modalState }) => {
   return (
@@ -18,6 +18,10 @@ const Modal = ({ title, children, toggleModal, modalState }) => {
       </div>
     </div>
   );
+};
+
+Modal.propTypes = {
+  title: PropTypes.string
 };
 
 export default Modal;
