@@ -68,6 +68,7 @@ export class MovieInfoPage extends Component {
 
   componentDidUpdate(prevProps) {
     if (this.props.match.params.movie_Id !== prevProps.match.params.movie_Id) {
+      this.setState(() => ({ isLoading: true }));
       this.fetchMovieData();
     }
     if (this.props.location.pathname !== prevProps.location.pathname) {

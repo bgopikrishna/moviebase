@@ -1,6 +1,7 @@
 import React from "react";
+import { PropTypes } from "prop-types";
 
-export const WatchListAddIcon= ({ added }) => {
+export const WatchListAddIcon = ({ added }) => {
   if (added) {
     return (
       <svg
@@ -36,4 +37,11 @@ export const WatchListAddIcon= ({ added }) => {
       </svg>
     );
   }
+};
+
+WatchListAddIcon.propTypes = {
+  added: PropTypes.bool
+};
+WatchListAddIcon.defaultProps = {
+  added: false
 };

@@ -6,16 +6,16 @@ import MovieActionBtns from "./MovieActionBtns";
 import { doMarkFavourite } from "../../actions/favouriteAction";
 import { addToWatchList } from "../../actions/watchListAction";
 import { connect } from "react-redux";
-import MovieOverView from "./MovieOverView";
 import { API_BASE_URL, API_KEY } from "../../constants";
 import { parseJSON } from "../../helperfunctions/helpers";
 import { withRouter } from "react-router-dom";
+import MovieSynopsis from "./MovieSynopsis";
+import MovieCastCrew from "./MovieCastCrew";
+import SimilarMovies from "./SimilarMovies";
 
 export class MovieInfoComp extends Component {
   constructor(props) {
     super(props);
-    // eslint-disable-next-line no-unused-vars
-    let _isMounted = false;
 
     this.state = {
       similarMovies: [],
@@ -91,7 +91,7 @@ export class MovieInfoComp extends Component {
       credits,
       id
     } = movie;
-    const { similarMovies, isErrorFetchingSimilarMovies } = this.state;
+    const { similarMovies } = this.state;
 
     let isTrailerAvailable =
       movie.hasOwnProperty("videos") && movie.videos.results.length
@@ -121,12 +121,13 @@ export class MovieInfoComp extends Component {
             isTrailerAvailable={isTrailerAvailable}
           />
         </div>
-        <MovieOverView
-          similarMovies={similarMovies}
-          overview={overview}
-          credits={credits}
-          isErrorFetchingSimilarMovies={isErrorFetchingSimilarMovies}
-        />
+        <div className="movie-overview">
+          <MovieSynopsis overview={overview} />
+          <MovieCastCrew credits={credits} />
+          {similarMovies.length && (
+            <SimilarMovies similarMovies={similarMovies} />
+          )}
+        </div>
       </div>
     );
   }

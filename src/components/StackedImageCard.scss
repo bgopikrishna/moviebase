@@ -1,0 +1,42 @@
+@import "../variables";
+@import "..//mixins";
+
+.stacked-card {
+  width: 140px;
+  background: $white;
+  color: $black;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+}
+.stacked-card .card-content {
+  padding: 10px;
+  text-align: left;
+}
+
+.stacked-card .card-header {
+  color: $black;
+  font-weight: bolder;
+  display: block;
+  text-align: left;
+  transition: all 0.1s ease-out;
+  &:hover,
+  &:focus {
+    // @include gradient-color;
+    color: $blue;
+    cursor: pointer;
+  }
+}
+.stacked-card .card-footer {
+  font-size: 0.7rem;
+}
+
+.stacked-card .card-image {
+  height: 175px;
+  width: 100%;
+  padding-bottom: 10px;
+  object-fit: cover;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}

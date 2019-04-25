@@ -1,6 +1,6 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCalendarWeek } from "@fortawesome/free-solid-svg-icons";
+import { faCalendarAlt } from "@fortawesome/free-solid-svg-icons";
 import { genres as movieGenres } from "../../constants";
 
 const MovieDetails = ({
@@ -35,7 +35,7 @@ const MovieDetails = ({
       </div>
       <div className="release-date">
         <span>
-          <FontAwesomeIcon icon={faCalendarWeek} /> {release_date}
+          <FontAwesomeIcon icon={faCalendarAlt} /> {release_date}
         </span>
       </div>
     </div>

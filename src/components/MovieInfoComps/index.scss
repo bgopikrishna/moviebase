@@ -196,54 +196,17 @@ $backdrop: url(https://image.tmdb.org/t/p/w1400_and_h450_face/w2PMyoyLU22YvrGK3s
   }
 }
 
-.cast-crew {
+.stacked-grid {
   display: flex;
   flex-direction: column;
 }
-.cast-info {
+.stacked-grid-header {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   grid-gap: 20px;
   justify-items: center;
 }
-.cast-member-card {
-  width: 140px;
-  background: $white;
-  color: $black;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 15px;
-  display: flex;
-  flex-direction: column;
-}
-.cast-names {
-  padding: 10px;
-  text-align: left;
-}
 
-.cast-member-name {
-  color: $black;
-  font-weight: bolder;
-  display: block;
-  text-align: left;
-  transition: all 0.1s ease-out;
-  &:hover,
-  &:focus {
-    // @include gradient-color;
-    color: $blue;
-  }
-}
-.cast-member-role {
-  font-size: 0.7rem;
-}
-
-.cast-member-image {
-  height: 175px;
-  width: 100%;
-  padding-bottom: 10px;
-  object-fit: cover;
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
-}
 
 @media (max-width: 900px) {
   .movie-poster {

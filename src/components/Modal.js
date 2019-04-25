@@ -21,7 +21,10 @@ const Modal = ({ title, children, toggleModal, modalState }) => {
 };
 
 Modal.propTypes = {
-  title: PropTypes.string
+  title: PropTypes.string,
+  toggleModal: PropTypes.func,
+  modalState: PropTypes.bool,
+  children: PropTypes.element.isRequired
 };
 
 export default Modal;
