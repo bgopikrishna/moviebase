@@ -20,9 +20,10 @@ export class MovieInfoPage extends Component {
       errorMsg: "Something Went Wrong",
       isLoading: true,
       modalState: false,
-      movieId: ""
+      movieId: "",
     };
   }
+  
 
   fetchMovieData = () => {
     const movieId = this.props.match.params.movie_Id;
@@ -80,7 +81,14 @@ export class MovieInfoPage extends Component {
     this.setState(state => ({ modalState: !state.modalState }));
 
   render() {
-    const { movie, isError, errorMsg, isLoading, modalState } = this.state;
+    const {
+      movie,
+      isError,
+      errorMsg,
+      isLoading,
+      modalState,
+      
+    } = this.state;
     let movieTrailer =
       Object.entries(movie).length !== 0 && movie.hasOwnProperty("videos")
         ? movie.videos.results.filter(video => video.type === "Trailer")[0]
@@ -99,20 +107,22 @@ export class MovieInfoPage extends Component {
               modalState={modalState}
               title={movie.original_title + " Trailer"}
             >
-              <iframe
-                className="iframe-yt"
-                title={movie.original_title}
-                src={
-                  modalState
-                    ? `https://www.youtube-nocookie.com/embed/${
-                        movieTrailer.key
-                      }`
-                    : ""
-                }
-                frameBorder="0"
-                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              />
+              
+                <iframe
+                  className="iframe-yt"
+                  title={movie.original_title}
+                  src={
+                    modalState
+                      ? `https://www.youtube-nocookie.com/embed/${
+                          movieTrailer.key
+                        }`
+                      : ""
+                  }
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              
             </Modal>
           )}
         </Fragment>

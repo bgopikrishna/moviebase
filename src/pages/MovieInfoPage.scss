@@ -8,27 +8,3 @@
   justify-content: center;
   align-items: center;
 }
-
-
-.play-trailer {
-  background: $blue-gradient;
-  color: $white;
-  outline: none;
-  border: none;
-  padding: 10px;
-  width: 120px;
-  margin: 5px auto;
-  border-radius: 15px;
-  font-weight: bold;
-
-  &:hover {
-    cursor: pointer;
-  }
-  &:disabled {
-    cursor: not-allowed;
-  }
-}
-
-@media (max-width: 900px) {
-  
-}

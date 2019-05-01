@@ -103,6 +103,9 @@ export class MovieInfoComp extends Component {
           backdrop={backdrop_path}
           poster={poster_path}
           altText={original_title}
+          toggleModal={toggleModal}
+          isTrailerAvailable={isTrailerAvailable}
+
         />
         <div className="row-2">
           <MovieDetails

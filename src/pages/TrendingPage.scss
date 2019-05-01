@@ -1,7 +1,8 @@
 @import "../variables";
+@import "../mixins";
 
 .trending {
-  width: 80%;
+  width: 90%;
   margin: auto;
   display: flex;
   flex-direction: column;
@@ -15,25 +16,19 @@
   }
 
   .more_button {
-    width: auto;
-    outline: none;
-    border: none;
-    margin: 20px auto;
-    font-size: 14px;
-    padding: 0.7rem 2rem;
-    background: $white;
-    color: $black;
-    opacity: 0.7;
-    border: 1px solid $blue;
-    border-radius: 15px;
-    transition: 0.2s all ease-in;
+    @include normalButton;
+    width: 100px;
+    background: $blue-gradient;
+    margin: 10px auto;
+    border: 1px solid $white;
+    background: transparent;
+    color: $white;
+    opacity: 0.8;
 
     &:hover,
     &:active {
       opacity: 1;
       cursor: pointer;
-      color: $white;
-      background: $black;
     }
   }
 }

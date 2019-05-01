@@ -10,3 +10,22 @@
   box-decoration-break: clone;
   text-shadow: none;
 }
+
+@mixin normalButton($color: #111, $background: #fff, $margin: 5px) {
+  background: $background;
+  color: $color;
+  padding: 0.7rem;
+  border-radius: none;
+  outline: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  margin: 0 $margin;
+  justify-content: space-around;
+
+
+  &:hover,
+  &:focus {
+    cursor: pointer;
+  }
+}

@@ -1,8 +1,16 @@
 import React from "react";
 import "./Modal.scss";
 import { PropTypes } from "prop-types";
+import Loader from "./Loader";
 
-const Modal = ({ title, children, toggleModal, modalState }) => {
+const Modal = ({
+  title,
+  children,
+  toggleModal,
+  modalState,
+  iFrameLoading,
+  onLoad
+}) => {
   return (
     <div
       className="modal"
