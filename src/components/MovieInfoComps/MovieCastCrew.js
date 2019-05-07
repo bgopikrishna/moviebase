@@ -1,5 +1,6 @@
 import React from "react";
-import StackedImageCard from './StackedImageCard';
+import StackedImageCard from "./StackedImageCard";
+import { MOVIE_DB_BIO_LINK } from "../../constants";
 
 const MovieCastCrew = ({ credits }) => {
   const { cast, crew } = credits;
@@ -31,6 +32,8 @@ const MovieCastCrew = ({ credits }) => {
                 altForImage={cast.name}
                 cardHeader={cast.name}
                 cardFooter={cast.character}
+                linkTo={`${MOVIE_DB_BIO_LINK}/${cast.id}`}
+                externalLink={true}
               />
             ))}
         </div>

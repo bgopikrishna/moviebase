@@ -12,7 +12,7 @@ export const ADD_TO_WATCH_LIST = "ADD_TO_WATCH_LIST";
 export const TOGGLE_LOADING_INDICATOR = "TOGGLE_LOADING_INDICATOR";
 export const TOGGLE_ERROR_INDICATOR = "TOGGLE_ERROR_INDICATOR";
 
-export const MOVIE_DB_BIO_LINK = "https://www.themoviedb.org/person/";
+export const MOVIE_DB_BIO_LINK = "https://www.themoviedb.org/person";
 
 export const genres = {
   "28": {

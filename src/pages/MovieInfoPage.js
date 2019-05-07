@@ -83,7 +83,9 @@ export class MovieInfoPage extends Component {
     const { movie, isError, errorMsg, isLoading, modalState } = this.state;
     let movieTrailer =
       Object.entries(movie).length !== 0 && movie.hasOwnProperty("videos")
-        ? movie.videos.results.filter(video => video.type === "Trailer")[0]
+        ? movie.videos.results.filter(
+            video => video.type === "Trailer" || video.type === "Teaser"
+          )[0]
         : {};
 
     if (isLoading) {

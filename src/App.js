@@ -55,6 +55,16 @@ class App extends Component {
               <Route exact path="/movie/:movie_Id" component={MovieInfoPage} />
 
               {/* 404 Page Component */}
+              <Route
+                path="/cast/:id"
+                component={props => {
+                  window.location = `https://www.themoviedb.org/person/${
+                    props.match.params.id
+                  }`;
+                  return null;
+                }}
+              />
+
               <Route component={NoPage404} />
             </Switch>
             <Footer />
