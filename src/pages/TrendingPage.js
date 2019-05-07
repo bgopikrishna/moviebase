@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import "./TrendingPage.scss";
 import { API_BASE_URL, API_KEY } from "../constants";
-import ErrorDisplay from "../components/ErrorDisplay";
-import MovieCard from "../components/MovieCard";
+import ErrorDisplay from "../components/extras/ErrorDisplay";
+import MovieCard from "../components/movie/MovieCard";
 import { parseJSON } from "../helperfunctions/helpers";
-import { doFetchData } from "../actions/fetchDataAction";
-import Loader from "../components/Loader";
+import { doFetchData } from "../store/actions/fetchDataAction";
+import Loader from "../components/extras/Loader";
 
 export class TrendingPage extends Component {
   constructor(props) {

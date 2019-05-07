@@ -1,4 +1,4 @@
-import { ADD_FAV_TO_LIST } from "../constants";
+import { ADD_FAV_TO_LIST } from "../../constants";
 
 export const doMarkFavourite = (movie, id) => {
   return diptach => diptach(doAddFavToList(movie, id));

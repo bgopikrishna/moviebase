@@ -1,5 +1,5 @@
 import React from "react";
-import StackedImageCard from "../StackedImageCard.js";
+import StackedImageCard from './StackedImageCard';
 
 const MovieCastCrew = ({ credits }) => {
   const { cast, crew } = credits;

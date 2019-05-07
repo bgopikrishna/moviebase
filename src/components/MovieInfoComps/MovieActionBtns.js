@@ -1,5 +1,5 @@
 import React from "react";
-import { WatchListAddIcon } from "../MaterialIcons";
+import { WatchListAddIcon } from "../extras/MaterialIcons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHeart,

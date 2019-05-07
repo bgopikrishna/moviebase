@@ -1,4 +1,4 @@
-import { TOGGLE_LOADING_INDICATOR, TOGGLE_ERROR_INDICATOR } from "../constants";
+import { TOGGLE_LOADING_INDICATOR, TOGGLE_ERROR_INDICATOR } from  '../../constants';
 import {
   applyLoadingIndicator,
   applyErrorIndicator

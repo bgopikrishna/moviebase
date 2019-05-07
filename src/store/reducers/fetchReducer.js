@@ -1,4 +1,4 @@
-import { FETCH_DATA, DATA_FETCHED } from "../constants";
+import { FETCH_DATA, DATA_FETCHED } from  '../../constants';
 import {
   applyFetchData,
   applyStoreFetchedData

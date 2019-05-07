@@ -1,4 +1,4 @@
-import { ADD_TO_WATCH_LIST } from "../constants";
+import { ADD_TO_WATCH_LIST } from "../../constants";
 import { applyAddToWatchList } from "../actions/watchListAction";
 
 const INITIAL_STATE = {

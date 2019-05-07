@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import Searchbar from "../components/Searchbar";
+import Searchbar from "../components/movie/Searchbar";
 import "./Searchpage.scss";
-import { doFetchData } from "../actions/fetchDataAction";
+import { doFetchData } from "../store/actions/fetchDataAction";
 import { connect } from "react-redux";
 import { getSearchResults, getIndicators } from "../selectors";
-import MovieCard from "../components/MovieCard";
-import Loader from "../components/Loader";
-import ErrorDisplay from "../components/ErrorDisplay";
+import MovieCard from "../components/movie/MovieCard";
+import Loader from "../components/extras/Loader";
+import ErrorDisplay from "../components/extras/ErrorDisplay";
 
 class SearchPage extends Component {
   constructor(props) {

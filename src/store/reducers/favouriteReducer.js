@@ -1,4 +1,4 @@
-import { ADD_FAV_TO_LIST } from "../constants";
+import { ADD_FAV_TO_LIST } from '../../constants';
 import { applyMarkFavourite } from "../actions/favouriteAction";
 const INITIAL_STATE = {
   ids: [],

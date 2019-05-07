@@ -1,4 +1,4 @@
-import { ADD_TO_WATCH_LIST } from "../constants";
+import { ADD_TO_WATCH_LIST } from "../../constants";
 
 export const addToWatchList = (movie, id) => {
   return diptach => diptach(doAddToWatchList(movie, id));

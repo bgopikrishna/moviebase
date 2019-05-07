@@ -1,7 +1,6 @@
 import React from "react";
 import "./Modal.scss";
 import { PropTypes } from "prop-types";
-import Loader from "./Loader";
 
 const Modal = ({
   title,

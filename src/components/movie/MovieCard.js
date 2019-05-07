@@ -1,12 +1,12 @@
 import React from "react";
 import "./MovieCard.scss";
-import { ifNotExists } from "../helperfunctions/helpers";
+import { ifNotExists } from "../../helperfunctions/helpers";
 import { Link } from "react-router-dom";
-import { doMarkFavourite } from "../actions/favouriteAction";
+import { doMarkFavourite } from "../../store/actions/favouriteAction";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { addToWatchList } from "../actions/watchListAction";
-import {  WatchListAddIcon } from "./MaterialIcons";
+import { addToWatchList } from "../../store/actions/watchListAction";
+import {  WatchListAddIcon } from "../extras/MaterialIcons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 

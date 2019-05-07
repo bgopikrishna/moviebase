@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { getFavouritesList, getWatchList } from "../selectors";
-import MovieCard from "../components/MovieCard";
+import MovieCard from "../components/movie/MovieCard";
 import "./MovieListPage.scss";
 
 const MovieListPage = ({ favList, watchList }) => {

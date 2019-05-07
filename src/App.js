@@ -1,15 +1,15 @@
 import React, { Component } from "react";
 import "./App.scss";
-import Navbar from "./components/Navbar";
+import Navbar from "./components/layout/Navbar";
 import { Switch, Route } from "react-router-dom";
 import SearchPage from "./pages/Searchpage";
 import NoPage404 from "./pages/NoPage404";
 import MovieInfoPage from "./pages/MovieInfoPage";
 import { BrowserRouter as Router } from "react-router-dom";
 import MovieListPage from "./pages/MovieListPage";
-import Footer from "./components/Footer";
+import Footer from "./components/layout/Footer";
 import TrendingPage from "./pages/TrendingPage";
-import ErrorDisplay from "./components/ErrorDisplay";
+import ErrorDisplay from "./components/extras/ErrorDisplay";
 
 class App extends Component {
   constructor(props) {
@@ -55,7 +55,7 @@ class App extends Component {
               <Route exact path="/movie/:movie_Id" component={MovieInfoPage} />
 
               {/* 404 Page Component */}
-              <Route path="/404" component={NoPage404} />
+              <Route component={NoPage404} />
             </Switch>
             <Footer />
           </div>

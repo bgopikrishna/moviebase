@@ -5,7 +5,7 @@ import {
   TOGGLE_ERROR_INDICATOR,
   API_KEY,
   API_BASE_URL
-} from "../constants";
+} from "../../constants";
 import { doToggleIndicator } from "./indicatorAction";
 
 export const doFetchData = (searchTerm, page = 1) => {
