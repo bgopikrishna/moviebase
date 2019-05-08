@@ -48,3 +48,13 @@ body {
   flex-direction: column;
   min-height: 100%;
 }
+
+.container {
+  width: 100%;
+}
+
+@media (max-width: 900px) {
+  .container {
+    margin-bottom: 80px;
+  }
+}

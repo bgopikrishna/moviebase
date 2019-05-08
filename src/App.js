@@ -10,6 +10,8 @@ import MovieListPage from "./pages/MovieListPage";
 import Footer from "./components/layout/Footer";
 import TrendingPage from "./pages/TrendingPage";
 import ErrorDisplay from "./components/extras/ErrorDisplay";
+import SignIn from "./pages/SignIn";
+import SignUp from "./pages/SignUp";
 
 class App extends Component {
   constructor(props) {
@@ -36,37 +38,48 @@ class App extends Component {
             {/* Navigation Bar */}
             <Navbar />
 
-            <Switch>
-              {/* Home Component */}
-              <Route exact path="/" component={TrendingPage} />
-              <Route exact path="/home" component={TrendingPage} />
-              <Route exact path="/trending" component={TrendingPage} />
+            <div className="container">
+              <Switch>
+                {/* Home Component */}
+                <Route exact path="/" component={TrendingPage} />
+                <Route exact path="/home" component={TrendingPage} />
+                <Route exact path="/trending" component={TrendingPage} />
 
-              {/*Search Component */}
-              <Route exact path="/search" component={SearchPage} />
+                {/*Search Component */}
+                <Route exact path="/search" component={SearchPage} />
 
-              {/* 404 Page Component */}
-              <Route path="/list" component={MovieListPage} />
+                {/* 404 Page Component */}
+                <Route path="/list" component={MovieListPage} />
 
-              {/* account Component */}
-              <Route path="/account" component={NoPage404} />
+                {/* account Component */}
+                <Route path="/account" component={NoPage404} />
 
-              {/* MovieInfo Page Component */}
-              <Route exact path="/movie/:movie_Id" component={MovieInfoPage} />
+                {/* MovieInfo Page Component */}
+                <Route
+                  exact
+                  path="/movie/:movie_Id"
+                  component={MovieInfoPage}
+                />
 
-              {/* 404 Page Component */}
-              <Route
-                path="/cast/:id"
-                component={props => {
-                  window.location = `https://www.themoviedb.org/person/${
-                    props.match.params.id
-                  }`;
-                  return null;
-                }}
-              />
+                {/* 404 Page Component */}
+                <Route
+                  path="/cast/:id"
+                  component={props => {
+                    window.location = `https://www.themoviedb.org/person/${
+                      props.match.params.id
+                    }`;
+                    return null;
+                  }}
+                />
+                {/** Sign In Page */}
+                <Route path="/signin" component={SignIn} />
 
-              <Route component={NoPage404} />
-            </Switch>
+                {/** Sign Up Page */}
+                <Route path="/signup" component={SignUp} />
+
+                <Route component={NoPage404} />
+              </Switch>
+            </div>
             <Footer />
           </div>
         </Router>

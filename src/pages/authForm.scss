@@ -1,0 +1,106 @@
+@import "../variables";
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  margin: 40px auto;
+  align-items: center;
+  padding: 40px 0;
+  background: rgba($color: #000000, $alpha: 0.1);
+  border-radius: 5px;
+
+  .form-title {
+    font-size: 1.4rem;
+    font-weight: bold;
+    text-align: center;
+    margin: 20px auto;
+  }
+}
+
+.form-container .input-field {
+  display: flex;
+  flex-direction: column;
+  margin: 20px auto;
+  width: 100%;
+}
+
+.input-field label,
+.input-field input,
+.input-field button {
+  width: 100%;
+  height: 40px;
+  padding: 10px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  outline: none;
+  font-family: inherit;
+}
+.input-field input {
+  min-width: 300px;
+  width: 60%;
+  background: $white;
+  border: 1px solid $white;
+  padding: 5px 20px;
+  box-sizing: border-box;
+  color: $black;
+  transition: all 0.1s ease-in-out;
+
+  &:focus {
+    box-shadow: 0px 0px 7px $blue;
+    border: 1px solid $blue;
+  }
+}
+
+.input-field button {
+  background: $blue;
+  border: none;
+  color: $white;
+  font-size: 14px;
+  font-weight: bolder;
+  height: 40px;
+  width: 35%;
+  margin: auto;
+  padding: 5px 10px;
+  box-sizing: border-box;
+  transform-origin: 0%;
+  transition: all 0.1s ease-in-out;
+
+  &:hover,
+  &:focus {
+    background: $white;
+    color: $blue;
+    cursor: pointer;
+  }
+}
+
+.form-container .form-footer,
+.form-container .form-error {
+  min-width: 100%;
+  display: flex;
+  justify-content: space-around;
+  text-decoration: underline;
+}
+
+.form-container .form-error {
+  text-decoration: none;
+  color: tomato;
+}
+
+@media (max-width: 900px) {
+  .form-container {
+    width: 90vw;
+    margin: 0 auto;
+    background: $black;
+
+    .form-title {
+      margin: 0;
+    }
+  }
+
+  .input-field label,
+  .input-field input,
+  .input-field button {
+    width: 100%;
+  }
+}
