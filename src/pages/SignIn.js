@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./authForm.scss";
+import { connect } from "react-redux";
+import { doSignIn } from "../store/actions/authActions";
 
 export class SignIn extends Component {
   state = {
@@ -16,15 +18,16 @@ export class SignIn extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    // this.props.signIn(this.state);
+    this.props.signIn(this.state);
   };
 
   render() {
     const { email, password } = this.state;
+    const { authError, auth } = this.props;
 
     return (
       <div className="form-container">
-        <form>
+        <form onSubmit={this.handleSubmit}>
           <h5 className="form-title">Sign In</h5>
           <div className="input-field">
             <label htmlFor="email">Email</label>
@@ -54,9 +57,11 @@ export class SignIn extends Component {
             <button type="submit">Sign In</button>
           </div>
         </form>
-        {/* <div className="form-error">
-          <p>Login Failed</p>
-        </div> */}
+        {authError && (
+          <div className="form-error">
+            <p>{authError}</p>
+          </div>
+        )}
         <div className="form-footer">
           <Link to="/signup">Sign Up</Link>
           <Link to="/signin">Forgot Password ?</Link>
@@ -66,4 +71,20 @@ export class SignIn extends Component {
   }
 }
 
-export default SignIn;
+export const mapStateToProps = (state, props) => {
+  return {
+    ...props,
+    authError: state.authState.authError,
+    auth: state.firebase.auth
+  };
+};
+export const mapDispatchToProps = dispatch => {
+  return {
+    signIn: creds => dispatch(doSignIn(creds))
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SignIn);
