@@ -17,8 +17,8 @@
 
   .more_button {
     @include normalButton;
-    width: 100px;
-    background: $blue-gradient;
+    width: auto;
+    padding: 10px 20px;
     margin: 10px auto;
     border: 1px solid $white;
     background: transparent;

@@ -1,5 +1,4 @@
 import {
-  FETCH_DATA,
   DATA_FETCHED,
   TOGGLE_LOADING_INDICATOR,
   TOGGLE_ERROR_INDICATOR,
@@ -15,12 +14,11 @@ export const doFetchData = (searchTerm, page = 1) => {
       `${API_BASE_URL}/search/movie?api_key=${API_KEY}&query=${searchTerm}&page=${page}`
     )
       .then(data => data.json())
-      .then(data => dispatch(doStoreFetchedData(data.results)))
+      .then(data => {
+        dispatch(doStoreFetchedData(data.results));
+      })
       .then(() => {
-        return setTimeout(
-          () => dispatch(doToggleIndicator(TOGGLE_LOADING_INDICATOR, false)),
-          2000
-        );
+        dispatch(doToggleIndicator(TOGGLE_LOADING_INDICATOR, false));
       })
       .catch(errorMsg => {
         dispatch(doToggleIndicator(TOGGLE_LOADING_INDICATOR, false));

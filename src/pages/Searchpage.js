@@ -25,9 +25,9 @@ class SearchPage extends Component {
   handleSubmit = e => {
     e.preventDefault();
     let searchTerm = this.state.searchFieldValue.toLowerCase();
-   if(searchTerm) {
-    this.props.doSearch(searchTerm);
-   }
+    if (searchTerm) {
+      this.props.doSearch(searchTerm);
+    }
   };
 
   render() {
@@ -39,8 +39,8 @@ class SearchPage extends Component {
 
     if (isLoading && !isError) {
       searchResultJSX = <Loader />;
-    } else if (isError) {
-      searchResultJSX = <ErrorDisplay errorMsg={errorMsg} />;
+    } else if (isError || searchResults.length === 0) {
+      searchResultJSX = <ErrorDisplay errorMsg={"No Results Found"} />;
     } else {
       searchResultJSX =
         searchResults &&
@@ -54,7 +54,6 @@ class SearchPage extends Component {
           handleSubmit={this.handleSubmit}
         />
         <div className="search__results">{searchResultJSX}</div>
-       
       </div>
     );
   }
@@ -70,7 +69,7 @@ const mapStateToProps = (state, props) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    doSearch: searchTerm => dispatch(doFetchData(searchTerm)),
+    doSearch: searchTerm => dispatch(doFetchData(searchTerm))
   };
 };
 

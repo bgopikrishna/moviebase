@@ -23,6 +23,8 @@ class App extends Component {
   }
 
   componentDidMount() {
+  
+
     //Checking internet connection for the user
     fetch("https://jsonplaceholder.typicode.com/posts").catch(() =>
       this.setState(() => ({ isOnline: false }))
@@ -31,6 +33,7 @@ class App extends Component {
 
   render() {
     const { isOnline } = this.state;
+
     if (isOnline) {
       return (
         <Router>

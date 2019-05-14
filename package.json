@@ -8,15 +8,18 @@
     "@fortawesome/free-regular-svg-icons": "^5.8.1",
     "@fortawesome/free-solid-svg-icons": "^5.8.1",
     "@fortawesome/react-fontawesome": "^0.1.4",
+    "firebase": "^6.0.2",
     "global": "^4.3.2",
     "node-sass": "^4.11.0",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
     "react-lazy-load": "^3.0.13",
     "react-redux": "^6.0.1",
+    "react-redux-firebase": "^2.2.6",
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.5",
     "redux": "^4.0.1",
+    "redux-firestore": "^0.7.3",
     "redux-thunk": "^2.3.0"
   },
   "scripts": {

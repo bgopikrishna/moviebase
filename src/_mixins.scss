@@ -11,17 +11,25 @@
   text-shadow: none;
 }
 
-@mixin normalButton($color: #111, $background: #fff, $margin: 5px) {
-  background: $background;
-  color: $color;
+@mixin normalButton($margin: 5px) {
   padding: 0.7rem;
-  border-radius: none;
+  border-radius: 5px;
+  font-weight: bold;
+  font-family: inherit;
   outline: none;
   border: none;
   display: flex;
   align-items: center;
   margin: 0 $margin;
   justify-content: space-around;
+  transition: 0.2s all cubic-bezier(0.215, 0.61, 0.355, 1);
+  background: $blue;
+  color: $white;
+
+
+  svg {
+    fill: $white;
+  }
 
 
   &:hover,

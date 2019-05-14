@@ -1,5 +1,6 @@
 @import "variables";
-@import url("https://fonts.googleapis.com/css?family=Maven+Pro");
+@import url("https://fonts.googleapis.com/css?family=Maven+Pro|Nunito");
+
 
 html {
   scroll-behavior: smooth;
@@ -31,7 +32,7 @@ a {
 }
 
 body {
-  font-family: -system-ui, -apple-system, BlinkMacSystemFont, "Maven Pro",
+  font-family: 'Nunito', -system-ui, -apple-system, BlinkMacSystemFont, "Maven Pro",
     "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji",
     "Segoe UI Emoji", "Segoe UI Symbol";
 

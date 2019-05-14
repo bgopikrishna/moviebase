@@ -6,7 +6,7 @@
   background: $white;
   color: $black;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 15px;
+  border-radius: 5px;
   display: flex;
   flex-direction: column;
 }
@@ -37,6 +37,6 @@
   width: 100%;
   padding-bottom: 10px;
   object-fit: cover;
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 }

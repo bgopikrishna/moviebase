@@ -6,18 +6,33 @@ import "./MovieListPage.scss";
 
 const MovieListPage = ({ favList, watchList }) => {
   return (
-    <React.Fragment>
-      <div className="list">
-        <div className="list__heading">
+    <div className="movie-list-page">
+      <div className="movie-list">
+        <div className="movie-list__heading">
           <h3>Favourites</h3>
         </div>
-        <div className="list-items">
+        <ul className="movie-list__list-items">
           {favList.length !== 0 &&
-            favList.map(movie => <MovieCard key={movie.id} movie={movie} />)}
-        </div>
+            favList.map(movie => (
+              <li key={movie.id} className="movie-list__list-item">
+                <div className="list-item__title">
+                  <h5>{movie.original_title}</h5>
+                </div>
+                <div className="list-item__date">
+                  <p>{movie.release_date}</p>
+                </div>
+                <div className="list-item__rating">
+                  <p>{movie.vote_average}</p>
+                </div>
+                <div className="list-item__delete">
+                  <a href="/"> &times; </a>
+                </div>
+              </li>
+            ))}
+        </ul>
       </div>
 
-      <div className="list">
+      <div className="movie-list">
         <div className="list__heading">
           <h3>Watch List</h3>
         </div>
@@ -26,7 +41,7 @@ const MovieListPage = ({ favList, watchList }) => {
             watchList.map(movie => <MovieCard key={movie.id} movie={movie} />)}
         </div>
       </div>
-    </React.Fragment>
+    </div>
   );
 };
 

@@ -43,16 +43,15 @@
 .searchbar button {
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
-  background: $blue-gradient;
+  background: $blue;
+  font-weight: bold;
   cursor: pointer;
   color: inherit;
-  transition: all 0.3s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  transition: all 0.1s cubic-bezier(0.445, 0.05, 0.55, 0.95);
 
   &:hover,
   &:focus {
-    background: $white;
-    color: $black;
-    border-left: 0.5px solid $black;
+    background: #30cde2;
   }
 }
 

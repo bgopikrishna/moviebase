@@ -1,7 +1,8 @@
 @import "../../variables";
 @import "../../mixins";
 
-ul,
+
+.navbar ul,
 li {
   margin: 0;
   padding: 0;
@@ -9,13 +10,13 @@ li {
 .navbar {
   display: flex;
   flex-direction: row;
-  background: $blue-gradient;
+  background: $blue;
   justify-content: space-around;
   align-items: center;
   z-index: 2;
 }
 
-h1 {
+.navbar h1 {
   margin: 0;
 }
 
@@ -77,7 +78,7 @@ h1 {
     &.active {
       transform: scale(1);
       // @include gradient-color($blue-gradient);
-     opacity: 1;
+      opacity: 1;
     }
 
     span {

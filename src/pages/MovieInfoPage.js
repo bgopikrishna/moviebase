@@ -9,6 +9,7 @@ import {
 import Modal from "../components/movie/Modal";
 import "./MovieInfoPage.scss";
 import MovieInfoComp from "../components/MovieInfoComps";
+import { movieInfoParser } from "../helperfunctions/movieInfoParser";
 
 export class MovieInfoPage extends Component {
   constructor(props) {
@@ -30,11 +31,13 @@ export class MovieInfoPage extends Component {
     if (movie) {
       this.setState({ movie, isLoading: false });
     } else {
-      fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${API_KEY}&language=en-US&&append_to_response=credits,videos
+      fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${API_KEY}&language=en-US&append_to_response=credits,videos
     `)
         .then(parseJSON)
-        .then(movie => {
+        .then(movieFromApi => {
           //setting movie data in local storage
+          const movie = movieInfoParser(movieFromApi);
+
           storeDataInLocalStorage(movieId, movie);
 
           this.setState({ movie, isLoading: false });

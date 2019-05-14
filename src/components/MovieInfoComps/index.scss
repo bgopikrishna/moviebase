@@ -8,73 +8,6 @@
   flex-direction: column;
 }
 
-.movie-cover-images {
-  width: 100%;
-  position: relative;
-  height: 100%;
-  z-index: 0;
-  &::after {
-    content: "";
-    display: block;
-    position: relative;
-    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0, #111 100%);
-    margin-top: -80px;
-    height: 80px;
-    width: 100%;
-  }
-}
-
-.movie-cover-images img {
-  display: block;
-  object-fit: cover;
-  max-width: 100%;
-  height: 100%;
-}
-.movie-cover-trailer-btn {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  margin: auto;
-  width: 75px;
-  height: 75px;
-  z-index: 3;
-  cursor: pointer;
-  outline: none;
-  background: transparent !important;
-  border: none;
-  color: $white;
-  opacity: 0.6;
-  z-index: 9999;
-  transition: all 0.1s ease-in;
-
-  &:hover,
-  &:focus {
-    transform: scale(1.1);
-    opacity: 1;
-
-    background: rgba(0, 0, 0, 0.5);
-  }
-}
-
-.movie-backdrop {
-  width: 100%;
-}
-
-.movie-poster {
-  position: absolute;
-  height: 300px;
-  width: auto;
-  z-index: 2;
-  bottom: -10%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5);
-}
-
 .row-2 {
   min-height: 80px;
   width: 66%;
@@ -153,34 +86,37 @@
   display: flex;
 }
 .movieinfo-action-btn {
-  @include normalButton($black, $white);
+  @include normalButton;
   height: 40px;
   padding: 0px 10px;
-  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5);
-  transition: 0.3s all cubic-bezier(0.215, 0.61, 0.355, 1);
-  font-weight: 700;
-  border-radius: 0px;
+  background: transparent;
+  border: 0.5px solid $white;
+  outline: none;
+
   &.active {
     animation: scaleAndShrink 0.25s ease-in 0.05ms 1 alternate;
+    // background: rgb(209, 208, 208) !important;
   }
-  &.like.active {
-    color: $white;
-    background: tomato;
+
+  &.like.active,
+  &.like:hover {
     box-shadow: none;
+    background: orangered;
+    border: 0.5px solid orangered;
   }
-  &.watchlist.active {
-    background: $blue;
-    color: $white;
+  &.watchlist.active,
+  &.watchlist:hover{
     fill: $white;
-    box-shadow: none;
+    background: $blue;
+    border: 0.5px solid $blue;
   }
 
   &.play-trailer {
     &:hover,
     &:focus {
-      background: #ff0000;
       color: $white;
-      box-shadow: none;
+      background: rgba(255, 0, 0, 1);
+      border: 0.5px solid red;
     }
   }
 }
@@ -217,12 +153,14 @@
 }
 
 @media (max-width: 900px) {
-  .movie-poster {
-    display: none;
-  }
   .row-2 {
     width: 100%;
     margin-top: 0px;
+  }
+
+  .release-date,
+  .transparent-pill {
+    margin-right: 4px;
   }
   .movie-actions {
     flex-direction: column-reverse;
@@ -239,7 +177,7 @@
     height: 100%;
     text-align: center;
     box-sizing: border-box;
-    padding: 10px;
+    padding: 10px 5px;
   }
   .movie-name {
     width: 100%;

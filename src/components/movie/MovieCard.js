@@ -6,9 +6,9 @@ import { doMarkFavourite } from "../../store/actions/favouriteAction";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { addToWatchList } from "../../store/actions/watchListAction";
-import {  WatchListAddIcon } from "../extras/MaterialIcons";
+import { WatchListAddIcon } from "../extras/MaterialIcons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import { faHeart, faStar } from "@fortawesome/free-solid-svg-icons";
 
 /*
  A moviecard component for diplaying movie details like rating , title etc
@@ -63,6 +63,7 @@ const MovieCard = ({
   const watchListbtnStyle = isInWatchList
     ? "action_btn__btn active"
     : " action_btn__btn";
+
   return (
     //Movie card
     <div className="card">
@@ -80,7 +81,9 @@ const MovieCard = ({
             <Link to={`/movie/${id}`}>{original_title}</Link>
           </h3>
           <span>{release_date}</span>
-          <span className="card__rating">{vote_average}</span>
+          <span className="card__rating">
+            <FontAwesomeIcon icon={faStar} color="gold" /> {vote_average}
+          </span>
           <p>{overview}</p>
         </div>
 

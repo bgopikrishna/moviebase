@@ -57,7 +57,7 @@ const MovieActionBtns = ({
             className="movieinfo-action-btn play-trailer"
           >
             <FontAwesomeIcon icon={faPlay} />
-            <span className="movieinfo-action-btn-content">Trailer</span>
+            <span className="movieinfo-action-btn-content">Watch Trailer</span>
           </button>
         )}
       </div>
