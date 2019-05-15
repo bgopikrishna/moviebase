@@ -26,14 +26,27 @@
   background: $blue;
   color: $white;
 
-
   svg {
     fill: $white;
   }
 
-
   &:hover,
   &:focus {
+    cursor: pointer;
+  }
+}
+
+@mixin cardActionBtn {
+  border: none;
+  background: transparent !important;
+  color: inherit;
+  font-size: 18px;
+  outline: none;
+  transition: 0.3ms all ease-in;
+  display: flex;
+  align-items: center;
+  &:focus,
+  &:hover {
     cursor: pointer;
   }
 }

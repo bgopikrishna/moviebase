@@ -39,8 +39,8 @@ class SearchPage extends Component {
 
     if (isLoading && !isError) {
       searchResultJSX = <Loader />;
-    } else if (isError || searchResults.length === 0) {
-      searchResultJSX = <ErrorDisplay errorMsg={"No Results Found"} />;
+    } else if (isError) {
+      searchResultJSX = <ErrorDisplay errorMsg={errorMsg} />;
     } else {
       searchResultJSX =
         searchResults &&

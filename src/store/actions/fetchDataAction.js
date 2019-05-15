@@ -15,11 +15,17 @@ export const doFetchData = (searchTerm, page = 1) => {
     )
       .then(data => data.json())
       .then(data => {
-        dispatch(doStoreFetchedData(data.results));
-      })
-      .then(() => {
         dispatch(doToggleIndicator(TOGGLE_LOADING_INDICATOR, false));
+
+        if (data.results.length !== 0) {
+          dispatch(doStoreFetchedData(data.results));
+        } else {
+          dispatch(
+            doToggleIndicator(TOGGLE_ERROR_INDICATOR, true, "NO RESULTS FOUND")
+          );
+        }
       })
+
       .catch(errorMsg => {
         dispatch(doToggleIndicator(TOGGLE_LOADING_INDICATOR, false));
         dispatch(

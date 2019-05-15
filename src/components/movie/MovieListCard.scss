@@ -1,0 +1,92 @@
+@import "../../variables";
+@import "../../mixins";
+
+.list-card {
+  display: flex;
+  flex-direction: row;
+  height: 50px;
+  width: auto;
+  background: $white;
+  color: $black;
+  width: 80%;
+  margin: 20px auto;
+  border-radius: 5px;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5);
+
+  a {
+    text-decoration: none;
+    color: inherit;
+    &:hover,
+    &:focus {
+      color: $blue;
+    }
+  }
+
+  &__image {
+    height: 100%;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-top-left-radius: 5px;
+      border-bottom-left-radius: 5px;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    flex-wrap: wrap;
+    height: 100%;
+  }
+
+  &__header {
+    width: 50%;
+    h4 {
+      margin: 0;
+    }
+  }
+
+  &__details {
+    width: 30%;
+    display: flex;
+    justify-content: space-between;
+    color: $black;
+  }
+
+  &__action-bar-btns {
+    @include cardActionBtn;
+
+    &:hover,
+    &:focus {
+      color: red;
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .list-card {
+    height: 120px;
+    width: 94%;
+
+    &__image {
+      height: auto;
+      width: 80px;
+    }
+    &__header {
+      width: 100%;
+    }
+
+    &__content {
+      justify-content: space-between;
+      padding: 10px;
+    }
+    &__details {
+      width: 80%;
+    }
+  }
+}

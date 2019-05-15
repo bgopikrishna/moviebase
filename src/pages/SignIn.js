@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import "./authForm.scss";
 import { connect } from "react-redux";
 import { doSignIn } from "../store/actions/authActions";
@@ -24,6 +24,7 @@ export class SignIn extends Component {
   render() {
     const { email, password } = this.state;
     const { authError, auth } = this.props;
+    if (auth.uid) return <Redirect to="/" />;
 
     return (
       <div className="form-container">
