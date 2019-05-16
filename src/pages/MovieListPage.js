@@ -3,8 +3,11 @@ import { connect } from "react-redux";
 import { getFavouritesList, getWatchList } from "../selectors";
 import "./MovieListPage.scss";
 import MovieListCard from "../components/movie/MovieListCard";
+import { Redirect } from "react-router-dom";
 
-const MovieListPage = ({ favList, watchList }) => {
+const MovieListPage = ({ favList, watchList, auth }) => {
+  if (auth.uid) return <Redirect to="/signin" />;
+
   return (
     <div className="movie-list-page">
       <div className="movie-list">
@@ -46,7 +49,8 @@ const mapStateToProps = (state, props) => {
   return {
     ...props,
     favList: getFavouritesList(state),
-    watchList: getWatchList(state)
+    watchList: getWatchList(state),
+    auth: state.firebase.auth
   };
 };
 

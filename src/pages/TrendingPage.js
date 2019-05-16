@@ -6,18 +6,20 @@ import MovieCard from "../components/movie/MovieCard";
 import { parseJSON } from "../helperfunctions/helpers";
 import { doFetchData } from "../store/actions/fetchDataAction";
 import Loader from "../components/extras/Loader";
+import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
 
 export class TrendingPage extends Component {
   constructor(props) {
-    super(props);
+    let _isMounted = false;
 
+    super(props);
     this.state = {
       trendingMoviesList: [],
       isError: false,
       errorMsg: "Some Thing Went Wrong",
       currentPage: 1,
-      isLoading: true,
-      _isMounted: false,
+      isLoading: true
     };
   }
 
@@ -55,17 +57,19 @@ export class TrendingPage extends Component {
     //Fetching the trending movies on page 1 on component mounts
 
     const { currentPage } = this.state;
-    this.setState({_isMounted: true})
-
-    //Fetching and setting data
-    this.doFetchData(currentPage);
-  }
-
-  componentWillUnmount(){
-    this.setState()
+    if (this.props.auth.uid) {
+      //Fetching and setting data
+      this.doFetchData(currentPage);
+    }
   }
 
   render() {
+    //Redirect if not signed in
+
+    if (!this.props.auth.uid) return <Redirect to="signin" />;
+
+    //Redirect
+
     const { trendingMoviesList, isError, errorMsg, isLoading } = this.state;
 
     //Iterating through trendingResults Array of movies
@@ -91,4 +95,10 @@ export class TrendingPage extends Component {
   }
 }
 
-export default TrendingPage;
+export const mapStateToProps = (state, props) => {
+  return {
+    auth: state.firebase.auth
+  };
+};
+
+export default connect(mapStateToProps)(TrendingPage);

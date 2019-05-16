@@ -1,16 +1,12 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
 import "./Navbar.scss";
-import { NavLink } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faFire,
-  faSearch,
-  faFilm,
-  faUserAstronaut
-} from "@fortawesome/free-solid-svg-icons";
+import { connect } from "react-redux";
+import SignInLinks from "./SignInLinks";
+import SignOutLinks from "./SignOutLinks";
 
-const Navbar = () => {
+const Navbar = ({ auth }) => {
+  const links = auth.uid ? <SignInLinks /> : <SignOutLinks />;
   return (
     <div className="navbar">
       <header className="__logo">
@@ -18,36 +14,17 @@ const Navbar = () => {
           <a href="/">moviebase</a>
         </h1>
       </header>
-      <nav>
-        <ul className="__navlinks">
-          <li>
-            <NavLink exact to="/" className="__navitem">
-              <FontAwesomeIcon icon={faFire} />
-              &nbsp;trending
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/search" className="__navitem">
-              <FontAwesomeIcon icon={faSearch} />
-              &nbsp;search
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/list" className="__navitem">
-              <FontAwesomeIcon icon={faFilm} />
-              &nbsp;mylist
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/account" className="__navitem">
-              <FontAwesomeIcon icon={faUserAstronaut} />
-              &nbsp;account
-            </NavLink>
-          </li>
-        </ul>
-      </nav>
+
+      {links}
     </div>
   );
 };
 
-export default Navbar;
+export const mapStateToProps = (state, props) => {
+  return {
+    ...props,
+    auth: state.firebase.auth
+  };
+};
+
+export default connect(mapStateToProps)(Navbar);

@@ -1,5 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { API_KEY } from "../constants";
+import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
 import Loader from "../components/extras/Loader";
 import {
   getDataFromLocalStorage,
@@ -91,6 +93,9 @@ export class MovieInfoPage extends Component {
           )[0]
         : {};
 
+    //Redirect if not signed in
+    if (!this.props.auth.uid) return <Redirect to="/signin" />;
+
     if (isLoading) {
       return <Loader />;
     } else if (!isError && Object.entries(movie).length !== 0) {
@@ -128,4 +133,11 @@ export class MovieInfoPage extends Component {
   }
 }
 
-export default MovieInfoPage;
+export const mapStateToProps = (state, props) => {
+  return {
+    ...props,
+    auth: state.firebase.auth
+  };
+};
+
+export default connect(mapStateToProps)(MovieInfoPage);

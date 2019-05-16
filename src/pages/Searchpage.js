@@ -3,6 +3,7 @@ import Searchbar from "../components/movie/Searchbar";
 import "./Searchpage.scss";
 import { doFetchData } from "../store/actions/fetchDataAction";
 import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
 import { getSearchResults, getIndicators } from "../selectors";
 import MovieCard from "../components/movie/MovieCard";
 import Loader from "../components/extras/Loader";
@@ -31,6 +32,10 @@ class SearchPage extends Component {
   };
 
   render() {
+    //Redirect if not signed in
+
+    if (!this.props.auth.uid) return <Redirect to="signin" />;
+    //Redirect
     const { searchFieldValue } = this.state;
     const { searchResults, indicators } = this.props;
     const { isLoading, isError, errorMsg } = indicators;
@@ -46,6 +51,7 @@ class SearchPage extends Component {
         searchResults &&
         searchResults.map(movie => <MovieCard key={movie.id} movie={movie} />);
     }
+
     return (
       <div className="searchpage">
         <Searchbar
@@ -63,7 +69,7 @@ const mapStateToProps = (state, props) => {
   return {
     searchResults: getSearchResults(state),
     indicators: getIndicators(state),
-    ...props
+    auth: state.firebase.auth
   };
 };
 
