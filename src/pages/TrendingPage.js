@@ -97,7 +97,7 @@ export class TrendingPage extends Component {
 
 export const mapStateToProps = (state, props) => {
   return {
-    auth: state.firebase.auth
+    auth: state.firebase.auth,
   };
 };
 

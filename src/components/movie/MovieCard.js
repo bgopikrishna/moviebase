@@ -1,5 +1,7 @@
 import React from "react";
 import "./MovieCard.scss";
+import { compose } from "redux";
+import { firestoreConnect } from "react-redux-firebase";
 import { ifNotExists } from "../../helperfunctions/helpers";
 import { Link } from "react-router-dom";
 import { doMarkFavourite } from "../../store/actions/favouriteAction";
@@ -138,21 +140,28 @@ const mapStateToProps = (state, props) => {
   return {
     ...props,
     favIds: state.favItems.ids,
-    watchListIds: state.watchListItems.ids
+    watchListIds: state.watchListItems.ids,
+    firestore: state.firestore
   };
 };
 
+const enhanceWithFirestore = compose(
+  firestoreConnect(["data"]), // sync data collection from Firestore into redux
+  connect(
+    mapStateToProps,
+    mapDisptachToProps
+  )
+);
+
 //Connecting the Redux Store to the Component
-export default connect(
-  mapStateToProps,
-  mapDisptachToProps
-)(MovieCard);
+export default enhanceWithFirestore(MovieCard);
 
 //TypeChecking
 MovieCard.propTypes = {
   movie: PropTypes.object.isRequired,
   addToFavList: PropTypes.func,
-  favIds: PropTypes.array
+  favIds: PropTypes.array,
+
 };
 
 MovieCard.defaultProps = {
