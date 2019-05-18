@@ -9,15 +9,17 @@ export const doMarkFavourite = (movie, id) => {
       vote_average,
       poster_path
     };
+    const userId = getState().firebase.auth.uid;
+
     let favlist;
     const firestore = getFirestore();
+
     firestore
       .collection("data")
-      .doc("wcSLYWcrGqQMzeoOeUPqlfLUIZo2")
+      .doc(userId)
       .get()
       .then(doc => {
-        console.log(typeof doc.data());
-        console.log(doc.data());
+        
 
         favlist = doc.data().favlist;
         let isItAlreadyInList = favlist.hasOwnProperty(id);
@@ -33,7 +35,7 @@ export const doMarkFavourite = (movie, id) => {
       .then(data => {
         firestore
           .collection("data")
-          .doc("wcSLYWcrGqQMzeoOeUPqlfLUIZo2")
+          .doc(userId)
           .update({
             favlist: data
           });

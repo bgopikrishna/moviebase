@@ -23,3 +23,11 @@ export const getCastNCrewData = totalCast => {
 export const placeholderImage = (text, width = 200, height = 120) => {
   return `https://via.placeholder.com/${width}x${height}/000000/FFFFFF/?text=${text}`;
 };
+
+export const getFavListAndWatchListIds = (list, userId) => {
+  const { favlist = [], watchlist = [] } = list ? list[userId] : {};
+  const favlistIds = Object.keys(favlist).map(id => parseInt(id));
+  const watchlistIds = Object.keys(watchlist).map(id => parseInt(id));
+
+  return [favlistIds, watchlistIds];
+};

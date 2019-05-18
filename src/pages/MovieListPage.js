@@ -6,7 +6,7 @@ import MovieListCard from "../components/movie/MovieListCard";
 import { Redirect } from "react-router-dom";
 
 const MovieListPage = ({ favList, watchList, auth }) => {
-  if (auth.uid) return <Redirect to="/signin" />;
+  if (!auth.uid) return <Redirect to="/signin" />;
 
   return (
     <div className="movie-list-page">

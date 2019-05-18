@@ -10,8 +10,10 @@ import MovieListPage from "./pages/MovieListPage";
 import Footer from "./components/layout/Footer";
 import TrendingPage from "./pages/TrendingPage";
 import ErrorDisplay from "./components/extras/ErrorDisplay";
-import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
+import SignIn from "./pages/SignIn";
+import { connect } from "react-redux";
+import { doSetUserId } from "./store/actions/authActions";
 
 class App extends Component {
   constructor(props) {
@@ -23,9 +25,11 @@ class App extends Component {
   }
 
   componentDidMount() {
-  
-
     //Checking internet connection for the user
+    if (this.props.uid) {
+      const userId = this.props.uid;
+      this.props.doSetUserId(userId);
+    }
     fetch("https://jsonplaceholder.typicode.com/posts").catch(() =>
       this.setState(() => ({ isOnline: false }))
     );
@@ -94,5 +98,13 @@ class App extends Component {
     }
   }
 }
+const mapStateToProps = ({ firebase: { auth } }) => ({ auth });
 
-export default App;
+const mapDisptachToProps = dispatch => ({
+  doSetUserId: userId => dispatch(doSetUserId(userId))
+});
+
+export default connect(
+  mapStateToProps,
+  mapDisptachToProps
+)(App);

@@ -3,16 +3,19 @@ import "./TrendingPage.scss";
 import { API_BASE_URL, API_KEY } from "../constants";
 import ErrorDisplay from "../components/extras/ErrorDisplay";
 import MovieCard from "../components/movie/MovieCard";
-import { parseJSON } from "../helperfunctions/helpers";
+import {
+  parseJSON,
+  getFavListAndWatchListIds
+} from "../helperfunctions/helpers";
 import { doFetchData } from "../store/actions/fetchDataAction";
 import Loader from "../components/extras/Loader";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
+import { firestoreConnect } from "react-redux-firebase";
+import { compose } from "redux";
 
 export class TrendingPage extends Component {
   constructor(props) {
-    let _isMounted = false;
-
     super(props);
     this.state = {
       trendingMoviesList: [],
@@ -71,10 +74,20 @@ export class TrendingPage extends Component {
     //Redirect
 
     const { trendingMoviesList, isError, errorMsg, isLoading } = this.state;
+    const { userId, firestoreData } = this.props;
+    let [favlistIds, watchlistIds] = getFavListAndWatchListIds(
+      firestoreData,
+      userId
+    );
 
     //Iterating through trendingResults Array of movies
     const trendingResultsJSX = trendingMoviesList.map(movie => (
-      <MovieCard key={movie.id} movie={movie} />
+      <MovieCard
+        key={movie.id}
+        movie={movie}
+        favlistIds={favlistIds}
+        watchlistIds={watchlistIds}
+      />
     ));
 
     return (
@@ -95,10 +108,14 @@ export class TrendingPage extends Component {
   }
 }
 
-export const mapStateToProps = (state, props) => {
-  return {
-    auth: state.firebase.auth,
-  };
-};
+export const mapStateToProps = (state, props) => ({
+  auth: state.firebase.auth,
+  firestoreData: state.firestore.data.data ? state.firestore.data.data : null,
+  userId: state.firebase.auth.uid
+});
 
-export default connect(mapStateToProps)(TrendingPage);
+const enhanceWithFirestore = compose(
+  firestoreConnect(["data"]), // sync data collection from Firestore into redux
+  connect(mapStateToProps)
+);
+export default enhanceWithFirestore(TrendingPage);

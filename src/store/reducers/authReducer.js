@@ -1,6 +1,6 @@
 const INIT_STATE = {
   authError: null,
-  authState: null
+  userId: null
 };
 
 const authReducer = (state = INIT_STATE, action) => {
@@ -15,20 +15,24 @@ const authReducer = (state = INIT_STATE, action) => {
       console.log("Login Success");
       return {
         ...state,
-        authError: null
+        authError: null,
+        userId: action.uid
       };
     case "SIGNOUT_SUCESS":
       console.log("signed out sucess");
 
       return {
-        ...state
+        ...state,
+        userId: null
       };
     case "SIGNUP_SUCESS":
       console.log("signed up sucess");
 
       return {
         ...state,
-        authError: null
+        authError: null,
+        userId: action.uid
+
       };
     case "SIGNUP_ERROR":
       console.log("sign up error");
@@ -37,6 +41,12 @@ const authReducer = (state = INIT_STATE, action) => {
         ...state,
         authError: action.err.message
       };
+
+    case "SET_USER_ID":  return {
+      ...state,
+      authError: null,
+      userId: action.uid
+    }; 
 
     default:
       return state;

@@ -11,6 +11,7 @@ import { addToWatchList } from "../../store/actions/watchListAction";
 import { WatchListAddIcon } from "../extras/MaterialIcons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart, faStar } from "@fortawesome/free-solid-svg-icons";
+import { movieCardInfoParser } from "../../helperfunctions/movieInfoParser";
 
 /*
  A moviecard component for diplaying movie details like rating , title etc
@@ -21,9 +22,9 @@ const MovieCard = ({
   movie,
   addToFavList,
   addToWatchList,
-  favIds,
-  watchListIds,
-  truncateText
+  userId,
+  favlistIds = [],
+  watchlistIds = []
 }) => {
   //Destructring data from the movie object
   let {
@@ -33,31 +34,13 @@ const MovieCard = ({
     original_title,
     overview,
     release_date
-  } = movie;
-
-  /* ifNotExists is func whick checks if the info is available or not (from movie obj properties), 
-  if not available replaces with respected message  */
-  /**Checking  -starts */
-  vote_average = ifNotExists(vote_average, vote_average + "/10", "N/A");
-  poster_path = ifNotExists(
-    poster_path,
-    `https://image.tmdb.org/t/p/w185/${poster_path}`,
-    "https://via.placeholder.com/200x120/000000/FFFFFF/?text=No Image"
-  );
-  overview = ifNotExists(overview, overview, "No Data");
-  overview = truncateText ? overview.slice(0, 100) + "..." : overview;
-
-  original_title = ifNotExists(
-    original_title,
-    original_title.slice(0, 40),
-    "No data"
-  );
-  release_date = ifNotExists(release_date, release_date, "-");
-
+  } = movieCardInfoParser(movie);
   /**Checking  -ends */
 
-  let isFav = favIds.includes(id); //Checking if the item is fav or not by passing id
-  let isInWatchList = watchListIds.includes(id);
+  // }
+
+  let isFav = favlistIds.includes(id); //Checking if the item is fav or not by passing id
+  let isInWatchList = watchlistIds.includes(id);
 
   const likebtnStyle = isFav
     ? "action_btn__btn active"
@@ -66,64 +49,68 @@ const MovieCard = ({
     ? "action_btn__btn active"
     : " action_btn__btn";
 
-  return (
-    //Movie card
-    <div className="card">
-      {/*Diplaying the Image-start */}
-      <div className="card__image">
-        <img src={poster_path} alt={original_title} />
-      </div>
-      {/*Diplaying the Image-End */}
-
-      <div className="card__stacked">
-        {/*Diplaying the Title, overview , date, rating - Start*/}
-
-        <div className="card__content">
-          <h3 className="card__title">
-            <Link to={`/movie/${id}`}>{original_title}</Link>
-          </h3>
-          <span>{release_date}</span>
-          <span className="card__rating">
-            <FontAwesomeIcon icon={faStar} color="gold" /> {vote_average}
-          </span>
-          <p>{overview}</p>
+  if (userId) {
+    return (
+      //Movie card
+      <div className="card">
+        {/*Diplaying the Image-start */}
+        <div className="card__image">
+          <img src={poster_path} alt={original_title} />
         </div>
+        {/*Diplaying the Image-End */}
 
-        {/*Diplaying the Title, overview , date, rating - End */}
+        <div className="card__stacked">
+          {/*Diplaying the Title, overview , date, rating - Start*/}
 
-        {/*Card actions like like and addToList buttons - Start */}
-        <div className="card__action">
-          {/*More info Link about Movie details */}
-          <Link to={`/movie/${id}`}>More Info</Link>
-
-          {/*Actions buttons */}
-          <div className="action_btns">
-            {/*Add to watchlist  with (bookmark symbol) Button */}
-            <button
-              className={watchListbtnStyle}
-              onClick={() => addToWatchList(movie, id)}
-              title="Add To WatchList"
-            >
-              <WatchListAddIcon
-                added={isInWatchList}
-                className={watchListbtnStyle}
-              />
-            </button>
-
-            {/*Like Button with heart symbol */}
-            <button
-              onClick={() => addToFavList(movie, id)}
-              className={likebtnStyle}
-              title="Like"
-            >
-              <FontAwesomeIcon icon={faHeart} />
-            </button>
+          <div className="card__content">
+            <h3 className="card__title">
+              <Link to={`/movie/${id}`}>{original_title}</Link>
+            </h3>
+            <span>{release_date}</span>
+            <span className="card__rating">
+              <FontAwesomeIcon icon={faStar} color="gold" /> {vote_average}
+            </span>
+            <p>{overview}</p>
           </div>
+
+          {/*Diplaying the Title, overview , date, rating - End */}
+
+          {/*Card actions like like and addToList buttons - Start */}
+          <div className="card__action">
+            {/*More info Link about Movie details */}
+            <Link to={`/movie/${id}`}>More Info</Link>
+
+            {/*Actions buttons */}
+            <div className="action_btns">
+              {/*Add to watchlist  with (bookmark symbol) Button */}
+              <button
+                className={watchListbtnStyle}
+                onClick={() => addToWatchList(movie, id)}
+                title="Add To WatchList"
+              >
+                <WatchListAddIcon
+                  added={isInWatchList}
+                  className={watchListbtnStyle}
+                />
+              </button>
+
+              {/*Like Button with heart symbol */}
+              <button
+                onClick={() => addToFavList(movie, id)}
+                className={likebtnStyle}
+                title="Like"
+              >
+                <FontAwesomeIcon icon={faHeart} />
+              </button>
+            </div>
+          </div>
+          {/*Card actions like like and addToList buttons - End */}
         </div>
-        {/*Card actions like like and addToList buttons - End */}
       </div>
-    </div>
-  );
+    );
+  }
+
+  return null;
 };
 
 //Connect the action creators and dispatching  to the component
@@ -138,32 +125,25 @@ const mapDisptachToProps = dispatch => {
 const mapStateToProps = (state, props) => {
   //Syncing the data of favourites movies with store and dispalying for user if it's already liked
   return {
-    ...props,
-    favIds: state.favItems.ids,
-    watchListIds: state.watchListItems.ids,
-    firestore: state.firestore
+    userId: state.firebase.auth.uid
   };
 };
 
-const enhanceWithFirestore = compose(
-  firestoreConnect(["data"]), // sync data collection from Firestore into redux
-  connect(
-    mapStateToProps,
-    mapDisptachToProps
-  )
-);
-
 //Connecting the Redux Store to the Component
-export default enhanceWithFirestore(MovieCard);
+export default connect(
+  mapStateToProps,
+  mapDisptachToProps
+)(MovieCard);
 
 //TypeChecking
 MovieCard.propTypes = {
   movie: PropTypes.object.isRequired,
   addToFavList: PropTypes.func,
-  favIds: PropTypes.array,
-
+  favIds: PropTypes.array
 };
 
 MovieCard.defaultProps = {
-  truncateText: true
+  truncateText: true,
+  favIds: [],
+  watchListIds: []
 };

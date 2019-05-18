@@ -20,7 +20,7 @@
 
   display: flex;
   flex-direction: row;
-  background: $white;
+  background: #ffffff;
   width: 100%;
   color: $black;
   border-radius: 5px;
@@ -81,7 +81,7 @@
   .action_btn__btn.active {
     color: $orangered;
     // transform: scale(1.2);
-    animation: scaleAndShrink 0.25s ease-in 0.05ms 1 alternate;
+    animation: scaleAndShrink 0.3s ease-in 0ms alternate;
     transition: 0.3ms all ease-in;
   }
   .action_btn__btn.active svg {

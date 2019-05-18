@@ -7,20 +7,21 @@ import {
   faHeartbeat
 } from "@fortawesome/free-solid-svg-icons";
 import { connect } from "react-redux";
+import { getFavListAndWatchListIds } from "../../helperfunctions/helpers";
 
 const MovieActionBtns = ({
   rating,
   toggleModal,
   totalVotes,
-  favIds,
-  watchListIds,
+  favlistIds,
+  watchlistIds,
   movieId,
   handleFavBtn,
   handleWatchListBtn,
   isTrailerAvailable
 }) => {
-  let isFav = favIds.includes(movieId); //Checking if the item is fav or not by passing id
-  let isInWatchList = watchListIds.includes(movieId);
+  let isFav = favlistIds.includes(movieId); //Checking if the item is fav or not by passing id
+  let isInWatchList = watchlistIds.includes(movieId);
 
   const likebtnStyle = isFav ? " active" : ""; //If the item is fav apply this class
   const watchListbtnStyle = isInWatchList ? "active" : "";
@@ -65,12 +66,4 @@ const MovieActionBtns = ({
   );
 };
 
-const mapStateToProps = (state, props) => {
-  return {
-    ...props,
-    favIds: state.favItems.ids,
-    watchListIds: state.watchListItems.ids
-  };
-};
-
-export default connect(mapStateToProps)(MovieActionBtns);
+export default MovieActionBtns;

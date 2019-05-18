@@ -10,7 +10,6 @@ import { getFirebase, reactReduxFirebase } from "react-redux-firebase";
 import { getFirestore, reduxFirestore } from "redux-firestore";
 import fbConfig from "./config/fbConfig";
 
-
 export const store = createStore(
   rootReducer,
   compose(
@@ -24,11 +23,13 @@ export const store = createStore(
   )
 );
 
-ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
-  document.getElementById("root")
+store.firebaseAuthIsReady.then(() =>
+  ReactDOM.render(
+    <Provider store={store}>
+      <App />
+    </Provider>,
+    document.getElementById("root")
+  )
 );
 
 // If you want your app to work offline and load faster, you can change

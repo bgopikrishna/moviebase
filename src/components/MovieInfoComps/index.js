@@ -7,11 +7,16 @@ import { doMarkFavourite } from "../../store/actions/favouriteAction";
 import { addToWatchList } from "../../store/actions/watchListAction";
 import { connect } from "react-redux";
 import { API_BASE_URL, API_KEY } from "../../constants";
-import { parseJSON } from "../../helperfunctions/helpers";
+import {
+  parseJSON,
+  getFavListAndWatchListIds
+} from "../../helperfunctions/helpers";
 import { withRouter } from "react-router-dom";
 import MovieSynopsis from "./MovieSynopsis";
 import MovieCastCrew from "./MovieCastCrew";
 import SimilarMovies from "./SimilarMovies";
+import { compose } from "redux";
+import { firestoreConnect } from "react-redux-firebase";
 
 export class MovieInfoComp extends Component {
   constructor(props) {
@@ -77,7 +82,7 @@ export class MovieInfoComp extends Component {
   }
 
   render() {
-    const { movie, toggleModal } = this.props;
+    const { movie, toggleModal, firestoreData, userId } = this.props;
     const {
       backdrop_path,
       poster_path,
@@ -93,6 +98,11 @@ export class MovieInfoComp extends Component {
     } = movie;
     const { similarMovies } = this.state;
 
+    const [favlistIds, watchlistIds] = getFavListAndWatchListIds(
+      firestoreData,
+      userId
+    );
+
     let isTrailerAvailable =
       movie.hasOwnProperty("videos") && movie.videos.results.length
         ? true
@@ -105,7 +115,6 @@ export class MovieInfoComp extends Component {
           altText={original_title}
           toggleModal={toggleModal}
           isTrailerAvailable={isTrailerAvailable}
-
         />
         <div className="row-2">
           <MovieDetails
@@ -122,6 +131,8 @@ export class MovieInfoComp extends Component {
             totalVotes={totalVotes}
             movieId={id}
             isTrailerAvailable={isTrailerAvailable}
+            favlistIds={favlistIds}
+            watchlistIds={watchlistIds}
           />
         </div>
         <div className="movie-overview">
@@ -136,6 +147,18 @@ export class MovieInfoComp extends Component {
   }
 }
 
+const mapStateToProps = (state, props) => {
+  const userId = state.firebase.auth.uid;
+  const firestoreData = state.firestore.data.data
+    ? state.firestore.data.data
+    : null;
+
+  return {
+    firestoreData,
+    userId
+  };
+};
+
 //Connect the action creators and dispatching  to the component
 const mapDisptachToProps = dispatch => {
   return {
@@ -145,8 +168,13 @@ const mapDisptachToProps = dispatch => {
 };
 
 //Connecting  the redux central store to the component
+const enhanceWithFirestore = compose(
+  firestoreConnect(["data"]), // sync data collection from Firestore into redux
+  connect(
+    mapStateToProps,
+    mapDisptachToProps
+  ),
+  withRouter
+);
 
-export default connect(
-  null,
-  mapDisptachToProps
-)(withRouter(MovieInfoComp));
+export default enhanceWithFirestore(MovieInfoComp);

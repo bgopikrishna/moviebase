@@ -4,7 +4,9 @@ export const doSignIn = credientials => {
     firebase
       .auth()
       .signInWithEmailAndPassword(credientials.email, credientials.password)
-      .then(() => dispatch({ type: "LOGIN_SUCESS" }))
+      .then(resp => {
+        dispatch({ type: "LOGIN_SUCESS", uid: resp.user.uid });
+      })
       .catch(err => dispatch({ type: "LOGIN_ERROR", error: err }));
   };
 };
@@ -43,7 +45,13 @@ export const doSignUp = newUser => {
             initials: newUser.firstName[0] + newUser.lastName[0]
           });
       })
-      .then(() => dispatch({ type: "SIGNUP_SUCESS" }))
+      .then(resp => dispatch({ type: "SIGNUP_SUCESS", uid: resp.user.uid }))
       .catch(err => dispatch({ type: "SIGNUP_ERROR", err }));
+  };
+};
+
+export const doSetUserId = userId => {
+  return dispatch => {
+    dispatch({ type: "SET_USER_ID", uid: userId });
   };
 };
