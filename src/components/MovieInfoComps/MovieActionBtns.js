@@ -6,8 +6,7 @@ import {
   faPlay,
   faHeartbeat
 } from "@fortawesome/free-solid-svg-icons";
-import { connect } from "react-redux";
-import { getFavListAndWatchListIds } from "../../helperfunctions/helpers";
+
 
 const MovieActionBtns = ({
   rating,

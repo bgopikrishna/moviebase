@@ -3,13 +3,22 @@
 import { ADD_TO_WATCH_LIST } from "../../constants";
 
 export const addToWatchList = (movie, id) => {
+  console.log("action dispatching");
+  
   return (disptach, getState, { getFirebase, getFirestore }) => {
-    const { original_title, release_date, vote_average, poster_path } = movie;
+    const {
+      original_title,
+      release_date,
+      vote_average,
+      poster_path,
+      id
+    } = movie;
     const movieDetails = {
       original_title,
       release_date,
       vote_average,
-      poster_path
+      poster_path,
+      id
     };
     const userId = getState().firebase.auth.uid;
 
@@ -25,8 +34,12 @@ export const addToWatchList = (movie, id) => {
         let isItAlreadyInList = watchlist.hasOwnProperty(id);
 
         if (!isItAlreadyInList) {
+          console.log("deleteing from list");
+
           return { ...watchlist, [id]: movieDetails };
         } else {
+          console.log("deleteing from list");
+
           delete watchlist[id];
 
           return watchlist;

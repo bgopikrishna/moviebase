@@ -1,8 +1,6 @@
 import React from "react";
 import "./MovieCard.scss";
-import { compose } from "redux";
-import { firestoreConnect } from "react-redux-firebase";
-import { ifNotExists } from "../../helperfunctions/helpers";
+
 import { Link } from "react-router-dom";
 import { doMarkFavourite } from "../../store/actions/favouriteAction";
 import { connect } from "react-redux";

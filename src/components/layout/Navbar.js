@@ -27,4 +27,9 @@ export const mapStateToProps = (state, props) => {
   };
 };
 
-export default connect(mapStateToProps)(Navbar);
+export default connect(
+  mapStateToProps,
+  null,
+  null,
+  { pure: false }
+)(Navbar);

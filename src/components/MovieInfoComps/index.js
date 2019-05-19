@@ -11,7 +11,6 @@ import {
   parseJSON,
   getFavListAndWatchListIds
 } from "../../helperfunctions/helpers";
-import { withRouter } from "react-router-dom";
 import MovieSynopsis from "./MovieSynopsis";
 import MovieCastCrew from "./MovieCastCrew";
 import SimilarMovies from "./SimilarMovies";
@@ -138,7 +137,7 @@ export class MovieInfoComp extends Component {
         <div className="movie-overview">
           <MovieSynopsis overview={overview} />
           <MovieCastCrew credits={credits} />
-          {similarMovies.length && (
+          {similarMovies.length !== 0 && (
             <SimilarMovies similarMovies={similarMovies} />
           )}
         </div>
@@ -169,12 +168,11 @@ const mapDisptachToProps = dispatch => {
 
 //Connecting  the redux central store to the component
 const enhanceWithFirestore = compose(
-  firestoreConnect(["data"]), // sync data collection from Firestore into redux
   connect(
     mapStateToProps,
     mapDisptachToProps
   ),
-  withRouter
+  firestoreConnect(["data"]) // sync data collection from Firestore into redux
 );
 
 export default enhanceWithFirestore(MovieInfoComp);

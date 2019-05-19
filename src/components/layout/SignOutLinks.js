@@ -8,13 +8,13 @@ const SignOutLinks = () => {
     <nav>
       <ul className="__navlinks">
         <li>
-          <NavLink exact to="/signin" className="__navitem">
+          <NavLink exact to="/signin" className="__navitem" activeClassName={"active"}>
             <FontAwesomeIcon icon={faSignInAlt} />
             &nbsp;Sign In
           </NavLink>
         </li>
         <li>
-          <NavLink to="/signup" className="__navitem">
+          <NavLink to="/signup" className="__navitem" activeClassName="active">
             <FontAwesomeIcon icon={faUserPlus} />
             &nbsp;Sign Up
           </NavLink>

@@ -23,7 +23,7 @@ class App extends Component {
       isOnline: true
     };
   }
-
+//TODO: Work On MovieInfo page & List Page
   componentDidMount() {
     //Checking internet connection for the user
     if (this.props.uid) {
@@ -49,8 +49,8 @@ class App extends Component {
               <Switch>
                 {/* Home Component */}
                 <Route exact path="/" component={TrendingPage} />
-                <Route exact path="/home" component={TrendingPage} />
-                <Route exact path="/trending" component={TrendingPage} />
+                <Route  path="/home" component={TrendingPage} />
+                <Route  path="/trending" component={TrendingPage} />
 
                 {/*Search Component */}
                 <Route exact path="/search" component={SearchPage} />

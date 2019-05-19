@@ -115,7 +115,7 @@ export const mapStateToProps = (state, props) => ({
 });
 
 const enhanceWithFirestore = compose(
-  firestoreConnect(["data"]), // sync data collection from Firestore into redux
-  connect(mapStateToProps)
+  connect(mapStateToProps),
+  firestoreConnect(["data"]) // sync data collection from Firestore into redux
 );
 export default enhanceWithFirestore(TrendingPage);

@@ -2,12 +2,13 @@ import { ADD_FAV_TO_LIST } from "../../constants";
 
 export const doMarkFavourite = (movie, id) => {
   return (disptach, getState, { getFirebase, getFirestore }) => {
-    const { original_title, release_date, vote_average, poster_path } = movie;
+    const { original_title, release_date, vote_average, poster_path ,id} = movie;
     const movieDetails = {
       original_title,
       release_date,
       vote_average,
-      poster_path
+      poster_path,
+      id
     };
     const userId = getState().firebase.auth.uid;
 

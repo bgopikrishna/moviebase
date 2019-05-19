@@ -1,6 +1,5 @@
 import React from "react";
 import { placeholderImage } from "../../helperfunctions/helpers";
-import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import "./StackedImageCard.scss";
 import WithLink from "../extras/WithLink";

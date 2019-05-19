@@ -5,18 +5,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faStar, faCalendar } from "@fortawesome/free-solid-svg-icons";
 import { ifNotExists } from "../../helperfunctions/helpers";
 import { Link } from "react-router-dom";
-import { doMarkFavourite } from "../../store/actions/favouriteAction";
-import { addToWatchList } from "../../store/actions/watchListAction";
 
-const MovieListCard = ({
-  movie,
-  deleteType,
-  removeFromFavList,
-  removeFromWatchList
-}) => {
+const MovieListCard = ({ movie, deleteListItem }) => {
   let { id, vote_average, poster_path, original_title, release_date } = movie;
-  const handleBtn =
-    deleteType === "favList" ? removeFromFavList : removeFromWatchList;
 
   poster_path = ifNotExists(
     poster_path,
@@ -55,9 +46,7 @@ const MovieListCard = ({
         <div className="list-card__action-bar">
           <button
             className="list-card__action-bar-btns"
-            onClick={() => {
-              handleBtn(movie, id);
-            }}
+            onClick={deleteListItem}
           >
             <FontAwesomeIcon icon={faTrash} />
           </button>
@@ -65,13 +54,6 @@ const MovieListCard = ({
       </div>
     </div>
   );
-};
-
-const mapDisptachToProps = dispatch => {
-  return {
-    removeFromFavList: (movie, id) => dispatch(doMarkFavourite(movie, id)),
-    removeFromWatchList: (movie, id) => dispatch(addToWatchList(movie, id))
-  };
 };
 
 //Connecting  the redux central store to the component
@@ -84,7 +66,4 @@ const mapStateToProps = (state, props) => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDisptachToProps
-)(MovieListCard);
+export default connect(mapStateToProps)(MovieListCard);
