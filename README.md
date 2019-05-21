@@ -12,9 +12,9 @@ movie manager
 - [x] User able to play trailer from info page (if trailer available)
 - [x] Show Movie Info (cast info pending)
 - [x] Show Similar Movies in the movieinfo page
-- [ ] User can see Individual Cast & Crew Info
-- [ ] Authentication (with Firebase)
-- [ ] Firebase db for storing user's favourites and watchlist
+- [x] User can see Individual Cast & Crew Info
+- [x] Authentication (with Firebase)
+- [x] Firebase db for storing user's favourites and watchlist
 
 #### TODO
 
@@ -25,8 +25,8 @@ movie manager
 - [x] Implement similar movies on movie info and     cast info
 - [x] Fix TrendingPage Component bug
 - [ ] Add proptype for all component for type checking (high priority)
-- [ ] Use `localStorage` from reducing API requests
-- [ ] Fix movieInfo page `css` in Firefox (low priority)
-- [ ] Fix footer in mobile devices (low priority)
+- [x] Use `localStorage` from reducing API requests
+- [] Fix movieInfo page `css` in Firefox (low priority)
+- [x] Fix footer in mobile devices (low priority)
 
-- [ ] Refactor `css` (medium prority)
+- [x] Refactor `css` (medium prority)
