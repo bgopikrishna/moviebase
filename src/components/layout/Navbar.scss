@@ -1,7 +1,6 @@
 @import "../../variables";
 @import "../../mixins";
 
-
 .navbar ul,
 li {
   margin: 0;
@@ -76,8 +75,6 @@ li {
     align-items: center;
 
     &.active {
-      transform: scale(1);
-      // @include gradient-color($blue-gradient);
       opacity: 1;
     }
 

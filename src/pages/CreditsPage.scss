@@ -1,0 +1,21 @@
+.creditspage {
+  width: 50%;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  h3 {
+    margin-bottom: 0;
+  }
+
+  a {
+    text-decoration: underline;
+  }
+}
+
+@media (max-width: 900px) {
+  .creditspage {
+    width: 80%;
+  }
+}

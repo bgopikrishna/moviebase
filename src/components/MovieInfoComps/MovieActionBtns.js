@@ -6,7 +6,7 @@ import {
   faPlay,
   faHeartbeat
 } from "@fortawesome/free-solid-svg-icons";
-
+import "./MovieActionBtns.scss";
 
 const MovieActionBtns = ({
   rating,

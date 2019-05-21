@@ -7,7 +7,6 @@ import {
   parseJSON,
   getFavListAndWatchListIds
 } from "../helperfunctions/helpers";
-import { doFetchData } from "../store/actions/fetchDataAction";
 import Loader from "../components/extras/Loader";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
@@ -28,6 +27,8 @@ export class TrendingPage extends Component {
 
   //Fetches data based on the page default: currentPage = 1
   doFetchData = currentPage => {
+    this.setState(() => ({ isLoading: true }));
+
     fetch(
       `${API_BASE_URL}/trending/movie/week?api_key=${API_KEY}&page=${currentPage}` //making call to api
     )

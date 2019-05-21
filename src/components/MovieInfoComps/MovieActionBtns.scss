@@ -1,0 +1,43 @@
+@import "../../variables";
+@import "../../mixins";
+
+.movieinfo-action-btns-grp {
+    display: flex;
+  }
+  .movieinfo-action-btn {
+    @include normalButton;
+    height: 40px;
+    padding: 0px 10px;
+    background: transparent;
+    border: 0.5px solid $white;
+    outline: none;
+  
+    &.active {
+      animation: scaleAndShrink 0.25s ease-in 0.05ms 1 alternate;
+      // background: rgb(209, 208, 208) !important;
+    }
+  
+    &.like.active {
+      box-shadow: none;
+      background: orangered;
+      border: 0.5px solid orangered;
+    }
+    &.watchlist.active {
+      fill: $white;
+      background: $blue;
+      border: 0.5px solid $blue;
+    }
+  
+    &.play-trailer {
+      &:hover,
+      &:focus {
+        color: $white;
+        background: rgba(255, 0, 0, 1);
+        border: 0.5px solid red;
+      }
+    }
+  }
+  .movieinfo-action-btn-content {
+    margin-left: 5px;
+    display: inline-block;
+  }

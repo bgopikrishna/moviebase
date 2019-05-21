@@ -14,6 +14,8 @@ import SignUp from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
 import { connect } from "react-redux";
 import { doSetUserId } from "./store/actions/authActions";
+import AccountPage from "./pages/AccountPage";
+import CreditsPage from "./pages/CreditsPage";
 
 class App extends Component {
   constructor(props) {
@@ -23,7 +25,7 @@ class App extends Component {
       isOnline: true
     };
   }
-//TODO: Work On MovieInfo page & List Page
+  //TODO: Work On MovieInfo page & List Page
   componentDidMount() {
     //Checking internet connection for the user
     if (this.props.uid) {
@@ -49,8 +51,8 @@ class App extends Component {
               <Switch>
                 {/* Home Component */}
                 <Route exact path="/" component={TrendingPage} />
-                <Route  path="/home" component={TrendingPage} />
-                <Route  path="/trending" component={TrendingPage} />
+                <Route path="/home" component={TrendingPage} />
+                <Route path="/trending" component={TrendingPage} />
 
                 {/*Search Component */}
                 <Route exact path="/search" component={SearchPage} />
@@ -59,7 +61,7 @@ class App extends Component {
                 <Route path="/list" component={MovieListPage} />
 
                 {/* account Component */}
-                <Route path="/account" component={NoPage404} />
+                <Route path="/account" component={AccountPage} />
 
                 {/* MovieInfo Page Component */}
                 <Route
@@ -84,6 +86,7 @@ class App extends Component {
                 {/** Sign Up Page */}
                 <Route path="/signup" component={SignUp} />
 
+                <Route path="/credits" component={CreditsPage} />
                 <Route component={NoPage404} />
               </Switch>
             </div>

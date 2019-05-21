@@ -1,6 +1,5 @@
 import React from "react";
 import { connect } from "react-redux";
-import { getFavouritesList, getWatchList } from "../selectors";
 import "./MovieListPage.scss";
 import MovieListCard from "../components/movie/MovieListCard";
 import { Redirect } from "react-router-dom";
