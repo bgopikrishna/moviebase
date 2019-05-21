@@ -25,6 +25,7 @@ export const doSignUp = newUser => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     const firebase = getFirebase();
     const firestore = getFirestore();
+    
 
     firebase
       .auth()
@@ -47,6 +48,22 @@ export const doSignUp = newUser => {
       })
       .then(resp => dispatch({ type: "SIGNUP_SUCESS", uid: resp.user.uid }))
       .catch(err => dispatch({ type: "SIGNUP_ERROR", err }));
+  };
+};
+
+export const doResetPassword = emailAddress => {
+  return (dispatch, getState, { getFirebase }) => {
+    const firebase = getFirebase();
+  
+
+    firebase.auth()
+      .sendPasswordResetEmail(emailAddress)
+      .then(function() {
+        dispatch({ type: "RESET_SUCESS" });
+      })
+      .catch(function(err) {
+        dispatch({ type: "RESET_ERROR", err });
+      });
   };
 };
 

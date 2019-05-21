@@ -27,7 +27,7 @@ export class SignIn extends Component {
     if (auth.uid) return <Redirect to="/" />;
 
     return (
-      <div className="form-container">
+      <div className="form-container" >
         <form onSubmit={this.handleSubmit}>
           <h5 className="form-title">Sign In</h5>
           <div className="input-field">

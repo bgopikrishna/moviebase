@@ -6,48 +6,49 @@ const INIT_STATE = {
 const authReducer = (state = INIT_STATE, action) => {
   switch (action.type) {
     case "LOGIN_ERROR":
-      console.log("login error");
       return {
         ...state,
         authError: "Login Failed"
       };
     case "LOGIN_SUCESS":
-      console.log("Login Success");
       return {
         ...state,
         authError: null,
         userId: action.uid
       };
     case "SIGNOUT_SUCESS":
-      console.log("signed out sucess");
-
       return {
         ...state,
         userId: null
       };
     case "SIGNUP_SUCESS":
-      console.log("signed up sucess");
-
       return {
         ...state,
         authError: null,
         userId: action.uid
-
       };
     case "SIGNUP_ERROR":
-      console.log("sign up error");
-
       return {
         ...state,
         authError: action.err.message
       };
 
-    case "SET_USER_ID":  return {
-      ...state,
-      authError: null,
-      userId: action.uid
-    }; 
-
+    case "SET_USER_ID":
+      return {
+        ...state,
+        authError: null,
+        userId: action.uid
+      };
+    case "RESET_SUCESS":
+      return {
+        ...state,
+        authError: null
+      };
+    case "RESET_ERROR":
+      return {
+        ...state,
+        authError: action.err.message
+      };
     default:
       return state;
   }

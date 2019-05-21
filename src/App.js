@@ -16,6 +16,7 @@ import { connect } from "react-redux";
 import { doSetUserId } from "./store/actions/authActions";
 import AccountPage from "./pages/AccountPage";
 import CreditsPage from "./pages/CreditsPage";
+import ForgotPassPage from "./pages/ForgotPassPage";
 
 class App extends Component {
   constructor(props) {
@@ -86,7 +87,13 @@ class App extends Component {
                 {/** Sign Up Page */}
                 <Route path="/signup" component={SignUp} />
 
+                {/**Password Forget Page */}
+                <Route path="/forgotpassword" component={ForgotPassPage} />
+
+                {/**credots  Page */}
                 <Route path="/credits" component={CreditsPage} />
+
+                {/**404 page  Page */}
                 <Route component={NoPage404} />
               </Switch>
             </div>
