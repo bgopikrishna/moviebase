@@ -35,7 +35,10 @@ export const doSignUp = newUser => {
         firestore
           .collection("data")
           .doc(resp.user.uid)
-          .set({}); //{} is for just creating empty doc for the specific user
+          .set({
+            favlist: {},
+            watchlist:{}
+          }); //{} is for just creating empty doc for the specific user
 
         return firestore
           .collection("users")
