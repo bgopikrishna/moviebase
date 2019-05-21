@@ -65,7 +65,7 @@ export class SignIn extends Component {
         )}
         <div className="form-footer">
           <Link to="/signup">Sign Up</Link>
-          <Link to="/signin">Forgot Password ?</Link>
+          <Link to="/forgotpassword">Forgot Password ?</Link>
         </div>
       </div>
     );

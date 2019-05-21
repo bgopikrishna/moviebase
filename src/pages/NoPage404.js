@@ -4,11 +4,16 @@ import { Link } from "react-router-dom";
 const NoPage404 = () => {
   return (
     <div style={{ margin: "100px auto", textAlign: "center" }}>
-      Shhh... This page is not done yet <br />
-      Go to{" "}
-      <Link to="/" style={{ textDecoration: "underline" }}>
-        Home
-      </Link>
+      <p> Shhh... You Hit the Wrong Route</p>
+      <p>or</p>
+      <p>This page may not done yet or maybe I'm currently working on it</p>
+
+      <p>
+        Go to {" "}
+        <Link to="/" style={{ textDecoration: "underline" }}>
+          Home
+        </Link>
+      </p>
       <br />
     </div>
   );
