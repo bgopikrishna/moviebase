@@ -41,6 +41,7 @@ export class SignUp extends Component {
               onChange={this.handleChange}
               placeholder="Enter Your First Name"
               required
+              pattern="[a-zA-Z\s]+"
             />
           </div>
           <div className="input-field">
@@ -53,6 +54,7 @@ export class SignUp extends Component {
               onChange={this.handleChange}
               placeholder="Enter Your Last Name"
               required
+              pattern="[a-zA-Z\s]+"
             />
           </div>
           <div className="input-field">

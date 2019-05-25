@@ -31,7 +31,7 @@ const MovieListPage = ({
         </div>
         <div className="movie-list__list-items">
           <TransitionGroup timeout={300}>
-            {favlistCollection.length !== 0 &&
+            {favlistCollection.length !== 0 ? (
               favlistCollection.map(movie => (
                 <CSSTransition
                   classNames="list-item-fade"
@@ -43,7 +43,10 @@ const MovieListPage = ({
                     deleteListItem={() => deleteFromFavList(movie, movie.id)}
                   />
                 </CSSTransition>
-              ))}
+              ))
+            ) : (
+              <p style={{ textAlign: "center" }}>Favourites list Empty</p>
+            )}
           </TransitionGroup>
         </div>
       </div>
@@ -54,7 +57,7 @@ const MovieListPage = ({
         </div>
         <div className="movie-list__list-items">
           <TransitionGroup>
-            {watchlistCollection.length !== 0 &&
+            {watchlistCollection.length !== 0 ? (
               watchlistCollection.map(movie => (
                 <CSSTransition
                   classNames="list-item-fade"
@@ -66,7 +69,10 @@ const MovieListPage = ({
                     deleteListItem={() => deleteFromWatchList(movie, movie.id)}
                   />
                 </CSSTransition>
-              ))}
+              ))
+            ) : (
+              <p style={{ textAlign: "center" }}>Watchlist is Empty</p>
+            )}
           </TransitionGroup>
         </div>
       </div>

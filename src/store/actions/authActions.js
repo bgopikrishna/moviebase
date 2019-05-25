@@ -17,7 +17,10 @@ export const doSignOut = () => {
     firebase
       .auth()
       .signOut()
-      .then(() => dispatch({ type: "SIGNOUT_SUCESS" }));
+      .then(() => {
+        dispatch({ type: "SIGNOUT_SUCESS" });
+        window.location.reload();
+      });
   };
 };
 
@@ -25,7 +28,6 @@ export const doSignUp = newUser => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     const firebase = getFirebase();
     const firestore = getFirestore();
-    
 
     firebase
       .auth()
@@ -37,7 +39,7 @@ export const doSignUp = newUser => {
           .doc(resp.user.uid)
           .set({
             favlist: {},
-            watchlist:{}
+            watchlist: {}
           }); //{} is for just creating empty doc for the specific user
 
         return firestore
@@ -57,9 +59,9 @@ export const doSignUp = newUser => {
 export const doResetPassword = emailAddress => {
   return (dispatch, getState, { getFirebase }) => {
     const firebase = getFirebase();
-  
 
-    firebase.auth()
+    firebase
+      .auth()
       .sendPasswordResetEmail(emailAddress)
       .then(function() {
         dispatch({ type: "RESET_SUCESS" });
