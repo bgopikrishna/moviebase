@@ -1,6 +1,6 @@
 {
-  "name": "moviebase",
   "short_name": "moviebase",
+  "name": "moviebase - movie list manager",
   "theme_color": "#306efe",
   "background_color": "#306efe",
   "display": "standalone",
@@ -48,6 +48,5 @@
       "sizes": "512x512",
       "type": "image/png"
     }
-  ],
-  "splash_pages": null
+  ]
 }
