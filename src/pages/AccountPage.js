@@ -14,7 +14,6 @@ import {
 import "./AccountPage.scss";
 
 const AccountPage = ({ signOut, auth, profile }) => {
-  console.log(profile);
   if (!auth.uid) return <Redirect to="/signin" />;
 
   if (profile.isLoaded) {
@@ -40,7 +39,7 @@ const AccountPage = ({ signOut, auth, profile }) => {
   }
 };
 
-//About Me component with self links etc , I think it require additional js file
+//About Me component with self links etc , I don't think it require additional js file, so I placed at bottom
 const AboutMe = () => (
   <div className="accountpage__about-me">
     <div>Coded By Gopi Krishna</div>

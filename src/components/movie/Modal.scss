@@ -51,6 +51,9 @@
   0% {
     top: -300px;
     opacity: 0;
+
+    transform: rotateX(-180deg);
+    transform: rotateY(-180deg);
   }
   20% {
     opacity: 0.2;
@@ -67,6 +70,9 @@
   100% {
     top: 0;
     opacity: 1;
+    border: 0px;
+    transform: rotateX(0deg);
+    transform: rotateY(0deg);
   }
 }
 
@@ -100,6 +106,11 @@
 
 .modal-body {
   padding: 2px 2px;
+  background: $black;
+  min-height: 70vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .modal-footer {

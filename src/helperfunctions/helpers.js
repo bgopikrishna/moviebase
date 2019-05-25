@@ -37,7 +37,6 @@ export const getFavlistAndWatchlistCollections = (list, userId) => {
 
   const favlistCollection = Object.values(favlist);
   const watchlistCollection = Object.values(watchlist);
-  console.log({favlistCollection,watchlistCollection});
   
 
   return {

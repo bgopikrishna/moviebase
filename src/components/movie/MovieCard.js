@@ -53,7 +53,9 @@ const MovieCard = ({
       <div className="card">
         {/*Diplaying the Image-start */}
         <div className="card__image">
-          <img src={poster_path} alt={original_title} />
+          <Link to={`/movie/${id}`}>
+            <img src={poster_path} alt={original_title} />
+          </Link>
         </div>
         {/*Diplaying the Image-End */}
 

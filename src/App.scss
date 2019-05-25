@@ -1,9 +1,13 @@
 @import "variables";
 @import url("https://fonts.googleapis.com/css?family=Maven+Pro|Nunito");
 
-
 html {
   scroll-behavior: smooth;
+}
+
+::selection {
+  color: white;
+  background: $blue;
 }
 
 ::-webkit-scrollbar {
@@ -32,9 +36,9 @@ a {
 }
 
 body {
-  font-family: 'Nunito', -system-ui, -apple-system, BlinkMacSystemFont, "Maven Pro",
-    "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji",
-    "Segoe UI Emoji", "Segoe UI Symbol";
+  font-family: "Nunito", -system-ui, -apple-system, BlinkMacSystemFont,
+    "Maven Pro", "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 
   padding: 0;
   margin: 0;

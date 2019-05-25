@@ -3,7 +3,6 @@
 import { ADD_TO_WATCH_LIST } from "../../constants";
 
 export const addToWatchList = (movie, id) => {
-  console.log("action dispatching");
   
   return (disptach, getState, { getFirebase, getFirestore }) => {
     const {
@@ -34,11 +33,9 @@ export const addToWatchList = (movie, id) => {
         let isItAlreadyInList = watchlist.hasOwnProperty(id);
 
         if (!isItAlreadyInList) {
-          console.log("deleteing from list");
 
           return { ...watchlist, [id]: movieDetails };
         } else {
-          console.log("deleteing from list");
 
           delete watchlist[id];
 

@@ -8,3 +8,21 @@
   justify-content: center;
   align-items: center;
 }
+
+.list-item-fade-enter {
+  opacity: 0;
+}
+.list-item-fade-enter-active {
+  opacity: 1;
+  transition: all 0.3s ease-in;
+}
+.list-item-fade-exit {
+  opacity: 0.5;
+  transition: all 0.3s ease-in;
+}
+.list-item-fade-exit-active {
+  opacity: 0;
+  transition: opacity 500ms ease-in;
+  transform: translateX(100px);
+  transition: all 0.3s ease-in;
+}

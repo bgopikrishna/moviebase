@@ -16,6 +16,17 @@ import MovieCastCrew from "./MovieCastCrew";
 import SimilarMovies from "./SimilarMovies";
 import { compose } from "redux";
 import { firestoreConnect } from "react-redux-firebase";
+import PropTypes from "prop-types";
+
+/*
+
+This Component renderers the total movieInfo page
+
+takes movie object as prop
+
+ */
+
+let _isMounted = false;
 
 export class MovieInfoComp extends Component {
   constructor(props) {
@@ -28,8 +39,14 @@ export class MovieInfoComp extends Component {
     };
   }
 
+  //This fun adds or remove items from
   handleFavBtn = () => {
     const { movie, addToFavList } = this.props;
+
+    /**
+     * @param {object} movie movieobject
+     * @param {string} movieId movieId
+     */
     addToFavList(movie, movie.id);
   };
 
@@ -45,7 +62,7 @@ export class MovieInfoComp extends Component {
       .then(parseJSON)
 
       .then(data => {
-        if (this._isMounted === true) {
+        if (_isMounted === true) {
           this.setState(() => ({
             similarMovies: data.results,
             isErrorFetchingSimilarMovies: false
@@ -56,7 +73,7 @@ export class MovieInfoComp extends Component {
   };
 
   componentDidMount() {
-    this._isMounted = true;
+    _isMounted = true;
     this.getAndSetSimiliarMovies();
   }
 
@@ -77,7 +94,7 @@ export class MovieInfoComp extends Component {
   }
 
   componentWillUnmount() {
-    this._isMounted = false;
+    _isMounted = false;
   }
 
   render() {
@@ -176,3 +193,8 @@ const enhanceWithFirestore = compose(
 );
 
 export default enhanceWithFirestore(MovieInfoComp);
+
+//Type checking
+MovieInfoComp.propTypes = {
+  movie: PropTypes.object.isRequired
+};

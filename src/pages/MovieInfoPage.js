@@ -12,6 +12,7 @@ import Modal from "../components/movie/Modal";
 import "./MovieInfoPage.scss";
 import MovieInfoComp from "../components/MovieInfoComps";
 import { movieInfoParser } from "../helperfunctions/movieInfoParser";
+import YTIFrame from "../components/extras/IFrame";
 
 export class MovieInfoPage extends Component {
   constructor(props) {
@@ -60,8 +61,10 @@ export class MovieInfoPage extends Component {
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
-    // console.log("nextProps", nextProps);
-    // console.log("prevState", prevState);
+    /*
+    Updating similar movies in  page based on the movie ID provided in route params 
+    returns newMovie ID based on the route params
+  */
 
     if (nextProps.match.params.movie_Id !== prevState.movie.id) {
       return {
@@ -72,17 +75,28 @@ export class MovieInfoPage extends Component {
   }
 
   componentDidUpdate(prevProps) {
+    /*
+    Updating similar movies in  page based on the movie ID provided in route params 
+  */
+
     if (this.props.match.params.movie_Id !== prevProps.match.params.movie_Id) {
-      this.setState(() => ({ isLoading: true }));
-      this.fetchMovieData();
-    }
-    if (this.props.location.pathname !== prevProps.location.pathname) {
+      //Scroll to top
       window.scrollTo(0, 0);
+
+      //Enable Loading Indicator
+      this.setState(() => ({ isLoading: true }));
+
+      //If the prev Movie ID not matches current route parmam ID then fetch the movie data
+      this.fetchMovieData();
     }
   }
 
-  toggleModal = () =>
+  toggleModal = () => {
+    /**
+     * To
+     */
     this.setState(state => ({ modalState: !state.modalState }));
+  };
 
   render() {
     const { movie, isError, errorMsg, isLoading, modalState } = this.state;
@@ -109,9 +123,7 @@ export class MovieInfoPage extends Component {
               modalState={modalState}
               title={movie.original_title + " Trailer"}
             >
-              <iframe
-                className="iframe-yt"
-                title={movie.original_title}
+              <YTIFrame
                 src={
                   modalState
                     ? `https://www.youtube-nocookie.com/embed/${
@@ -119,9 +131,6 @@ export class MovieInfoPage extends Component {
                       }`
                     : ""
                 }
-                frameBorder="0"
-                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
               />
             </Modal>
           )}

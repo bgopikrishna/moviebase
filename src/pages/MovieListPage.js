@@ -8,6 +8,7 @@ import { firestoreConnect } from "react-redux-firebase";
 import { doMarkFavourite } from "../store/actions/favouriteAction";
 import { addToWatchList } from "../store/actions/watchListAction";
 import { getFavlistAndWatchlistCollections } from "../helperfunctions/helpers";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 const MovieListPage = ({
   deleteFromFavList,
@@ -16,7 +17,7 @@ const MovieListPage = ({
   firestoreData
 }) => {
   if (!auth.uid) return <Redirect to="/signin" />;
-  
+
   const {
     favlistCollection,
     watchlistCollection
@@ -29,14 +30,21 @@ const MovieListPage = ({
           <h3>Your Favourites</h3>
         </div>
         <div className="movie-list__list-items">
-          {favlistCollection.length !== 0 &&
-            favlistCollection.map(movie => (
-              <MovieListCard
-                key={movie.id}
-                movie={movie}
-                deleteListItem={() => deleteFromFavList(movie, movie.id)}
-              />
-            ))}
+          <TransitionGroup timeout={300}>
+            {favlistCollection.length !== 0 &&
+              favlistCollection.map(movie => (
+                <CSSTransition
+                  classNames="list-item-fade"
+                  timeout={500}
+                  key={movie.id}
+                >
+                  <MovieListCard
+                    movie={movie}
+                    deleteListItem={() => deleteFromFavList(movie, movie.id)}
+                  />
+                </CSSTransition>
+              ))}
+          </TransitionGroup>
         </div>
       </div>
 
@@ -45,14 +53,21 @@ const MovieListPage = ({
           <h3>Your Watchlist</h3>
         </div>
         <div className="movie-list__list-items">
-          {watchlistCollection.length !== 0 &&
-            watchlistCollection.map(movie => (
-              <MovieListCard
-                key={`${movie.id} watch`}
-                movie={movie}
-                deleteListItem={() => deleteFromWatchList(movie, movie.id)}
-              />
-            ))}
+          <TransitionGroup>
+            {watchlistCollection.length !== 0 &&
+              watchlistCollection.map(movie => (
+                <CSSTransition
+                  classNames="list-item-fade"
+                  timeout={500}
+                  key={`${movie.id} watch`}
+                >
+                  <MovieListCard
+                    movie={movie}
+                    deleteListItem={() => deleteFromWatchList(movie, movie.id)}
+                  />
+                </CSSTransition>
+              ))}
+          </TransitionGroup>
         </div>
       </div>
     </div>
