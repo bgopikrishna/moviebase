@@ -19,7 +19,7 @@ const divStyle = {
 
 //The component takes error message as the prop to display the error
 
-const ErrorDisplay = ({ errorMsg }) => {
+const ErrorDisplay = ({ errorMsg, refresh }) => {
   return (
     <div style={divStyle}>
       <p>
@@ -31,17 +31,18 @@ const ErrorDisplay = ({ errorMsg }) => {
         {/**Erorr Message Display */}
         Error Message: {errorMsg}
       </p>
-      <p>
-        <EmojiHolder emoji={"🧐"} label={"Face With Monocle"} />
-        Tip: Please Check Your Internet Connection & Try Again Later
-      </p>
+
+      {refresh && (
+        <button onClick={() => window.location.reload()}>Reload The App</button>
+      )}
     </div>
   );
 };
 
 //Default Props for the comp
 ErrorDisplay.defaultProps = {
-  errorMsg: "Some Thing Went Wrong"
+  errorMsg: "Some Thing Went Wrong",
+  refresh: false
 };
 
 //Type Checking

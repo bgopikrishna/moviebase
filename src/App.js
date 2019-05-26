@@ -103,7 +103,7 @@ class App extends Component {
       );
     } else {
       return (
-        <ErrorDisplay errorMsg="This app requires Internet, Please connect to wifi/turn on mobile data" />
+        <ErrorDisplay errorMsg="This app requires Internet, Please connect to wifi/turn on mobile data" refresh={true}/>
       );
     }
   }

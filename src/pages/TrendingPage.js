@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "./TrendingPage.scss";
 import { API_BASE_URL, API_KEY } from "../constants";
-import ErrorDisplay from "../components/extras/ErrorDisplay";
 import MovieCard from "../components/movie/MovieCard";
 import {
   parseJSON,
@@ -19,14 +18,15 @@ export class TrendingPage extends Component {
     this.state = {
       trendingMoviesList: [],
       isError: false,
-      errorMsg: "Some Thing Went Wrong",
+      errorMsg: "",
       currentPage: 1,
       isLoading: true
     };
   }
 
   //Fetches data based on the page default: currentPage = 1
-  doFetchData = currentPage => {
+  doFetchData = () => {
+    const { currentPage } = this.state;
     this.setState(() => ({ isLoading: true }));
 
     fetch(
@@ -37,34 +37,57 @@ export class TrendingPage extends Component {
         //Setting the state and updating the state
         this.setState(state => {
           const { currentPage, trendingMoviesList } = state;
+          const newList = [...trendingMoviesList, ...data.results];
           return {
             //adding movies objects
-            trendingMoviesList: [...trendingMoviesList, ...data.results],
+            trendingMoviesList: newList,
             currentPage: currentPage + 1,
-            isLoading: false
+            isLoading: false,
+            isError: false
           };
         })
       )
       .catch(
-        error => this.setState({ isError: true, errorMsg: error.message }) //Error Handling
+        error =>
+          this.setState({
+            isError: true,
+            errorMsg: error.message,
+            isLoading: false
+          }) //Error Handling
       );
   };
 
   //Pagination using the currentPage , it triggers when clikced more button
 
   handleMore = () => {
-    const { currentPage } = this.state;
-    this.doFetchData(currentPage);
+    this.doFetchData();
+  };
+
+  scrollHandler = () => {
+    const { trendingMoviesList, isLoading } = this.state;
+    if (
+      window.innerHeight + window.scrollY >= document.body.offsetHeight - 500 &&
+      trendingMoviesList.length &&
+      !isLoading
+    ) {
+      this.doFetchData();
+    }
   };
 
   componentDidMount() {
     //Fetching the trending movies on page 1 on component mounts
+
+    window.addEventListener("scroll", this.scrollHandler, false);
 
     const { currentPage } = this.state;
     if (this.props.auth.uid) {
       //Fetching and setting data
       this.doFetchData(currentPage);
     }
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("scroll", this.scrollHandler, false);
   }
 
   render() {
@@ -96,14 +119,12 @@ export class TrendingPage extends Component {
         <h2 className="trending__heading">Trending movies this week</h2>
         <div className="trending__results">{trendingResultsJSX}</div>
 
-        {isLoading ? (
-          <Loader />
-        ) : (
+        {isLoading && <Loader />}
+        {isError && (
           <button className="more_button" onClick={() => this.handleMore()}>
-            More
+            Try Again
           </button>
         )}
-        {isError && <ErrorDisplay errorMsg={errorMsg} />}
       </div>
     );
   }

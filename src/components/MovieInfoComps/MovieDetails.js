@@ -20,12 +20,6 @@ const MovieDetails = ({
         </div>
       </div>
       <div className="movie-genre">
-        {/* <span className="transparent-pill">Action</span>
-        <span className="transparent-pill">Drama</span>
-        <span className="transparent-pill">Fight</span>
-
-        <span className="transparent-pill">Fantasy</span>
-        <span className="transparent-pill">Action</span> */}
         {genreIds.length !== 0 &&
           genreIds.map(genreId => (
             <span className="transparent-pill" key={genreId}>
