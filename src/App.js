@@ -17,6 +17,7 @@ import { doSetUserId } from "./store/actions/authActions";
 import AccountPage from "./pages/AccountPage";
 import CreditsPage from "./pages/CreditsPage";
 import ForgotPassPage from "./pages/ForgotPassPage";
+import ErrorImageSVG from "./images/Error.svg";
 
 class App extends Component {
   constructor(props) {
@@ -103,7 +104,15 @@ class App extends Component {
       );
     } else {
       return (
-        <ErrorDisplay errorMsg="This app requires Internet, Please connect to wifi/turn on mobile data" refresh={true}/>
+        <div className="app-error">
+          <div className="app-error-image">
+            <img src={ErrorImageSVG} alt="Internet Connection Required" />
+          </div>
+          <ErrorDisplay
+            errorMsg="This app requires Internet, Please connect to wifi/turn on mobile data"
+            refresh={true}
+          />
+        </div>
       );
     }
   }
