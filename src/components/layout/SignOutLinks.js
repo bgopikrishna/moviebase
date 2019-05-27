@@ -3,12 +3,21 @@ import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSignInAlt, faUserPlus } from "@fortawesome/free-solid-svg-icons";
 
+/**
+ * Links to show when user is signedin
+ */
+
 const SignOutLinks = () => {
   return (
     <nav>
       <ul className="__navlinks">
         <li>
-          <NavLink exact to="/signin" className="__navitem" activeClassName={"active"}>
+          <NavLink
+            exact
+            to="/signin"
+            className="__navitem"
+            activeClassName={"active"}
+          >
             <FontAwesomeIcon icon={faSignInAlt} />
             &nbsp;Sign In
           </NavLink>

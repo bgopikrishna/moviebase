@@ -1,8 +1,8 @@
 import React from "react";
 import "./Modal.scss";
-import { PropTypes } from "prop-types";
+import PropTypes from "prop-types";
 
-const Modal = ({ title, children, toggleModal, modalState }) => {
+const Modal = ({ children, toggleModal, modalState }) => {
   return (
     <div
       className="modal"

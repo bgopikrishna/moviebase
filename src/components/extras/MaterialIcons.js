@@ -1,5 +1,15 @@
 import React from "react";
-import { PropTypes } from "prop-types";
+import PropTypes from "prop-types";
+
+/*
+  A collection of material icons in svg as components,
+  currently only one icon(s) is present,
+*/
+
+/**
+ * A watchlist icon component which is similar to youtube watchlist icon
+ * It takes `added` {bool} as prop whick defaults to `false`
+ */
 
 export const WatchListAddIcon = ({ added }) => {
   if (added) {
@@ -38,9 +48,13 @@ export const WatchListAddIcon = ({ added }) => {
   }
 };
 
+//Typechecking
+
 WatchListAddIcon.propTypes = {
   added: PropTypes.bool
 };
+
+//Default Props
 WatchListAddIcon.defaultProps = {
   added: false
 };

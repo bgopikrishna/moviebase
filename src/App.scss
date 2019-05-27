@@ -6,8 +6,9 @@ html {
 }
 
 ::selection {
-  color: white;
-  background: $blue;
+  color: #252525;
+  background: #00d9f5;
+  text-shadow: none;
 }
 
 ::-webkit-scrollbar {

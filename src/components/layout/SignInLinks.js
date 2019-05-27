@@ -8,6 +8,10 @@ import {
   faUserAstronaut
 } from "@fortawesome/free-solid-svg-icons";
 
+/**
+ * Links to show when user signed in
+ */
+
 const SignInLinks = () => {
   return (
     <nav>

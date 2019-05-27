@@ -2,9 +2,15 @@ import React from "react";
 import EmojiHolder from "./EmojiHolder";
 import PropTypes from "prop-types";
 
-//A component which is used for displying errors in our app, like when fetching data etc
+/** 
+  * A component which is used for displying errors in our app, 
+  * like when fetching data, search results etc
+  * takes `errorMsg` {string} and `refresh` {bool} (optional) as props
+  * `errorMsg` is the error message needs to be showed
+  * `refresh` is to show page refresh button if needed
+  */
 
-const divStyle = {
+const errDisplayStyle = {
   color: "white",
   gridColumn: "span 2",
   minHeight: "50vh",
@@ -17,11 +23,14 @@ const divStyle = {
   textTransform: "capitalize"
 };
 
-//The component takes error message as the prop to display the error
+/*
+  The component takes `errormessage` as the prop to display the error.
+  The second prop is `refresh` (optional prop) which displays reload button to refresh the page
+*/
 
 const ErrorDisplay = ({ errorMsg, refresh }) => {
   return (
-    <div style={divStyle}>
+    <div style={errDisplayStyle}>
       <p>
         <EmojiHolder emoji={"🤕"} label={"Face With Head-Bandage"} />
         Ahhh... Something went wrong
@@ -39,7 +48,7 @@ const ErrorDisplay = ({ errorMsg, refresh }) => {
   );
 };
 
-//Default Props for the comp
+//Default Props
 ErrorDisplay.defaultProps = {
   errorMsg: "Some Thing Went Wrong",
   refresh: false

@@ -1,5 +1,10 @@
 movie manager
 [Live Demo](https://www.movie-base.netlify.com)
+
+
+
+
+
 (...................description.............)
 
 
@@ -26,7 +31,7 @@ movie manager
 - [x] Fix TrendingPage Component bug
 - [ ] Add proptype for all component for type checking (high priority)
 - [x] Use `localStorage` from reducing API requests
-- [] Fix movieInfo page `css` in Firefox (low priority)
+- [x] Fix movieInfo page `css` in Firefox (low priority)
 - [x] Fix footer in mobile devices (low priority)
-
 - [x] Refactor `css` (medium prority)
+- [ ] comment the code

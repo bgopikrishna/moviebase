@@ -18,29 +18,40 @@ import AccountPage from "./pages/AccountPage";
 import CreditsPage from "./pages/CreditsPage";
 import ForgotPassPage from "./pages/ForgotPassPage";
 import ErrorImageSVG from "./images/Error.svg";
+import Loader from "./components/extras/Loader";
 
 class App extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      isOnline: true
+      isOnline: true,
+      isLoading: true
     };
   }
-  //TODO: Work On MovieInfo page & List Page
+
   componentDidMount() {
-    //Checking internet connection for the user
-    if (this.props.uid) {
+    /*
+    Turn off the loader &&
+    Checking internet connection for the user by making a fake api call and urn off the loader
+    */
+    fetch("https://jsonplaceholder.typicode.com/posts")
+      .then(() => this.setState(() => ({ isOnline: true, isLoading: false })))
+      .catch(() =>
+        this.setState(() => ({ isOnline: false, isLoading: false }))
+      );
+
+    //If the user signed in set the userId in the redux store
+    if (this.props.uid && this.state.isOnline) {
       const userId = this.props.uid;
       this.props.doSetUserId(userId);
     }
-    fetch("https://jsonplaceholder.typicode.com/posts").catch(() =>
-      this.setState(() => ({ isOnline: false }))
-    );
   }
 
   render() {
-    const { isOnline } = this.state;
+    const { isOnline, isLoading } = this.state;
+
+    if (isLoading) return <Loader />;
 
     if (isOnline) {
       return (
@@ -51,7 +62,7 @@ class App extends Component {
 
             <div className="container">
               <Switch>
-                {/* Home Component */}
+                {/* Home/Trending Page Component */}
                 <Route exact path="/" component={TrendingPage} />
                 <Route path="/home" component={TrendingPage} />
                 <Route path="/trending" component={TrendingPage} />
@@ -72,7 +83,7 @@ class App extends Component {
                   component={MovieInfoPage}
                 />
 
-                {/* 404 Page Component */}
+                {/* Cast Page Component (opens in newtab)*/}
                 <Route
                   path="/cast/:id"
                   component={props => {
@@ -91,7 +102,7 @@ class App extends Component {
                 {/**Password Forget Page */}
                 <Route path="/forgotpassword" component={ForgotPassPage} />
 
-                {/**credots  Page */}
+                {/**credits  Page */}
                 <Route path="/credits" component={CreditsPage} />
 
                 {/**404 page  Page */}

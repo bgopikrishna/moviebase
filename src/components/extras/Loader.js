@@ -2,7 +2,10 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
 
-//A loader component for showing loading screen
+/**
+ * A loading or spinner  component which is used for displaying
+ * loading spinner in our app when fetching data, search results etc
+ */
 
 const loaderStyle = {
   color: "white",
