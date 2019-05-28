@@ -4,7 +4,7 @@ import StackedImageCard from "./StackedImageCard.js";
 const SimilarMovies = ({ similarMovies }) => {
   return (
     <div className="stacked-grid">
-      <h3>Similar Movies</h3>
+      <h2>Similar Movies</h2>
 
       <div className="stacked-grid-header">
         {similarMovies.length &&

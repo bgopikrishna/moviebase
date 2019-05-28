@@ -12,7 +12,6 @@ import PropTypes from "prop-types";
  */
 
 const WithLink = ({ to, externalLink, children }) => {
-
   //Return if it's an external link
   if (externalLink) {
     return (
@@ -33,8 +32,7 @@ WithLink.defaultProps = {
 //Type checking
 WithLink.propTypes = {
   to: PropTypes.string.isRequired,
-  externalLink: PropTypes.bool.isRequired,
-  children: PropTypes.element.isRequired
+  externalLink: PropTypes.bool.isRequired
 };
 
 export default WithLink;

@@ -97,7 +97,7 @@ export class TrendingPage extends Component {
 
     //Redirect
 
-    const { trendingMoviesList, isError, errorMsg, isLoading } = this.state;
+    const { trendingMoviesList, isError, isLoading } = this.state;
     const { userId, firestoreData } = this.props;
     let [favlistIds, watchlistIds] = getFavListAndWatchListIds(
       firestoreData,

@@ -20,7 +20,7 @@ const MovieCastCrew = ({ credits }) => {
   return (
     <React.Fragment>
       <div className="stacked-grid">
-        <h3>Featured Cast</h3>
+        <h2>Featured Cast</h2>
 
         <div className="stacked-grid-header">
           {/**Main cast details */}
@@ -39,7 +39,7 @@ const MovieCastCrew = ({ credits }) => {
         </div>
       </div>
       <div className="stacked-grid">
-        <h3>Featured Crew</h3>
+        <h2>Featured Crew</h2>
 
         <div className="stacked-grid-header">
           {/**Main cast details */}

@@ -3,11 +3,14 @@ import { Link, Redirect } from "react-router-dom";
 import "./authForm.scss";
 import { connect } from "react-redux";
 import { doSignIn } from "../store/actions/authActions";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
 
 export class SignIn extends Component {
   state = {
     email: "",
-    password: ""
+    password: "",
+    signInIndiactor: null
   };
 
   handleChange = e => {
@@ -18,16 +21,24 @@ export class SignIn extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    this.props.signIn(this.state);
+
+    this.setState(() => ({ signInIndiactor: true }));
+    setTimeout(() => {
+      this.props.signIn(this.state);
+
+      this.setState(() => ({ signInIndiactor: false }));
+    }, 3000);
   };
 
   render() {
-    const { email, password } = this.state;
+    const { email, password, signInIndiactor } = this.state;
     const { authError, auth } = this.props;
+    const signInButtonText = signInIndiactor ? "Signing In ..." : "Sign In";
+
     if (auth.uid) return <Redirect to="/" />;
 
     return (
-      <div className="form-container" >
+      <div className="form-container">
         <form onSubmit={this.handleSubmit}>
           <h5 className="form-title">Sign In</h5>
           <div className="input-field">
@@ -55,7 +66,8 @@ export class SignIn extends Component {
             />
           </div>
           <div className="input-field">
-            <button type="submit">Sign In</button>
+            <button type="submit">{signInButtonText}</button>
+            {signInIndiactor && <FontAwesomeIcon icon={faCircleNotch} spin />}
           </div>
         </form>
         {authError && (

@@ -102,9 +102,7 @@ export class MovieInfoPage extends Component {
     const { movie, isError, errorMsg, isLoading, modalState } = this.state;
     let movieTrailer =
       Object.entries(movie).length !== 0 && movie.hasOwnProperty("videos")
-        ? movie.videos.results.filter(
-            video => video.type === "Trailer" || video.type === "Teaser"
-          )[0]
+        ? movie.videos.results.filter(video => video.type === "Trailer")[0]
         : {};
 
     //Redirect if not signed in
@@ -117,12 +115,8 @@ export class MovieInfoPage extends Component {
         <Fragment>
           <MovieInfoComp movie={movie} toggleModal={this.toggleModal} />
 
-          {movieTrailer && (
-            <Modal
-              toggleModal={this.toggleModal}
-              modalState={modalState}
-              title={movie.original_title + " Trailer"}
-            >
+          {movieTrailer.hasOwnProperty("type") && (
+            <Modal toggleModal={this.toggleModal} modalState={modalState}>
               <YTIFrame
                 src={
                   modalState

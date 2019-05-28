@@ -14,13 +14,17 @@ export const doSignIn = credientials => {
 export const doSignOut = () => {
   return (dispatch, getState, { getFirebase }) => {
     const firebase = getFirebase();
-    firebase
-      .auth()
-      .signOut()
-      .then(() => {
-        dispatch({ type: "SIGNOUT_SUCESS" });
-        window.location.reload();
-      });
+
+    return new Promise((resolve, reject) => {
+      firebase
+        .auth()
+        .signOut()
+        .then(() => {
+          dispatch({ type: "SIGNOUT_SUCESS" });
+          resolve();
+        })
+        .catch(() => reject());
+    });
   };
 };
 

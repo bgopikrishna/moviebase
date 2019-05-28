@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/accessible-emoji */
-import React from "react";
+import React, { useEffect } from "react";
 import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { doSignOut } from "../store/actions/authActions";
@@ -14,6 +14,11 @@ import {
 import "./AccountPage.scss";
 
 const AccountPage = ({ signOut, auth, profile }) => {
+  function handleLogout() {
+    //sign return a promise on successfull signout
+    signOut().finally(() => window.location.reload());
+  }
+
   if (!auth.uid) return <Redirect to="/signin" />;
 
   if (profile.isLoaded) {
@@ -25,7 +30,7 @@ const AccountPage = ({ signOut, auth, profile }) => {
         </div>
         <div className="accountpage__signout">
           {auth.uid && (
-            <button className="accountpage__signout-btn" onClick={signOut}>
+            <button className="accountpage__signout-btn" onClick={handleLogout}>
               <FontAwesomeIcon icon={faSignOutAlt} />
               Sign out
             </button>

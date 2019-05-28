@@ -6,9 +6,20 @@ import { faTrash, faStar, faCalendar } from "@fortawesome/free-solid-svg-icons";
 import { ifNotExists } from "../../helperfunctions/helpers";
 import { Link } from "react-router-dom";
 
+/**
+ * A `MovieListCard` component which is used to display list of movies in `mylist` page
+ * Props are
+ * `movie` {object} - movie details objects
+ * `deleteListItem` {func} - a function which removes item from the list
+ *
+ */
+
 const MovieListCard = ({ movie, deleteListItem }) => {
   let { id, vote_average, poster_path, original_title, release_date } = movie;
 
+  /* checking the is the data from object is exits or not or not*/
+
+  //`ifNotExist` is a function which return a default text, if the data not exists
   poster_path = ifNotExists(
     poster_path,
     `https://image.tmdb.org/t/p/w185/${poster_path}`,
@@ -22,6 +33,8 @@ const MovieListCard = ({ movie, deleteListItem }) => {
   );
   release_date = ifNotExists(release_date, release_date, "-");
   vote_average = ifNotExists(vote_average, vote_average + "/10", "N/A");
+
+  /* Checking Ends */
 
   return (
     <div className="list-card">

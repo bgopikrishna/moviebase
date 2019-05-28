@@ -3,13 +3,16 @@ import { Link, Redirect } from "react-router-dom";
 import "./authForm.scss";
 import { connect } from "react-redux";
 import { doSignUp } from "../store/actions/authActions";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
 
 export class SignUp extends Component {
   state = {
     firstName: "",
     lastName: "",
     email: "",
-    password: ""
+    password: "",
+    signInIndiactor: null
   };
 
   handleChange = e => {
@@ -20,11 +23,16 @@ export class SignUp extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
+    this.setState(() => ({ signInIndiactor: true }));
+
     this.props.signUp(this.state);
+
+    this.setState(() => ({ signInIndiactor: false }));
   };
 
   render() {
-    const { email, password, firstName, lastName } = this.state;
+    const { email, password, firstName, lastName ,signInIndiactor} = this.state;
+    
     const { auth, authError } = this.props;
     if (auth.uid) return <Redirect to="/" />;
     return (
@@ -83,6 +91,7 @@ export class SignUp extends Component {
           </div>
           <div className="input-field">
             <button type="submit">Sign Up</button>
+            {signInIndiactor && <FontAwesomeIcon icon={faCircleNotch} spin />}
           </div>
         </form>
         {authError && (
