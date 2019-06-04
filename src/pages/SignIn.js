@@ -4,7 +4,7 @@ import "./authForm.scss";
 import { connect } from "react-redux";
 import { doSignIn } from "../store/actions/authActions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
+import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 
 export class SignIn extends Component {
   state = {
@@ -33,7 +33,7 @@ export class SignIn extends Component {
   render() {
     const { email, password, signInIndiactor } = this.state;
     const { authError, auth } = this.props;
-    const signInButtonText = signInIndiactor ? "Signing In ..." : "Sign In";
+    const signInButtonText = signInIndiactor ? "Signing In " : "Sign In";
 
     if (auth.uid) return <Redirect to="/" />;
 
@@ -68,7 +68,7 @@ export class SignIn extends Component {
           <div className="input-field">
             <button type="submit">
               {signInButtonText}{" "}
-              {signInIndiactor && <FontAwesomeIcon icon={faCircleNotch} spin />}
+              {signInIndiactor && <FontAwesomeIcon icon={faSpinner} spin />}
             </button>
           </div>
         </form>
