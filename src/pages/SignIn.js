@@ -66,8 +66,10 @@ export class SignIn extends Component {
             />
           </div>
           <div className="input-field">
-            <button type="submit">{signInButtonText}</button>
-            {signInIndiactor && <FontAwesomeIcon icon={faCircleNotch} spin />}
+            <button type="submit">
+              {signInButtonText}{" "}
+              {signInIndiactor && <FontAwesomeIcon icon={faCircleNotch} spin />}
+            </button>
           </div>
         </form>
         {authError && (

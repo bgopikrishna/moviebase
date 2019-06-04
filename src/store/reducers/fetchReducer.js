@@ -1,11 +1,8 @@
-import { FETCH_DATA, DATA_FETCHED } from  '../../constants';
-import {
-  applyFetchData,
-  applyStoreFetchedData
-} from "../actions/fetchDataAction";
-const INTIAL_STATE= {
+import { DATA_FETCHED } from "../../constants";
+import { applyStoreFetchedData } from "../actions/fetchDataAction";
+const INTIAL_STATE = {
   dataFetched: []
-}
+};
 
 export const fetchReducer = (state = INTIAL_STATE, action) => {
   switch (action.type) {

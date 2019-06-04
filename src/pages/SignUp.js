@@ -31,8 +31,15 @@ export class SignUp extends Component {
   };
 
   render() {
-    const { email, password, firstName, lastName ,signInIndiactor} = this.state;
-    
+    const {
+      email,
+      password,
+      firstName,
+      lastName,
+      signInIndiactor
+    } = this.state;
+    const signUpButtonText = signInIndiactor ? "Signing Up ..." : "Sign Up";
+
     const { auth, authError } = this.props;
     if (auth.uid) return <Redirect to="/" />;
     return (
@@ -90,8 +97,10 @@ export class SignUp extends Component {
             />
           </div>
           <div className="input-field">
-            <button type="submit">Sign Up</button>
-            {signInIndiactor && <FontAwesomeIcon icon={faCircleNotch} spin />}
+            <button type="submit">
+              {signUpButtonText}{" "}
+              {signInIndiactor && <FontAwesomeIcon icon={faCircleNotch} spin />}
+            </button>
           </div>
         </form>
         {authError && (
