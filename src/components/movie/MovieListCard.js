@@ -1,5 +1,4 @@
 import React from "react";
-import { connect } from "react-redux";
 import "./MovieListCard.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faStar, faCalendar } from "@fortawesome/free-solid-svg-icons";
@@ -70,13 +69,6 @@ const MovieListCard = ({ movie, deleteListItem }) => {
 };
 
 //Connecting  the redux central store to the component
-const mapStateToProps = (state, props) => {
-  //Syncing the data of favourites movies with store and dispalying for user if it's already liked
-  return {
-    ...props,
-    favIds: state.favItems.ids,
-    watchListIds: state.watchListItems.ids
-  };
-};
 
-export default connect(mapStateToProps)(MovieListCard);
+
+export default (MovieListCard);

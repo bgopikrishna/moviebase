@@ -30,9 +30,9 @@ const MovieListPage = ({
           <h3>Your Favourites</h3>
         </div>
         <div className="movie-list__list-items">
-          <TransitionGroup timeout={300}>
-            {favlistCollection.length !== 0 ? (
-              favlistCollection.map(movie => (
+          {favlistCollection.length !== 0 ? (
+            <TransitionGroup timeout={300} component={null}>
+              {favlistCollection.map(movie => (
                 <CSSTransition
                   classNames="list-item-fade"
                   timeout={500}
@@ -43,11 +43,11 @@ const MovieListPage = ({
                     deleteListItem={() => deleteFromFavList(movie, movie.id)}
                   />
                 </CSSTransition>
-              ))
-            ) : (
-              <p style={{ textAlign: "center" }}>Favourites list Empty</p>
-            )}
-          </TransitionGroup>
+              ))}
+            </TransitionGroup>
+          ) : (
+            <p style={{ textAlign: "center" }}>Favourites list Empty</p>
+          )}
         </div>
       </div>
 
@@ -56,9 +56,9 @@ const MovieListPage = ({
           <h3>Your Watchlist</h3>
         </div>
         <div className="movie-list__list-items">
-          <TransitionGroup>
-            {watchlistCollection.length !== 0 ? (
-              watchlistCollection.map(movie => (
+          {watchlistCollection.length !== 0 ? (
+            <TransitionGroup timeout={300} component={null}>
+              {watchlistCollection.map(movie => (
                 <CSSTransition
                   classNames="list-item-fade"
                   timeout={500}
@@ -69,11 +69,11 @@ const MovieListPage = ({
                     deleteListItem={() => deleteFromWatchList(movie, movie.id)}
                   />
                 </CSSTransition>
-              ))
-            ) : (
-              <p style={{ textAlign: "center" }}>Watchlist is Empty</p>
-            )}
-          </TransitionGroup>
+              ))}
+            </TransitionGroup>
+          ) : (
+            <p style={{ textAlign: "center" }}>Watchlist is Empty</p>
+          )}
         </div>
       </div>
     </div>
