@@ -42,6 +42,7 @@ export class SignUp extends Component {
 
     const { auth, authError } = this.props;
     if (auth.uid) return <Redirect to="/" />;
+
     return (
       <div className="form-container">
         <form onSubmit={this.handleSubmit}>
@@ -111,6 +112,10 @@ export class SignUp extends Component {
         <div className="form-footer">
           <Link to="/signin">Sign In</Link>
         </div>
+
+        <p style={{ fontWeight: "lighter", opacity: "0.6", fontSize: "12px" }}>
+          *Just use a fake E-mail to signup
+        </p>
       </div>
     );
   }

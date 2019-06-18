@@ -81,6 +81,9 @@ export class SignIn extends Component {
           <Link to="/signup">Sign Up</Link>
           <Link to="/forgotpassword">Forgot Password ?</Link>
         </div>
+        <p style={{ fontWeight: "lighter", opacity: "0.6", fontSize: "12px" }}>
+          *Just use a fake E-mail to signup
+        </p>
       </div>
     );
   }
