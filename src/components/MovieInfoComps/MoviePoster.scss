@@ -30,15 +30,15 @@
   bottom: 0;
   right: 0;
   margin: auto;
-  width: 75px;
-  height: 75px;
+  width: 5rem;
+  height: 5rem;
   z-index: 3;
   cursor: pointer;
   outline: none;
   background: transparent !important;
   border: none;
   color: $white;
-  opacity: 0.6;
+  opacity: 0.8;
   z-index: 9999;
   transition: all 0.1s ease-in;
 
@@ -73,6 +73,6 @@
     display: none;
   }
   .movie-backdrop {
-      min-height: 40vh;
+    min-height: 40vh;
   }
 }

@@ -1,5 +1,5 @@
 @import "variables";
-@import url("https://fonts.googleapis.com/css?family=Maven+Pro|Nunito");
+@import url("https://fonts.googleapis.com/css?family=Roboto|Nunito&display=swap");
 
 html {
   scroll-behavior: smooth;
@@ -37,16 +37,21 @@ a {
 }
 
 body {
-  font-family: "Nunito", -system-ui, -apple-system, BlinkMacSystemFont,
-    "Maven Pro", "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-family: Roboto, -system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol";
 
   padding: 0;
   margin: 0;
   background: $black;
   color: $white;
   min-height: 100%;
-  line-height: 1.5;
+  line-height: 1.6;
+  font-kerning: none;
+  letter-spacing: 0.3px;
+  overflow-wrap: break-word;
+  text-size-adjust: 100%;
+
 }
 
 .app {

@@ -30,16 +30,6 @@ const MoviePoster = ({
         }
         alt={altText}
       />
-      <div className="movie-poster">
-        <img
-          src={
-            poster
-              ? `https://image.tmdb.org/t/p/w600_and_h900_bestv2${poster}`
-              : placeholderImage("No Image Found", 120, 200)
-          }
-          alt={altText}
-        />
-      </div>
     </div>
   );
 };

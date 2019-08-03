@@ -13,6 +13,8 @@ li {
   justify-content: space-around;
   align-items: center;
   z-index: 2;
+  font-family: 'Darker Grotesque', sans-serif;
+
 }
 
 .navbar h1 {
@@ -31,7 +33,7 @@ li {
 }
 .__navitem {
   flex-basis: 20%;
-  opacity: 0.7;
+  opacity: 0.8;
   transition: all 0.2s ease-in;
   margin: auto 15px;
   &.active,

@@ -1,11 +1,25 @@
-movie manager
+movie info and movie list web app
 [Live Demo](https://movie-base.netlify.com)
 
 
 
 
 
-(...................description.............)
+
+
+#### TODO
+- [] Convert the Class Components to use latest React Hooks
+- [x] Implement search functionality
+- [x] Implemt like and watchlist
+- [x] Implement movie info with trailer
+- [x] Modal for movie trailer
+- [x] Implement similar movies on movie info and     cast info
+- [x] Fix TrendingPage Component bug
+- [ ] Add proptype for all component for type checking (high priority)
+- [x] Use `localStorage` from reducing API requests
+- [x] Fix movieInfo page `css` in Firefox (low priority)
+- [x] Fix footer in mobile devices (low priority)
+- [x] Refactor `css` (medium prority)
 
 
 
@@ -21,17 +35,3 @@ movie manager
 - [x] Authentication (with Firebase)
 - [x] Firebase db for storing user's favourites and watchlist
 
-#### TODO
-
-- [x] Implement search functionality
-- [x] Implemt like and watchlist
-- [x] Implement movie info with trailer
-- [x] Modal for movie trailer
-- [x] Implement similar movies on movie info and     cast info
-- [x] Fix TrendingPage Component bug
-- [ ] Add proptype for all component for type checking (high priority)
-- [x] Use `localStorage` from reducing API requests
-- [x] Fix movieInfo page `css` in Firefox (low priority)
-- [x] Fix footer in mobile devices (low priority)
-- [x] Refactor `css` (medium prority)
-- [ ] comment the code
