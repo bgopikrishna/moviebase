@@ -35,8 +35,6 @@ const Footer = () => {
           Source Code
         </a>
       </span>
-      &nbsp; | &nbsp;
-      <span>Under Development</span>
     </footer>
   );
 };

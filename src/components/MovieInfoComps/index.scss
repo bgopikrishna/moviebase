@@ -6,6 +6,7 @@
   min-height: 400px;
   width: 100%;
   flex-direction: column;
+  color: inherit;
 }
 
 .row-2 {
@@ -61,6 +62,7 @@
   align-self: flex-start;
   align-items: center;
   height: 80px;
+  color: $white;
 }
 
 .movie-name {

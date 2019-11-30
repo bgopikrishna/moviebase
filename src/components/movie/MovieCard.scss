@@ -1,6 +1,18 @@
 @import "../../variables";
 @import "../../mixins";
 
+.card {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.5s linear;
+  transition: opacity 0.5s linear;
+
+  opacity: 0.95;
+  &:hover,
+  &:focus {
+    box-shadow: none;
+    opacity: 1;
+  }
+}
 .card a {
   text-decoration: none;
   color: inherit;
@@ -79,7 +91,7 @@
   }
 
   .action_btn__btn.active {
-    color: $orangered;
+    color: rgb(255, 0, 119);
     // transform: scale(1.2);
     animation: scaleAndShrink 0.3s ease-in 0ms alternate;
     transition: 0.3ms all ease-in;

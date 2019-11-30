@@ -9,8 +9,9 @@
   height: 40px;
   padding: 0px 10px;
   background: transparent;
-  border: 0.5px solid $white;
+  border: 0.5px solid $black;
   outline: none;
+  color: $black;
 
   &.active {
     animation: scaleAndShrink 0.25s ease-in 0.05ms 1 alternate;
@@ -19,22 +20,35 @@
 
   &.like:hover,
   &.like:focus {
-    border: 0.5px solid orangered;
+    color: rgb(255, 0, 119);
+    border: 0.5px solid rgb(255, 0, 119);
   }
   &.watchlist:hover,
   &.watchlist:focus {
+    color: $blue;
     border: 0.5px solid $blue;
+
+    svg {
+        fill: $blue;
+        
+    }
   }
 
   &.like.active {
     box-shadow: none;
-    background: orangered;
-    border: 0.5px solid orangered;
+    background: rgb(255, 0, 119);
+    border: 0.5px solid rgb(255, 0, 119);
+    color: $white;
   }
   &.watchlist.active {
     fill: $white;
     background: $blue;
     border: 0.5px solid $blue;
+    color: $white;
+
+    svg {
+        fill: $white;
+    }
   }
 
   &.play-trailer {

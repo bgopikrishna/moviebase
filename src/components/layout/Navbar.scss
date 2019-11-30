@@ -9,12 +9,12 @@ li {
 .navbar {
   display: flex;
   flex-direction: row;
-  background: $blue;
-  justify-content: space-around;
+  background: $white;
+  justify-content: space-between;
   align-items: center;
   z-index: 2;
-  font-family: 'Darker Grotesque', sans-serif;
-
+  padding:0 1rem;
+  color: $blue;
 }
 
 .navbar h1 {
@@ -25,9 +25,8 @@ li {
   list-style: none;
   display: flex;
   flex-direction: row;
-  padding: 15px;
   margin: 0;
-  justify-content: space-around;
+  justify-content: space-between;
   height: auto;
   width: auto;
 }
@@ -36,11 +35,13 @@ li {
   opacity: 0.8;
   transition: all 0.2s ease-in;
   margin: auto 15px;
+  padding: 1rem;
   &.active,
   &:hover,
   &:focus {
     opacity: 1;
-    color: #ffffff;
+    background: #1e90ff61;
+    color: $white;
   }
 }
 
@@ -48,6 +49,7 @@ li {
   .navbar {
     justify-content: center;
     width: 100%;
+    padding: 0rem;
   }
 
   h1 {
@@ -59,22 +61,20 @@ li {
     box-shadow: 0 -1px 2px 0 rgba(255, 255, 255, 0.295);
     bottom: 0;
     left: 0;
-    width: 100%;
-    padding: 5px;
-    padding-top: 10px !important;
-    background: $black;
+    background: $white;
     text-align: center;
-    transform: translateZ(2px);
     z-index: 2;
+    border-top: 1px solid $black;
+    width: 100%;
   }
 
   .__navitem {
     margin: 0;
     display: flex;
-    transform: scale(0.8);
     flex-direction: column;
     transition: all 0.3s ease;
     align-items: center;
+    padding: 1rem 2rem;
 
     &.active {
       opacity: 1;

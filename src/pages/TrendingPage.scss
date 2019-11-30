@@ -2,7 +2,7 @@
 @import "../mixins";
 
 .trending {
-  width: 90%;
+  width: 80%;
   margin: auto;
   display: flex;
   flex-direction: column;
@@ -10,7 +10,7 @@
   padding: 1rem 0.5rem;
 
   &__heading {
-    color: $pinkwhite;
+    color: $black;
     text-align: center;
     width: 100%;
   }

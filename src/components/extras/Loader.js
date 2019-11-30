@@ -8,7 +8,7 @@ import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
  */
 
 const loaderStyle = {
-  color: "white",
+  color: "black",
   minHeight: "50vh",
   fontSize: "48px",
   display: "flex",

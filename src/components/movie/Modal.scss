@@ -75,11 +75,12 @@
 
 .modal-body {
   padding: 2px 2px;
-  background: $black;
+  background: rgba(255, 255, 255, 0.5);
   min-height: 70vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 5px;
 }
 
 .modal-footer {

@@ -17,27 +17,23 @@ const SignInLinks = () => {
     <nav>
       <ul className="__navlinks">
         <li>
-          <NavLink exact to="/" className="__navitem">
+          <NavLink exact to="/" className="__navitem" title="Trending">
             <FontAwesomeIcon icon={faFire} />
-            &nbsp;trending
           </NavLink>
         </li>
         <li>
-          <NavLink to="/search" className="__navitem">
+          <NavLink to="/search" className="__navitem" title="Search">
             <FontAwesomeIcon icon={faSearch} />
-            &nbsp;search
           </NavLink>
         </li>
         <li>
-          <NavLink to="/list" className="__navitem">
+          <NavLink to="/list" className="__navitem" title="Library">
             <FontAwesomeIcon icon={faFilm} />
-            &nbsp;mylist
           </NavLink>
         </li>
         <li>
-          <NavLink to="/account" className="__navitem">
+          <NavLink to="/account" className="__navitem" title="Account">
             <FontAwesomeIcon icon={faUserAstronaut} />
-            &nbsp;account
           </NavLink>
         </li>
       </ul>

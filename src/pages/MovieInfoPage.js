@@ -115,7 +115,7 @@ export class MovieInfoPage extends Component {
         <Fragment>
           <MovieInfoComp movie={movie} toggleModal={this.toggleModal} />
 
-          {movieTrailer.hasOwnProperty("type") && (
+          {movieTrailer && movieTrailer.hasOwnProperty("type") && (
             <Modal toggleModal={this.toggleModal} modalState={modalState}>
               <YTIFrame
                 src={

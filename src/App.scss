@@ -1,5 +1,5 @@
 @import "variables";
-@import url("https://fonts.googleapis.com/css?family=Roboto|Nunito&display=swap");
+@import url('https://fonts.googleapis.com/css?family=Solway&display=swap');
 
 html {
   scroll-behavior: smooth;
@@ -37,14 +37,14 @@ a {
 }
 
 body {
-  font-family: Roboto, -system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+  font-family: 'Solway', -system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
     Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
     "Segoe UI Symbol";
 
   padding: 0;
   margin: 0;
-  background: $black;
-  color: $white;
+  background: #7772720a;
+  color: $black;
   min-height: 100%;
   line-height: 1.6;
   font-kerning: none;

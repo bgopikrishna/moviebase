@@ -9,6 +9,15 @@
   border-radius: 5px;
   display: flex;
   flex-direction: column;
+  opacity: 0.75;
+  transition: box-shadow 0.3s linear;
+  transition: opacity 0.3s linear;
+
+  &:hover,
+  &:focus {
+    box-shadow: none;
+    opacity: 1;
+  }
 }
 .stacked-card .card-content {
   padding: 10px;
