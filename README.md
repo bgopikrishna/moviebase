@@ -8,7 +8,7 @@ movie info and movie list web app
 
 
 #### TODO
-- [] Convert the Class Components to use latest React Hooks
+- [ ] Convert the Class Components to use latest React Hooks
 - [x] Implement search functionality
 - [x] Implemt like and watchlist
 - [x] Implement movie info with trailer

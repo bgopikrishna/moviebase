@@ -34,13 +34,13 @@ li {
   flex-basis: 20%;
   opacity: 0.8;
   transition: all 0.2s ease-in;
-  margin: auto 15px;
+  // margin: auto 15px;
   padding: 1rem;
   &.active,
   &:hover,
   &:focus {
     opacity: 1;
-    background: #1e90ff61;
+    background: $blue;
     color: $white;
   }
 }
