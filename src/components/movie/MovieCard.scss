@@ -1,16 +1,20 @@
-@import "../../variables";
-@import "../../mixins";
+@import '../../variables';
+@import '../../mixins';
 
 .card {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  transition: box-shadow 0.5s linear;
-  transition: opacity 0.5s linear;
+  transition: box-shadow 0.3s linear;
+  transition: opacity 0.3s linear;
+  transition: transform 0.3s ease-in;
 
-  opacity: 0.95;
+  opacity: 0.75;
   &:hover,
   &:focus {
     box-shadow: none;
     opacity: 1;
+    transform: scale(1.1);
+    transition: transform 0.3s ease-out;
+
   }
 }
 .card a {
@@ -36,7 +40,7 @@
   width: 100%;
   color: $black;
   border-radius: 2px;
-  transition: all 0.2s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  transition: all 0.2s cubic-bezier(0.35, 0.055, 0.675, 0.19);
 }
 
 .card__image {

@@ -36,7 +36,7 @@
 .trending__results {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  grid-gap: 20px;
+  grid-gap: 2rem;
   justify-items: center;
   padding: 1.5rem 0.7rem;
 }
