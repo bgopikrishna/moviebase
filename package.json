@@ -10,7 +10,7 @@
     "@fortawesome/react-fontawesome": "^0.1.4",
     "firebase": "^6.0.2",
     "global": "^4.3.2",
-    "node-sass": "^4.11.0",
+    "node-sass": "^4.13.1",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
     "react-lazy-load": "^3.0.13",
